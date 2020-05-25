@@ -33,8 +33,14 @@ public class MemberAddService implements Action {
 			int comm = Integer.parseInt(multi.getParameter("comm"));
 			int deptNo = Integer.parseInt(multi.getParameter("deptNo"));
 	
-	
-			
+			String id = request.getParameter("id");
+			String pwd = request.getParameter("pwd");
+	    	String email = request.getParameter("email");
+	    	String email = request.getParameter("email");
+	    	String email = request.getParameter("email");
+	    	String email = request.getParameter("email");
+	    	
+	    	
 			empDao dao = new empDao(); //POINT
 			int result = dao.insertLolz(id,pwd,email, bd, summonerId);
 			
