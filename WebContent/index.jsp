@@ -13,7 +13,6 @@
 	<jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
 	<body class="is-preload landing">
 		<div id="page-wrapper">
-
 				<section id="banner">
 					<div class="content">
 						<header>
@@ -35,8 +34,9 @@
 							<div class="row">
 								<div class="col-4 col-12-medium">
 									<header>
-										<h2>게임소개</h2>
-										<p>하아아아아아아</p>
+										<h2>League of Legend란?</h2>
+										<p>케릭터를 선택해서<br>
+										승리를 거머쥐세요!</p>
 									</header>
 								</div>
 								<div class="col-4 col-12-medium">
@@ -53,7 +53,7 @@
 
 			<!-- Two -->
 				<section id="two" class="spotlight style2 right">
-				<video preload="metadata" style="object-fit:cover;object-position:center center" autoplay loop muted class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center center"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-de0ba45b1d0959277d12545fbb645722.mp4" type="video/mp4"></video>
+					<span class="image fit main bottom"><img src="images/pic03.jpg" alt="" /></span>
 					<div class="content">
 						<header>
 							<h2>Interdum amet non magna accumsan</h2>
