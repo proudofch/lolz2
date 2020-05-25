@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
 <script type="text/javascript">
 var jsonData;
 var apiKey = "RGAPI-77affad3-b856-47e8-8f37-628f678b99b5";
