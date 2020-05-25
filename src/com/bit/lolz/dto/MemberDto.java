@@ -1,104 +1,63 @@
 package com.bit.lolz.dto;
 
-/*
-create table memo(
-	id varchar2(15) not null,
-	email varchar2(20) not null,
-	content varchar2(100)
-); 
 
-데이터 row 1건을 담을 수 있는 클래스 (DTO)
- */
 public class MemberDto {
-	private int empNo;
-	private String ename;
-	private String job;
-	private int mgr;
-	private String hireDate;
-	private int sal;
-	private int comm;
-	private int deptNo;
-	private String img;
+
+	private String id;
+	private String pwd;
+	private String email;
+	private String bd;
+	private String summonerId;
 	
-	public MemberDto() {}
-	
-	public int getEmpNo() {
-		return empNo;
-	}
-
-	public void setEmpNo(int empNo) {
-		this.empNo = empNo;
-	}
-
-	public String getEname() {
-		return ename;
-	}
-
-	public void setEname(String ename) {
-		this.ename = ename;
-	}
-
-	public String getJob() {
-		return job;
-	}
-
-	public void setJob(String job) {
-		this.job = job;
-	}
-
-	public int getMgr() {
-		return mgr;
-	}
-
-	public void setMgr(int mgr) {
-		this.mgr = mgr;
-	}
-
-	public String getHireDate() {
-		return hireDate;
-	}
-
-	public void setHireDate(String hireDate) {
-		this.hireDate = hireDate;
-	}
-
-	public int getSal() {
-		return sal;
-	}
-
-	public void setSal(int sal) {
-		this.sal = sal;
-	}
-
-	public int getComm() {
-		return comm;
-	}
-
-	public void setComm(int comm) {
-		this.comm = comm;
-	}
-
-	public int getDeptNo() {
-		return deptNo;
-	}
-
-	public void setDeptNo(int deptNo) {
-		this.deptNo = deptNo;
-	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
+	public String getId() {
+		return id;
 	}
 
 	@Override
 	public String toString() {
-		return "Emp [empNo=" + empNo + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hireDate=" + hireDate
-				+ ", sal=" + sal + ", comm=" + comm + ", deptNo=" + deptNo + ", img=" + img + "]";
+		return "MemberDto [id=" + id + ", pwd=" + pwd + ", email=" + email + ", bd=" + bd + ", summonerId=" + summonerId
+				+ "]";
 	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBd() {
+		return bd;
+	}
+
+	public void setBd(String bd) {
+		this.bd = bd;
+	}
+
+	public String getSummonerId() {
+		return summonerId;
+	}
+
+	public void setSummonerId(String summonerId) {
+		this.summonerId = summonerId;
+	}
+
+	public MemberDto() {}
+	
+
 	
 	
 	

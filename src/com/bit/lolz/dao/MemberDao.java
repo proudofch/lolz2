@@ -1,6 +1,5 @@
 package com.bit.lolz.dao;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,14 +7,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
-​
 import com.bit.lolz.dto.MemberDto;
 import com.bit.lolz.utils.ConnectionHelper;
 import com.bit.lolz.utils.DB_Close;
-​
 import javafx.scene.chart.Chart;
-​
-​
+
 public class MemberDao {
 	static DataSource ds;
 		
@@ -65,7 +61,6 @@ public class MemberDao {
 		ResultSet rs = null;
 		String sql = "select id, pwd, email, bd, summonerId from Member where id like ?";
 		ArrayList<MemberDto> Memberlist = null;
-​
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+id+"%"); //여기에 % 붙이고 jquery func keyup으로 바꾸면 한글자씩 해도 검색 될 듯
@@ -136,7 +131,6 @@ public class MemberDao {
 		
 	}
 	*/
-​
 	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 사원 목록 조회
 		Connection conn = ConnectionHelper.getConnection("oracle"); //객체 얻기
 		PreparedStatement pstmt = null;
@@ -160,7 +154,6 @@ public class MemberDao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-​
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
 			conn.close(); //반환하기
@@ -169,10 +162,8 @@ public class MemberDao {
 		
 		return Memberlist;
 	}
-​
 	//멤버 추가
 	public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
-​
 		Connection conn = null;
 		int resultrow = 0;
 		PreparedStatement pstmt = null;
@@ -226,7 +217,6 @@ public class MemberDao {
 			resultrow = pstmt.executeUpdate();
 			
 		} catch (Exception e2) {
-​
 			e2.printStackTrace();
 			
 		} finally {
@@ -240,7 +230,6 @@ public class MemberDao {
 		}	
 		return resultrow;
 	}
-​
 	public int deleteMember(String id) { //멤버 삭제하기
 		Connection conn =null;//추가
 		int resultrow=0;
@@ -267,7 +256,6 @@ public class MemberDao {
 		}
 		return resultrow;
 	}
-​
 	//추가함수 (ID 존재 유무 판단 함수)
 	public String isCheckByMemberId(String id) {
 		Connection conn =null;//추가
