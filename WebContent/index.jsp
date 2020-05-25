@@ -29,30 +29,21 @@
 
 			<!-- One -->
 				<section id="one" class="spotlight style1 bottom">
-					<span class="image fit main"><img src="images/pic02.jpg" alt="" /></span>
 					<div class="content">
 					<video preload="metadata" style="object-fit:cover;object-position:center center" autoplay loop muted class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center center"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-de0ba45b1d0959277d12545fbb645722.mp4" type="video/mp4"></video>
 						<div class="container">
 							<div class="row">
 								<div class="col-4 col-12-medium">
 									<header>
-										<h2>Odio faucibus ipsum integer consequat</h2>
-										<p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
+										<h2>게임소개</h2>
+										<p>하아아아아아아</p>
 									</header>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>Feugiat accumsan lorem eu ac lorem amet sed accumsan donec.
-									Blandit orci porttitor semper. Arcu phasellus tortor enim mi
-									nisi praesent dolor adipiscing. Integer mi sed nascetur cep aliquet
-									augue varius tempus lobortis porttitor accumsan consequat
-									adipiscing lorem dolor.</p>
+									<p>롤은롤 </p>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>Morbi enim nascetur et placerat lorem sed iaculis neque ante
-									adipiscing adipiscing metus massa. Blandit orci porttitor semper.
-									Arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer
-									mi sed nascetur cep aliquet augue varius tempus. Feugiat lorem
-									ipsum dolor nullam.</p>
+									<p>롤은롤2</p>
 								</div>
 							</div>
 						</div>
@@ -62,8 +53,7 @@
 
 			<!-- Two -->
 				<section id="two" class="spotlight style2 right">
-					<video preload="metadata" style="object-fit:cover;object-position:center center" autoplay loop muted class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center center"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-de0ba45b1d0959277d12545fbb645722.mp4" type="video/mp4"></video>
-				
+				<video preload="metadata" style="object-fit:cover;object-position:center center" autoplay loop muted class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center center"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-de0ba45b1d0959277d12545fbb645722.mp4" type="video/mp4"></video>
 					<div class="content">
 						<header>
 							<h2>Interdum amet non magna accumsan</h2>
@@ -91,6 +81,7 @@
 						</ul>
 					</div>
 					<a href="#four" class="goto-next scrolly">Next</a>
+					
 				</section>
 
 			<!-- Four -->
