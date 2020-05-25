@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+
+
+
+body {
+	padding: 100px 0;
+	
+}
+
+.container {
+	
+	padding: 0 100px;
+	
+}
+
+th, td, h3 {
+	text-align: center;
+}
+
+
+#option {
+	width: 150px;
+	
+}
+
+#search {
+	width: 500px;
+	
+}
+
+#btn, #option, #search {
+	margin: 0 10px;
+}
+
+
+#searchtable tr, td {
+	border: none;
+	border-collapse: collapse;
+}
+
+#searchtable {
+	/* width: 100%; */
+	margin: 0 auto;
+}
+
+#display {
+	
+}
+	
