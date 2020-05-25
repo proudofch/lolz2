@@ -9,7 +9,7 @@ create table memo(
 
 데이터 row 1건을 담을 수 있는 클래스 (DTO)
  */
-public class EmpDto {
+public class MemberDto {
 	private int empNo;
 	private String ename;
 	private String job;
@@ -20,7 +20,7 @@ public class EmpDto {
 	private int deptNo;
 	private String img;
 	
-	public EmpDto() {}
+	public MemberDto() {}
 	
 	public int getEmpNo() {
 		return empNo;
