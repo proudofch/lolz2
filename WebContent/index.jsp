@@ -17,11 +17,12 @@
 				<section id="banner">
 					<div class="content">
 						<header>
-							<h2>The future has landed</h2>
-							<p>And there are no hoverboards or flying cars.<br />
-							Just apps. Lots of mother flipping apps.</p>
+							<h2>누군가에겐 Legend, <br>하지만 내겐?</h2>
+							<p>페이커는 도대체 뭘 하는 사람이며,<br>
+								소환사의 협곡은 또 무엇이고…<br>
+								그런 궁금증, 이대로 남겨둘 건가요?</p>
 						</header>
-						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
+						<span class="image"><img src="images/Logo.jpg" alt="" /></span>
 					</div>
 					<a href="#one" class="goto-next scrolly">Next</a>
 				</section>
@@ -30,6 +31,7 @@
 				<section id="one" class="spotlight style1 bottom">
 					<span class="image fit main"><img src="images/pic02.jpg" alt="" /></span>
 					<div class="content">
+					<video preload="metadata" style="object-fit:cover;object-position:center center" autoplay loop muted class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center center"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-de0ba45b1d0959277d12545fbb645722.mp4" type="video/mp4"></video>
 						<div class="container">
 							<div class="row">
 								<div class="col-4 col-12-medium">
@@ -60,7 +62,8 @@
 
 			<!-- Two -->
 				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="images/pic03.jpg" alt="" /></span>
+					<video preload="metadata" style="object-fit:cover;object-position:center center" autoplay loop muted class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center center"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/webm"><source src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/ko-kr/production/ko-kr/static/hero-de0ba45b1d0959277d12545fbb645722.mp4" type="video/mp4"></video>
+				
 					<div class="content">
 						<header>
 							<h2>Interdum amet non magna accumsan</h2>
