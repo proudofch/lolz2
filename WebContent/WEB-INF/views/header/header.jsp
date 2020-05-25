@@ -35,6 +35,7 @@
 							<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
 							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
 							<li><a href="#" class="button primary">Sign Up</a></li>
+							<li><a href="FreeBoardWrite.Board" class="button primary">게시판 글쓰기</a></li>
 						</ul>
 					</nav>
 				</header>

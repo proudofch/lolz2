@@ -13,6 +13,7 @@ import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.boardService.FreeBoardList;
 import com.bit.lolz.boardService.FreeBoardWrite;
+import com.bit.lolz.boardService.FreeBoardWriteOk;
 
 @WebServlet("*.Board")
 public class FrontBoardController extends HttpServlet {
@@ -31,9 +32,15 @@ public class FrontBoardController extends HttpServlet {
     	Action action = null;
     	ActionForward forward = null;
     	
-    	if(url_Command.equals("/FreeBoardWrite.Board")) {
-    		action = new FreeBoardWrite();
-    		forward = action.execute(request, response);
+    	if(url_Command.equals("/FreeBoardWrite.Board")) { //게시판 글쓰기 UI
+        	forward = new ActionForward();
+            forward.setRedirect(false);
+            forward.setPath("/WEB-INF/views/board/BoardWrite.jsp");
+
+    	} else if(url_Command.equals("/FreeBoardWriteOk.Board")) { //게시판 글쓰기 로직 처리
+        	action = new FreeBoardWriteOk();
+        	forward = action.execute(request, response);
+        
     		
     	} else if(url_Command.equals("/FreeBoardList.Board")) {
     		action = new FreeBoardList();

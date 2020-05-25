@@ -4,23 +4,30 @@ import java.sql.Date;
 
 public class BoardDto {
 
-	private int boardNum;
+	private int boardnum;
 	private String id;
-	private int boardType;
-	private String boardTitle;
-	private String boardContent;
-	private Date boardDate;
-	private int boardHit;
-	private String boardFile;
-	private int boardRef;
-	private int boardStep;
-	private int boardDepth;
+	private int boardtype;
+	private String boardtitle;
+	private String boardcontent;
+	private Date boarddate;
+	private int boardhit;
+	private String boardfile;
+	private int boardref;
+	private int boardstep;
+	private int boarddepth;
 	
-	public int getBoardNum() {
-		return boardNum;
+	public BoardDto() { }
+	
+	public BoardDto(int boardnum, String id, int boardtype, String boardtitle, String boardcontent,
+					Date boarddate, int boardhit, String boardfile, int boardref, int boardstep, int boarddepth) {
+		super();
 	}
-	public void setBoardNum(int boardNum) {
-		this.boardNum = boardNum;
+	
+	public int getBoardnum() {
+		return boardnum;
+	}
+	public void setBoardnum(int boardnum) {
+		this.boardnum = boardnum;
 	}
 	public String getId() {
 		return id;
@@ -28,60 +35,62 @@ public class BoardDto {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getBoardType() {
-		return boardType;
+	public int getBoardtype() {
+		return boardtype;
 	}
-	public void setBoardType(int boardType) {
-		this.boardType = boardType;
+	public void setBoardtype(int boardtype) {
+		this.boardtype = boardtype;
 	}
-	public String getBoardTitle() {
-		return boardTitle;
+	public String getBoardtitle() {
+		return boardtitle;
 	}
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
+	public void setBoardtitle(String boardtitle) {
+		this.boardtitle = boardtitle;
 	}
-	public String getBoardContent() {
-		return boardContent;
+	public String getBoardcontent() {
+		return boardcontent;
 	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+	public void setBoardcontent(String boardcontent) {
+		this.boardcontent = boardcontent;
 	}
-	public Date getBoardDate() {
-		return boardDate;
+	public Date getBoarddate() {
+		return boarddate;
 	}
-	public void setBoardDate(Date boardDate) {
-		this.boardDate = boardDate;
+	public void setBoarddate(Date boarddate) {
+		this.boarddate = boarddate;
 	}
-	public int getBoardHit() {
-		return boardHit;
+	public int getBoardhit() {
+		return boardhit;
 	}
-	public void setBoardHit(int boardHit) {
-		this.boardHit = boardHit;
+	public void setBoardhit(int boardhit) {
+		this.boardhit = boardhit;
 	}
-	public String getBoardFile() {
-		return boardFile;
+	public String getBoardfile() {
+		return boardfile;
 	}
-	public void setBoardFile(String boardFile) {
-		this.boardFile = boardFile;
+	public void setBoardfile(String boardfile) {
+		this.boardfile = boardfile;
 	}
-	public int getBoardRef() {
-		return boardRef;
+	public int getBoardref() {
+		return boardref;
 	}
-	public void setBoardRef(int boardRef) {
-		this.boardRef = boardRef;
+	public void setBoardref(int boardref) {
+		this.boardref = boardref;
 	}
-	public int getBoardStep() {
-		return boardStep;
+	public int getBoardstep() {
+		return boardstep;
 	}
-	public void setBoardStep(int boardStep) {
-		this.boardStep = boardStep;
+	public void setBoardstep(int boardstep) {
+		this.boardstep = boardstep;
 	}
-	public int getBoardDepth() {
-		return boardDepth;
+	public int getBoarddepth() {
+		return boarddepth;
 	}
-	public void setBoardDepth(int boardDepth) {
-		this.boardDepth = boardDepth;
+	public void setBoarddepth(int boarddepth) {
+		this.boarddepth = boarddepth;
 	}
+	
+	
 	
 	
 

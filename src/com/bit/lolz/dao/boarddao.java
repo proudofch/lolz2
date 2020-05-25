@@ -51,9 +51,9 @@ public class boarddao {
 			
 			pstmt.setString(1, boarddata.getId());
 			pstmt.setInt(2, boardtype);
-			pstmt.setString(3, boarddata.getBoardTitle());
-			pstmt.setString(4, boarddata.getBoardContent());
-			pstmt.setString(5, boarddata.getBoardFile());
+			pstmt.setString(3, boarddata.getBoardtitle());
+			pstmt.setString(4, boarddata.getBoardcontent());
+			pstmt.setString(5, boarddata.getBoardfile());
 
 			int maxBoardRef = getMaxBoardRef(conn);
 			int boardRef = maxBoardRef + 1;
