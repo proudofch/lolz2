@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SignUp</title>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <style type="text/css">
@@ -60,38 +60,18 @@
      
        alert("회원가입이 완료되었습니다.");
   }
-  function check(re, what, message) {
+  function check(re, what, text) {
       if(re.test(what.value)) {
           return true;
       }
-      alert(message);
+      alert(text);
       what.value = "";
       what.focus();
       return false;
   }
   
   $(document).ready(function(){
-	  
-	  $('#bd').datepicker(
-              {
-              
-                 dateFormat: "yy-mm-dd",
-                 numberOfMonths: 2,
-                 onSelect: function(date){
-                    alert("onSelect : " + date);
-                 }
-                 ,
-                 onClose: function(date){
-                    let currentdate = $('#bd').datepicker('getDate');
-                    console.log(date + " / " + currentdate);
-                    //currentdate >> Sun May 03 2020 00:00:00 GMT+0900 (대한민국 표준시)
-                    let date2 = new Date(currentdate);
-                    //alert(date2.getFullYear() + "/" + date2.getDate());
-                 }
-              }
-                          		);
-	  
-	  $('#message').click(function(){
+	    $('#message').click(function(){
           if($('#id').val() == ""){
              alert("아이디를 입력하세요");
              $('#id').focus();
@@ -119,6 +99,10 @@
              );
           };
     });  
+	    
+	 
+	  
+	
   });
   
   
@@ -138,7 +122,7 @@
       <br>
       <br>
       
-      <form name="memberadd" action="MemeberAddOk.Lolz" method="post" enctype="multipart/form-data" onsubmit="return validate();"> 
+      <form name="memberadd" action="MemeberAddOk.Lolz" method="post"  onsubmit="return validate();"> 
 
          <div class="form-group">
             <label for="id">아이디</label>
@@ -160,7 +144,7 @@
          </div>
          <div class="form-group">
             <label for="bd">생일</label>
-             <input type="text" class="form-control" id="bd" name="bd">          
+             <input type="date" class="form-control" id="bd" name="bd">          
          </div>
   		<div class="form-group">
             <label for="summonerId">소환사 아이디</label>

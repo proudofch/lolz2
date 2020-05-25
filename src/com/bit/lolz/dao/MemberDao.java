@@ -14,6 +14,41 @@ import javafx.scene.chart.Chart;
 
 public class MemberDao {
 	static DataSource ds;
+	
+	//멤버 추가
+		public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
+			Connection conn = null;
+			int resultrow = 0;
+			PreparedStatement pstmt = null;
+			
+			try {
+					conn= ConnectionHelper.getConnection("oracle");//추가
+					
+					String sql = "insert into Member(id,pwd,email,bd,summonerId) values(?,?,?,?,?)";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, pwd);
+					pstmt.setString(3, email);
+					pstmt.setString(4, bd);
+					pstmt.setString(5, summonerId);
+					
+					
+					
+					resultrow = pstmt.executeUpdate();
+					
+			}catch(Exception e) {
+				System.out.println("Insert : " + e.getMessage());
+		
+			}finally {
+				DB_Close.close(pstmt);
+				try {
+					conn.close(); //반환하기
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return resultrow;
+		}
 		
 	public MemberDto getMemberListByMemberNo(String id) {  //사번으로 사원 찾기
 		Connection conn = null;	
@@ -161,37 +196,6 @@ public class MemberDao {
 		}
 		
 		return Memberlist;
-	}
-	//멤버 추가
-	public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
-		Connection conn = null;
-		int resultrow = 0;
-		PreparedStatement pstmt = null;
-		
-		try {
-				conn= ConnectionHelper.getConnection("oracle");//추가
-				
-				String sql = "insert into Member(id,pwd,email,bd,summonerId) values(?,?,?,?,?)";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				pstmt.setString(2, pwd);
-				pstmt.setString(3, email);
-				pstmt.setString(4, bd);
-				pstmt.setString(5, summonerId);
-				
-				resultrow = pstmt.executeUpdate();
-				
-		}catch(Exception e) {
-			System.out.println("Insert : " + e.getMessage());
-		}finally {
-			DB_Close.close(pstmt);
-			try {
-				conn.close(); //반환하기
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return resultrow;
 	}
 	
 	
