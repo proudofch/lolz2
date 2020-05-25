@@ -38,7 +38,7 @@
 							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
 							<li><a href="#" class="button primary">Sign Up</a></li>
 							<li><a href="Login.Lolz">Sign in</a></li>
-							<li><a href="MemberEdit.Lolz">Settings</a></li>
+							<li><a href="prvMemberEdit.Lolz?id=${sessionScope.id}">Settings</a></li>
 						</ul>
 					</nav>
 				</header>

@@ -238,20 +238,20 @@ public class MemberDao {
 		Connection conn = null;
 		int resultrow = 0;
 		PreparedStatement pstmt = null;
-		String sql = "update Member set id=?, pwd=?, email=?, bd=?, summonerId=? where id=?";
+		String sql = "update member set pwd=?, email=?, bd=?, summonerId=? where id=?";
 				
 		try {
 			
 			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, m.getPwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getBd());
+			pstmt.setString(4, m.getSummonerId());
+			pstmt.setString(5, m.getId());
 			
-			pstmt.setString(1, m.getId());
-			pstmt.setString(2, m.getPwd());
-			pstmt.setString(3, m.getEmail());
-			pstmt.setString(4, m.getBd());
-			pstmt.setString(5, m.getSummonerId());
-	
-			
+System.out.println("Dao의updateMember함수의 summonerId: "+m.getSummonerId()); //test
+System.out.println("Dao의updateMember함수의 Id: "+m.getId()); //test		
 			resultrow = pstmt.executeUpdate();
 			
 		} catch (Exception e2) {

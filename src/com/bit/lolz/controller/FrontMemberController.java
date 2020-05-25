@@ -54,7 +54,7 @@ public class FrontMemberController extends HttpServlet {
 			 * } else if(url_Command.equals("/Emplist.Emp")) { //전체 사원 목록 보기 action = new
 			 * EmpListService(); forward = action.execute(request, response);
 			 * 
-	  * }*/ else if(url_Command.equals("/MemberEdit.Lolz")) { //내 정보 수정
+	  * }*/ else if(url_Command.equals("/MemberEditOk.Lolz")) { //내 정보 수정
 		  action = new MemberEditService();
    		forward = action.execute(request, response); 
 			  
