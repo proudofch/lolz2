@@ -61,7 +61,7 @@
 						</header>
 						<p>랭크소개3</p>
 						<ul class="actions">
-							<li><a href="#" class="button">랭크페이지로</a></li>
+							<li><a href="#" class="button">서치페이지로</a></li>
 						</ul>
 					</div>
 					<a href="#three" class="goto-next scrolly">Next</a>
@@ -77,7 +77,7 @@
 						</header>
 						<p>게시판3</p>
 						<ul class="actions">
-							<li><a href="#" class="button">서치페이지로</a></li>
+							<li><a href="#" class="button">게시판페이지로</a></li>
 						</ul>
 					</div>
 					<a href="#four" class="goto-next scrolly">Next</a>
