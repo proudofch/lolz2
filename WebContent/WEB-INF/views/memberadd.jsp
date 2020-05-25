@@ -6,8 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>SignUp</title>
+<<<<<<< HEAD
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+=======
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+>>>>>>> branch 'master' of https://github.com/liveforownhappiness/lolz2.git
    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <style type="text/css">
    </style>
@@ -60,36 +65,18 @@
      
        alert("회원가입이 완료되었습니다.");
   }
-  function check(re, what, message) {
+  function check(re, what, text) {
       if(re.test(what.value)) {
           return true;
       }
-      alert(message);
+      alert(text);
       what.value = "";
       what.focus();
       return false;
   }
   
   $(document).ready(function(){
-	  $('#bd').datepicker(
-              {
-              
-                 dateFormat: "yy-mm-dd",
-                 numberOfMonths: 1,
-                 onSelect: function(date){
-                    alert("onSelect : " + date);
-                 }
-                 ,
-                 onClose: function(date){
-                    let currentdate = $('#bd').datepicker('getDate');
-                    console.log(date + " / " + currentdate);
-                    //currentdate >> Sun May 03 2020 00:00:00 GMT+0900 (대한민국 표준시)
-                    let date2 = new Date(currentdate);
-                    //alert(date2.getFullYear() + "/" + date2.getDate());
-                 }
-              }
-                          		);
-	  
+	 
 	  $('#message').click(function(){
           if($('#id').val() == ""){
              alert("아이디를 입력하세요");
@@ -118,6 +105,10 @@
              );
           };
     });  
+	    
+	 
+	  
+	
   });
   
   
@@ -137,7 +128,11 @@
       <br>
       <br>
       
+<<<<<<< HEAD
+      <form name="memberadd" action="MemeberAddOk.Lolz" method="post"  onsubmit="return validate();"> 
+=======
       <form name="memberadd" action="MemberAddOk.Lolz" method="post" onsubmit="return validate();"> 
+>>>>>>> branch 'master' of https://github.com/liveforownhappiness/lolz2.git
 
          <div class="form-group">
             <label for="id">아이디</label>

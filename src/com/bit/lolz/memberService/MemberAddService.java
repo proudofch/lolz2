@@ -17,11 +17,13 @@ public class MemberAddService implements Action {
 		ActionForward forward = null;
 		
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
 		String email = request.getParameter("email");
 		String bd = request.getParameter("bd");
 		String summonerId = request.getParameter("summonerId");
-		System.out.println(id);//못불러오고있음..
+
+		String pwd = request.getParameter("pwd");
+   
+
 		
 		MemberDao dao = new MemberDao(); //POINT
 		int result = dao.insertMember(id,pwd,email, bd, summonerId);
@@ -30,8 +32,8 @@ public class MemberAddService implements Action {
 		String url = "";
 		
 		if(result > 0) {
-			msg = "등록 성공";
-			url = "index.jsp";
+			msg = "회원가입이 완료되었습니다.";
+			url = "index.html";
 		} else {
 			msg = "등록 실패";
 			url = "/MemberAdd.Lolz";

@@ -16,10 +16,10 @@ public class MemberDao {
 	static DataSource ds;
 	
 	//멤버 추가
-	public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
+		public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
 			Connection conn = null;
-			PreparedStatement pstmt = null;
 			int resultrow = 0;
+			PreparedStatement pstmt = null;
 			
 			try {
 					conn= ConnectionHelper.getConnection("oracle");//추가
@@ -32,10 +32,13 @@ public class MemberDao {
 					pstmt.setString(4, bd);
 					pstmt.setString(5, summonerId);
 					
+					
+					
 					resultrow = pstmt.executeUpdate();
 					
 			}catch(Exception e) {
 				System.out.println("Insert : " + e.getMessage());
+		
 			}finally {
 				DB_Close.close(pstmt);
 				try {

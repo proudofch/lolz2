@@ -17,7 +17,11 @@
 		maxIdle="20" 
 		maxActive="100"
 		password="1004" 
+<<<<<<< HEAD
+		username="bit"
+=======
 		username="lol"
+>>>>>>> branch 'master' of https://github.com/liveforownhappiness/lolz2.git
 		url="jdbc:oracle:thin:@localhost:1521:XE"
 		driverClassName="oracle.jdbc.OracleDriver" 
 		type="javax.sql.DataSource"
