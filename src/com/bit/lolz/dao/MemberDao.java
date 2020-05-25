@@ -50,6 +50,7 @@ public class MemberDao {
 			return resultrow;
 		}
 		
+	
 	public MemberDto getMemberListByMemberNo(String id) {  //사번으로 사원 찾기
 		Connection conn = null;	
 		PreparedStatement pstmt = null;
