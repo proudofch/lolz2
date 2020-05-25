@@ -28,7 +28,7 @@ import kr.or.bit.service.EmpModifyService;
 
 
 
-@WebServlet("*.Emp")
+@WebServlet("*.Lolz")
 public class FrontEmpController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
