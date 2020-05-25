@@ -36,6 +36,7 @@ public class FrontBoardController extends HttpServlet {
     	}
     	
     	//else if 붙을 자리
+    	//커밋용 수정
     	
     	
     	
