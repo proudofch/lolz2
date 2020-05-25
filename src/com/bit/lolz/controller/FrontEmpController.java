@@ -73,12 +73,12 @@ public class FrontEmpController extends HttpServlet {
     		forward.setRedirect(false);
     		forward.setPath("/WEB-INF/views/empadd.jsp");
     		
-        } else if(url_Command.equals("/EmpId.Emp")) { //사원 추가 시 empno 중복 체크
+        } else if(url_Command.equals("/IdCheck.Lolz")) { //회원가입시 id 중복 체크
     		action = new EmpNoCheckService();
     		forward = action.execute(request, response);
     		
     	} else if(url_Command.equals("/EmpAddOk.Emp")) { //사원 추가 UI에서 받은 정보 처리
-        	action = new EmpAddService();
+        	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		
     	} else if(url_Command.equals("/DeptAdd.Emp")) { //부서 추가(지금까진 부서 추가 UI 페이지 뿌리는 상태 > 수정해야 할 듯)
