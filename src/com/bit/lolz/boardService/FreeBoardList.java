@@ -7,7 +7,7 @@ import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.dao.boarddao;
 
-public class FreeBoardListService implements Action {
+public class FreeBoardList implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {

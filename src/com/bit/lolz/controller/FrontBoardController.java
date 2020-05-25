@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
-import com.bit.lolz.boardService.FreeBoardListService;
+import com.bit.lolz.boardService.FreeBoardList;
+import com.bit.lolz.boardService.FreeBoardWrite;
 
 @WebServlet("*.Board")
 public class FrontBoardController extends HttpServlet {
@@ -30,8 +31,12 @@ public class FrontBoardController extends HttpServlet {
     	Action action = null;
     	ActionForward forward = null;
     	
-    	if(url_Command.equals("/FreeBoardList.Board")) {
-    		action = new FreeBoardListService();
+    	if(url_Command.equals("/FreeBoardWrite.Board")) {
+    		action = new FreeBoardWrite();
+    		forward = action.execute(request, response);
+    		
+    	} else if(url_Command.equals("/FreeBoardList.Board")) {
+    		action = new FreeBoardList();
     		forward = action.execute(request, response);
     	}
     	

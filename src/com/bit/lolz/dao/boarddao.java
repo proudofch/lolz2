@@ -38,8 +38,8 @@ public class boarddao {
 	
 	
 	//원본 글 쓰기
-	public int writeOk(BoardDto boarddata) {
-		
+	public int writeOk(BoardDto boarddata, int boardtype) {
+												
 		int resultRow = 0;
 		
 		try {
@@ -50,7 +50,7 @@ public class boarddao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, boarddata.getId());
-			pstmt.setInt(2, boarddata.getBoardType());
+			pstmt.setInt(2, boardtype);
 			pstmt.setString(3, boarddata.getBoardTitle());
 			pstmt.setString(4, boarddata.getBoardContent());
 			pstmt.setString(5, boarddata.getBoardFile());
