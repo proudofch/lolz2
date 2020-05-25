@@ -10,10 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body><header id="header">
-					<h1 id="logo"><a href="index.html">Landed</a></h1>
+					<h1 id="logo"><a href="https://kr.leagueoflegends.com/ko-kr/">공식사이트</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.jsp">Home</a></li>
 							<li>
 								<a href="#">Layouts</a>
 								<ul>
