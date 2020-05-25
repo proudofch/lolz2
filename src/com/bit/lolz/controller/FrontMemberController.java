@@ -69,7 +69,12 @@ public class FrontMemberController extends HttpServlet {
         	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		
-		} /*
+		} else if(url_Command.equals("/Index.Lolz")) { //메인페이지로 가기
+        	action = new MemberAddService();
+     		forward = action.execute(request, response); 
+     		forward.setPath("/index.jsp");
+		}
+			  /*
 			 * else if(url_Command.equals("/DeptAdd.Emp")) { //부서 추가(지금까진 부서 추가 UI 페이지 뿌리는
 			 * 상태 > 수정해야 할 듯) forward = new ActionForward(); forward.setRedirect(false);
 			 * forward.setPath("/WEB-INF/views/deptadd.jsp");
