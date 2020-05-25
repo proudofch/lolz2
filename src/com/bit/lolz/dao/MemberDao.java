@@ -11,10 +11,43 @@ import com.bit.lolz.dto.MemberDto;
 import com.bit.lolz.utils.ConnectionHelper;
 import com.bit.lolz.utils.DB_Close;
 import javafx.scene.chart.Chart;
+import com.bit.lolz.dto.MemberDto;
 
 public class MemberDao {
 	static DataSource ds;
-	
+		//멤버 객체 반환
+	  public MemberDto getMember(String id) { //로그인시 사용
+	         
+	         Connection conn = ConnectionHelper.getConnection("oracle");        
+	         PreparedStatement pstmt = null;
+	         String sql = "select id, pwd from member where id = ?";         
+	         ResultSet rs = null;
+	         MemberDto member = null;
+	     
+	         try {
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, id);
+	            rs = pstmt.executeQuery();
+	            if(rs.next()) {
+	               member = new MemberDto();
+	               member.setId(rs.getString("id"));
+	               member.setPwd(rs.getString("pwd"));
+
+	         }
+	         } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	         } finally {
+	            try {
+	               DB_Close.close(rs);
+	               DB_Close.close(pstmt);
+	               conn.close(); //반환하기               
+	            } catch (Exception e2) {
+	               e2.printStackTrace();
+	            }
+	         }
+	         
+	         return member;
+	   }
 	//멤버 추가
 		public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
 			Connection conn = null;
@@ -51,7 +84,7 @@ public class MemberDao {
 		}
 		
 	
-	public MemberDto getMemberListByMemberNo(String id) {  //사번으로 사원 찾기
+	public MemberDto getMemberListByMemberId(String id) {  //id로 멤버찾기
 		Connection conn = null;	
 		PreparedStatement pstmt = null;
 		String sql = "select id, pwd, email, bd, summonerId from Member where id = ?";
@@ -235,33 +268,31 @@ public class MemberDao {
 		}	
 		return resultrow;
 	}
+	
 	public int deleteMember(String id) { //멤버 삭제하기
 		Connection conn =null;//추가
 		int resultrow=0;
 		PreparedStatement pstmt = null;
-		
 		try {
 				conn= ConnectionHelper.getConnection("oracle");//추가
-				
 				String sql = "delete from Member where id = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
-				
 				resultrow = pstmt.executeUpdate();
-				
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			DB_Close.close(pstmt);
 			try {
-				conn.close(); //받환하기
+				conn.close(); //반환하기
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return resultrow;
 	}
-	//추가함수 (ID 존재 유무 판단 함수)
+	
+	//가입 시 ID 중복 확인
 	public String isCheckByMemberId(String id) {
 		Connection conn =null;//추가
 		String isMemberNo= null;
@@ -294,7 +325,6 @@ public class MemberDao {
 				e.printStackTrace();
 			} 
 		}
-		//System.out.println("isMemberid : " + isMemberid);
 		return isMemberNo;
 	}
 	/*

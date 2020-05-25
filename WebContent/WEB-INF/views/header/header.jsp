@@ -7,13 +7,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-<title>Insert title here</title>
+<title>Header</title>
 </head>
 <body><header id="header">
-					<h1 id="logo"><a href="index.html">Landed</a></h1>
+					<h1 id="logo"><a href="index.jsp">Landed</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.jsp">Home</a></li>
 							<li>
 								<a href="#">Layouts</a>
 								<ul>
@@ -35,6 +35,8 @@
 							<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
 							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
 							<li><a href="#" class="button primary">Sign Up</a></li>
+							<li><a href="Login.Lolz">Sign in</a></li>
+							<li><a href="MemberEdit.Lolz">Settings</a></li>
 						</ul>
 					</nav>
 				</header>

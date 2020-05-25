@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
+import com.bit.lolz.memberService.LoginOkService;
 import com.bit.lolz.memberService.MemberAddService;
+import com.bit.lolz.memberService.MemberEditPrvService;
+import com.bit.lolz.memberService.MemberEditService;
 import com.bit.lolz.memberService.MemberIdCheckService;
 
 
@@ -36,27 +39,30 @@ public class FrontMemberController extends HttpServlet {
     	Action action = null;
     	ActionForward forward = null;
     	
-    	 /*
-    	if(url_Command.equals("/Adminlogin.Emp")) { //로그인 UI
+    	 
+    	if(url_Command.equals("/Login.Lolz")) { //로그인 UI
             forward = new ActionForward();
             forward.setRedirect(false);
-            forward.setPath("/WEB-INF/views/adminlogin.jsp");
-            
+            forward.setPath("/WEB-INF/views/login/login.jsp");
 		}
-			 * else if(url_Command.equals("/adminloginok.Emp")) { //로그인 처리 action = new
-			 * AdminLoginOkService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/Adminlogout.Emp")) { //로그아웃 처리 action = new
+		 else if(url_Command.equals("/LoginOk.Lolz")) { //로그인 처리
+			 action = new LoginOkService();
+			 forward = action.execute(request, response);
+		 }   /* else if(url_Command.equals("/Adminlogout.Emp")) { //로그아웃 처리 action = new
 			 * AdminLogoutService(); forward = action.execute(request, response);
 			 * 
 			 * } else if(url_Command.equals("/Emplist.Emp")) { //전체 사원 목록 보기 action = new
 			 * EmpListService(); forward = action.execute(request, response);
 			 * 
-			 * } else if(url_Command.equals("/Deptlist.Emp")) { //전체 부서 목록 보기 action = new
-			 * DeptListService(); forward = action.execute(request, response);
-			 * 
-			 * }
-			  else*/ if(url_Command.equals("/MemberAdd.Lolz")) { //회원가입		
+	  * }*/ else if(url_Command.equals("/MemberEdit.Lolz")) { //내 정보 수정
+		  action = new MemberEditService();
+   		forward = action.execute(request, response); 
+			  
+		} else if(url_Command.equals("/prvMemberEdit.Lolz")) { //내 정보 수정 [이전꺼 불러오기]		
+			action = new MemberEditPrvService();
+     		forward = action.execute(request, response); 
+    		
+        }  else if(url_Command.equals("/MemberAdd.Lolz")) { //회원가입		
     		forward = new ActionForward();
     		forward.setRedirect(false);
     		forward.setPath("/WEB-INF/views/memberadd.jsp");
