@@ -28,12 +28,13 @@ public class MemberAddService implements Action {
 		
 		String msg = "";
 		String url = "";
+		
 		if(result > 0) {
 			msg = "등록 성공";
-			url = "Emplist.Emp";
+			url = "index.jsp";
 		} else {
 			msg = "등록 실패";
-			url = "emp.jsp";
+			url = "memberadd.jsp";
 		}
 		
 		request.setAttribute("board_msg", msg);

@@ -186,7 +186,7 @@ public class MemberDao {
 		}finally {
 			DB_Close.close(pstmt);
 			try {
-				conn.close(); //받환하기
+				conn.close(); //반환하기
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
