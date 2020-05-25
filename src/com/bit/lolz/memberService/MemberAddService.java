@@ -1,5 +1,5 @@
 package com.bit.lolz.memberService;
-
+import java.io.Console;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +21,7 @@ public class MemberAddService implements Action {
 		String email = request.getParameter("email");
 		String bd = request.getParameter("bd");
 		String summonerId = request.getParameter("summonerId");
-   
+		System.out.println(id);//못불러오고있음..
 		
 		MemberDao dao = new MemberDao(); //POINT
 		int result = dao.insertMember(id,pwd,email, bd, summonerId);
@@ -34,7 +34,7 @@ public class MemberAddService implements Action {
 			url = "index.jsp";
 		} else {
 			msg = "등록 실패";
-			url = "memberadd.jsp";
+			url = "/MemberAdd.Lolz";
 		}
 		
 		request.setAttribute("board_msg", msg);

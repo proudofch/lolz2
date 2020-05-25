@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>SignUp</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <style type="text/css">
    </style>
    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>  
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>얘를 주석해야 달력이 먹네요   -->
 <!-- 위는 기존 css -->
    
  <script type="text/javascript">
@@ -71,12 +71,11 @@
   }
   
   $(document).ready(function(){
-	  
 	  $('#bd').datepicker(
               {
               
                  dateFormat: "yy-mm-dd",
-                 numberOfMonths: 2,
+                 numberOfMonths: 1,
                  onSelect: function(date){
                     alert("onSelect : " + date);
                  }
@@ -138,7 +137,7 @@
       <br>
       <br>
       
-      <form name="memberadd" action="MemeberAddOk.Lolz" method="post" enctype="multipart/form-data" onsubmit="return validate();"> 
+      <form name="memberadd" action="MemberAddOk.Lolz" method="post" onsubmit="return validate();"> 
 
          <div class="form-group">
             <label for="id">아이디</label>
@@ -149,10 +148,10 @@
             <label for="pwd">패스워드</label>
             <input type="password" maxlength="20" class="form-control" id="pwd" name="pwd">
          </div>
-        <div class="form-group">
-            <label for="pwd">패스워드 확인</label>
+       <!--  <div class="form-group">
+            <label for="pwdCheck">패스워드 확인</label>
             <input type="password" maxlength="20" class="form-control" id="pwdCheck" name="pwdCheck">
-         </div>
+         </div> -->
 
          <div class="form-group">
             <label for="email">이메일</label>
@@ -160,8 +159,9 @@
          </div>
          <div class="form-group">
             <label for="bd">생일</label>
-             <input type="text" class="form-control" id="bd" name="bd">          
+             <input type="date" class="form-control" id="bd" name="bd">          
          </div>
+
   		<div class="form-group">
             <label for="summonerId">소환사 아이디</label>
             <input type="text" class="form-control" id="summonerId" name="summonerId">

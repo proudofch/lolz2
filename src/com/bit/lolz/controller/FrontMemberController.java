@@ -65,7 +65,7 @@ public class FrontMemberController extends HttpServlet {
     		action = new MemberIdCheckService();
     		forward = action.execute(request, response);
     		
-    	} else if(url_Command.equals("/MemeberAddOk.Lolz")) { //사원 추가 UI에서 받은 정보 처리
+    	} else if(url_Command.equals("/MemberAddOk.Lolz")) { //사원 추가 UI에서 받은 정보 처리
         	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		
