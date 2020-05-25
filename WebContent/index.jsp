@@ -53,15 +53,15 @@
 
 			<!-- Two -->
 				<section id="two" class="spotlight style2 right">
-					<span class="image fit main bottom"><img src="images/pic03.jpg" alt="" /></span>
+					<span class="image fit main bottom"><img src="images/rank02.jpg" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>Interdum amet non magna accumsan</h2>
-							<p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
+							<h2>랭크소개</h2>
+							<p>랭크소개2</p>
 						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+						<p>랭크소개3</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="#" class="button">랭크페이지로</a></li>
 						</ul>
 					</div>
 					<a href="#three" class="goto-next scrolly">Next</a>
@@ -72,12 +72,12 @@
 					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>Interdum felis blandit praesent sed augue</h2>
-							<p>Accumsan integer ultricies aliquam vel massa sapien phasellus</p>
+							<h2>게시판</h2>
+							<p>게시판2</p>
 						</header>
-						<p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+						<p>게시판3</p>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="#" class="button">서치페이지로</a></li>
 						</ul>
 					</div>
 					<a href="#four" class="goto-next scrolly">Next</a>

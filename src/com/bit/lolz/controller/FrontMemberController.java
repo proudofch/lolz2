@@ -59,7 +59,7 @@ public class FrontMemberController extends HttpServlet {
 			  else*/ if(url_Command.equals("/MemberAdd.Lolz")) { //회원가입		
     		forward = new ActionForward();
     		forward.setRedirect(false);
-    		forward.setPath("/WEB-INF/views/memberadd.jsp");
+    		forward.setPath("/WEB-INF/views/login/memberadd.jsp");
     		
         } else if(url_Command.equals("/IdCheck.Lolz")) { //회원가입시 id 중복 체크
     		action = new MemberIdCheckService();
