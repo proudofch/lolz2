@@ -7,12 +7,10 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bit.lolz.action.Action;
+import com.bit.lolz.action.ActionForward;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import kr.or.bit.action.Action;
-import kr.or.bit.action.ActionForward;
-import kr.or.bit.dao.empDao;
 
 public class EmpAddService implements Action {
 
