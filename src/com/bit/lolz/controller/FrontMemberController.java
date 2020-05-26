@@ -81,7 +81,7 @@ public class FrontMemberController extends HttpServlet {
         	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		forward.setPath("/index.jsp");
-		}  else if(url_Command.equals("/MemberDelete.Lolz")) {//회원 삭제
+		}  else if(url_Command.equals("/MemberDelete.Lolz")) {//회원탈퇴
 			 action = new MemberDeleteService();
 			 forward = action.execute(request,response);
 		}	  /*

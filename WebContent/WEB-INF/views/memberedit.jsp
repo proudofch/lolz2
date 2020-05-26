@@ -101,8 +101,9 @@
 			
          <div class="form-group">
             <label for="id">아이디</label>
-            <input type="text" readonly class="form-control" id="id" name="id"
-             maxlength="20" value="${member.id}" placeholder="${member.id}님 아이디는 수정할 수 없습니다.">
+            <input type="text" class="form-control" id="id" name="id"
+             maxlength="20" value="${member.id}" readonly>
+            <h6>아이디는 수정할 수 없습니다.</h6>
          </div>
          <div class="form-group">
             <label for="pwd">패스워드</label>
@@ -120,6 +121,7 @@
          <div class="form-group">
             <label for="bd">생일</label>
              <input type="text" class="form-control" id="bd" name="bd" value="${member.bd}" readonly>          
+            <h6>생일은 수정할 수 없습니다.</h6>
          </div>
 
   		<div class="form-group">
