@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
-import com.bit.lolz.boardService.FreeBoardList;
-import com.bit.lolz.boardService.FreeBoardWriteOk;
+import com.bit.lolz.boardService.FreeBoardListService;
+import com.bit.lolz.boardService.FreeBoardReadService;
+import com.bit.lolz.boardService.FreeBoardWriteOkService;
 
 @WebServlet("*.Board")
 public class FrontBoardController extends HttpServlet {
@@ -31,23 +32,26 @@ public class FrontBoardController extends HttpServlet {
     	Action action = null;
     	ActionForward forward = null;
     	
-    	if(url_Command.equals("/FreeBoardWrite.Board")) { //게시판 글쓰기 UI
+    	if(url_Command.equals("/FreeBoardWrite.Board")) { //자유게시판 글쓰기 UI
         	forward = new ActionForward();
             forward.setRedirect(false);
             forward.setPath("/WEB-INF/views/board/BoardWrite.jsp");
 
-    	} else if(url_Command.equals("/FreeBoardWriteOk.Board")) { //게시판 글쓰기 로직 처리
-        	action = new FreeBoardWriteOk();
+    	} else if(url_Command.equals("/FreeBoardWriteOk.Board")) { //자유게시판 글쓰기 로직 처리
+        	action = new FreeBoardWriteOkService();
         	forward = action.execute(request, response);
         
-    		
-    	} else if(url_Command.equals("/FreeBoardList.Board")) {
-    		action = new FreeBoardList();
+    	} else if(url_Command.equals("/FreeBoardList.Board")) { //자유게시판 목록 보기
+    		action = new FreeBoardListService();
     		forward = action.execute(request, response);
+    		
+    	} else if(url_Command.equals("/FreeBoardRead.Board")) { //자유게시판 글 상세보기
+    		action = new FreeBoardReadService();
+    		forward = action.execute(request, response);
+    		
     	}
     	
-    	//else if 붙을 자리
-    	//커밋용 수정
+    	
     	
     	
     	

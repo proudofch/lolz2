@@ -20,7 +20,17 @@ public class BoardDto {
 	
 	public BoardDto(int boardnum, String id, int boardtype, String boardtitle, String boardcontent,
 					Date boarddate, int boardhit, String boardfile, int boardref, int boardstep, int boarddepth) {
-		super();
+		this.boardnum = boardnum;
+		this.id = id;
+		this.boardtype = boardtype;
+		this.boardtitle = boardtitle;
+		this.boardcontent = boardcontent;
+		this.boarddate = boarddate;
+		this.boardhit = boardhit;
+		this.boardfile = boardfile;
+		this.boardref = boardref;
+		this.boardstep = boardstep;
+		this.boarddepth = boarddepth;
 	}
 	
 	public int getBoardnum() {

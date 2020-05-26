@@ -111,18 +111,17 @@ function get() {
 									table += obj.losses;
 									table += "</td><td>";
 									table += (((obj.wins/(obj.wins+obj.losses))*100).toFixed(1)+"%");
-									table += "</td><td><ul style='list-style: none'>";
+									table += "</td><td>";
 									champimg = mostoneimg;
 									var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
-									table += "<li><div class = 'images'><img src ='"+imgsource+"' style='width:50px'></div>"+mostone+"</li>";
+									table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+imgsource+"' style='width:50px; float:left'></div>";
 									champimg = mosttwoimg;
 									var simgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
-									table += "<li><div class = 'images'><img src ='"+simgsource+"' style='width:50px'></div>"+mosttwo+"</li>";
+									table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+simgsource+"' style='width:50px; float:left'></div>";
 									champimg = mostthreeimg;
 									var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
-									
-									table += "<li><div class = 'images'><img src ='"+timgsource+"' style='width:50px'></div>"+mostthree+"</li>";
-									table += "</ul></td><td>";	
+									table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+timgsource+"' style='width:50px'></div>";
+									table += "</td><td>";	
 							});
 							table += "</table>";
 				            $('#display').empty();
