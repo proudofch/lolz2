@@ -13,6 +13,12 @@
 
 
  <script type="text/javascript">
+ function myFunction(){
+	 var r=confirm("정말 탈퇴하시겠습니까?");
+	 if(r==true){
+		 location.href='MemberDelete.Lolz?id=${sessionScope.id}';
+	 }
+ }
   function validate(){
 	  var re = /^[a-zA-Z0-9]{4,12}$/;
 	  var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -124,7 +130,7 @@
 
          <input type="submit" class="button primary small" value="수정완료" >
          <input type="reset" class="button small" value="입력취소">
-      	 <input type="submit" class="button small" value="회원탈퇴" text-align="right" >
+      	 <button type="button" onclick="myFunction()" class="button small">회원탈퇴</button>
    	
       </form>
 		
@@ -132,3 +138,10 @@
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+

@@ -13,6 +13,8 @@ import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.memberService.LoginOkService;
 import com.bit.lolz.memberService.MemberAddService;
+import com.bit.lolz.memberService.MemberDeleteService;
+import com.bit.lolz.memberService.MemberDeleteService;
 import com.bit.lolz.memberService.MemberEditPrvService;
 import com.bit.lolz.memberService.MemberEditService;
 import com.bit.lolz.memberService.MemberIdCheckService;
@@ -71,7 +73,7 @@ public class FrontMemberController extends HttpServlet {
     		action = new MemberIdCheckService();
     		forward = action.execute(request, response);
     		
-    	} else if(url_Command.equals("/MemberAddOk.Lolz")) { //사원 추가 UI에서 받은 정보 처리
+    	} else if(url_Command.equals("/MemberAddOk.Lolz")) { //회원가입 UI에서 받은 정보 처리
         	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		
@@ -79,8 +81,10 @@ public class FrontMemberController extends HttpServlet {
         	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		forward.setPath("/index.jsp");
-		}
-			  /*
+		}  else if(url_Command.equals("/MemberDelete.Lolz")) {//회원 삭제
+			 action = new MemberDeleteService();
+			 forward = action.execute(request,response);
+		}	  /*
 			 * else if(url_Command.equals("/DeptAdd.Emp")) { //부서 추가(지금까진 부서 추가 UI 페이지 뿌리는
 			 * 상태 > 수정해야 할 듯) forward = new ActionForward(); forward.setRedirect(false);
 			 * forward.setPath("/WEB-INF/views/deptadd.jsp");
@@ -105,19 +109,6 @@ public class FrontMemberController extends HttpServlet {
 			 * 
 			 * } else if(url_Command.equals("/EmpSearchByDeptno.Emp")) { //부서 번호로 검색 action
 			 * = new EmpSearchService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/EmpDelete.Emp")) { //사원 삭제 //이걸 굳이 두 개로 나눌 필요가
-			 * 있을까... action = new EmpDeleteService(); forward = action.execute(request,
-			 * response);
-			 * 
-			 * } else if(url_Command.equals("/EmpDeleteOK.Emp")) { //사원 삭제 OK action = new
-			 * EmpDeleteOkService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/prvEmpModify.Emp")) { //사원 수정 action = new
-			 * EmpModifyPrvService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/EmpModify.Emp")) { //사원 수정 OK action = new
-			 * EmpModifyService(); forward = action.execute(request, response);
 			 * 
 			 * } else if(url_Command.equals("/Chart.Emp")) { //차트 action = new
 			 * ChartAction(); forward = action.execute(request, response); }
