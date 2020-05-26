@@ -1,451 +1,596 @@
-	[{
-
-	"266":{
-	"name":"아트록스"
-	},
-	"103":{
-	"name":"아리"
-	},
-	"84":{
-	"name":"아칼리"
-	},
-	"12":{
-	"name":"알리스타"
-	},
-	"32":{
-	"name":"아무무"
-	},
-	"34":{
-	"name":"애니비아"
-	},
-	"1":{
-	"name":"애니"
-	},
-	"523":{
-	"name":"아펠리오스"
-	},
-	"22":{
-	"name":"애쉬"
-	},
-	"136":{
-	"name":"아우렐리온 솔"
-	},
-	"268":{
-	"name":"아지르"
-	},
-	"432":{
-	"name":"바드"
-	},
-	"53":{
-	"name":"블리츠크랭크"
-	},
-	"63":{
-	"name":"브랜드"
-	},
-	"201":{
-	"name":"브라움"
-	},
-	"51":{
-	"name":"케이틀린"
-	},
-	"164":{
-	"name":"카밀"
-	},
-	"69":{
-	"name":"카시오페아"
-	},
-	"31":{
-	"name":"초가스"
-	},
-	"42":{
-	"name":"코르키"
-	},
-	"122":{
-	"name":"다리우스"
-	},
-	"131":{
-	"name":"다이애나"
-	},
-	"119":{
-	"name":"드레이븐"
-	},
-	"36":{
-	"name":"문도 박사"
-	},
-	"245":{
-	"name":"에코"
-	},
-	"60":{
-	"name":"엘리스"
-	},
-	"28":{
-	"name":"이블린"
-	},
-	"81":{
-	"name":"이즈리얼"
-	},
-	"9":{
-	"name":"피들스틱"
-	},
-	"114":{
-	"name":"피오라"
-	},
-	"105":{
-	"name":"피즈"
-	},
-	"3":{
-	"name":"갈리오"
-	},
-	"41":{
-	"name":"갱플랭크"
-	},
-	"86":{
-	"name":"가렌"
-	},
-	"150":{
-	"name":"나르"
-	},
-	"79":{
-	"name":"그라가스"
-	},
-	"104":{
-	"name":"그레이브즈"
-	},
-	"120":{
-	"name":"헤카림"
-	},
-	"74":{
-	"name":"하이머딩거"
-	},
-	"420":{
-	"name":"일라오이"
-	},
-	"39":{
-	"name":"이렐리아"
-	},
-	"427":{
-	"name":"아이번"
-	},
-	"40":{
-	"name":"잔나"
-	},
-	"59":{
-	"name":"자르반 4세"
-	},
-	"24":{
-	"name":"잭스"
-	},
-	"126":{
-	"name":"제이스"
-	},
-	"202":{
-	"name":"진"
-	},
-	"222":{
-	"name":"징크스"
-	},
-	"145":{
-	"name":"카이사"
-	},
-	"429":{
-	"name":"칼리스타"
-	},
-	"43":{
-	"name":"카르마"
-	},
-	"30":{
-	"name":"카서스"
-	},
-	"38":{
-	"name":"카사딘"
-	},
-	"55":{
-	"name":"카타리나"
-	},
-	"10":{
-	"name":"케일"
-	},
-	"141":{
-	"name":"케인"
-	},
-	"85":{
-	"name":"케넨"
-	},
-	"121":{
-	"name":"카직스"
-	},
-	"203":{
-	"name":"킨드레드"
-	},
-	"240":{
-	"name":"클레드"
-	},
-	"96":{
-	"name":"코그모"
-	},
-	"7":{
-	"name":"르블랑"
-	},
-	"64":{
-	"name":"리 신"
-	},
-	"89":{
-	"name":"레오나"
-	},
-	"127":{
-	"name":"리산드라"
-	},
-	"236":{
-	"name":"루시안"
-	},
-	"117":{
-	"name":"룰루"
-	},
-	"99":{
-	"name":"럭스"
-	},
-	"54":{
-	"name":"말파이트"
-	},
-	"90":{
-	"name":"말자하"
-	},
-	"57":{
-	"name":"마오카이"
-	},
-	"11":{
-	"name":"마스터 이"
-	},
-	"21":{
-	"name":"미스 포츈"
-	},
-	"62":{
-	"name":"오공"
-	},
-	"82":{
-	"name":"모데카이저"
-	},
-	"25":{
-	"name":"모르가나"
-	},
-	"267":{
-	"name":"나미"
-	},
-	"75":{
-	"name":"나서스"
-	},
-	"111":{
-	"name":"노틸러스"
-	},
-	"518":{
-	"name":"니코"
-	},
-	"76":{
-	"name":"니달리"
-	},
-	"56":{
-	"name":"녹턴"
-	},
-	"20":{
-	"name":"누누"
-	},
-	"2":{
-	"name":"올라프"
-	},
-	"61":{
-	"name":"오리아나"
-	},
-	"516":{
-	"name":"오른"
-	},
-	"80":{
-	"name":"판테온"
-	},
-	"78":{
-	"name":"뽀삐"
-	},
-	"555":{
-	"name":"파이크"
-	},
-	"246":{
-	"name":"키아나"
-	},
-	"133":{
-	"name":"퀸"
-	},
-	"497":{
-	"name":"라칸"
-	},
-	"33":{
-	"name":"람머스"
-	},
-	"421":{
-	"name":"렉사이"
-	},
-	"58":{
-	"name":"레넥톤"
-	},
-	"107":{
-	"name":"렝가"
-	},
-	"92":{
-	"name":"리븐"
-	},
-	"68":{
-	"name":"럼블"
-	},
-	"13":{
-	"name":"라이즈"
-	},
-	"113":{
-	"name":"세주아니"
-	},
-	"235":{
-	"name":"세나"
-	},
-	"875":{
-	"name":"세트"
-	},
-	"35":{
-	"name":"샤코"
-	},
-	"98":{
-	"name":"쉔"
-	},
-	"102":{
-	"name":"쉬바나"
-	},
-	"27":{
-	"name":"신지드"
-	},
-	"14":{
-	"name":"사이온"
-	},
-	"15":{
-	"name":"시비르"
-	},
-	"72":{
-	"name":"스카너"
-	},
-	"37":{
-	"name":"소나"
-	},
-	"16":{
-	"name":"소라카"
-	},
-	"50":{
-	"name":"스웨인"
-	},
-	"517":{
-	"name":"사일러스"
-	},
-	"134":{
-	"name":"신드라"
-	},
-	"223":{
-	"name":"탐 켄치"
-	},
-	"163":{
-	"name":"탈리야"
-	},
-	"91":{
-	"name":"탈론"
-	},
-	"44":{
-	"name":"타릭"
-	},
-	"17":{
-	"name":"티모"
-	},
-	"412":{
-	"name":"쓰레쉬"
-	},
-	"18":{
-	"name":"트리스타나"
-	},
-	"48":{
-	"name":"트런들"
-	},
-	"23":{
-	"name":"트린다미어"
-	},
-	"4":{
-	"name":"트위스티드 페이트"
-	},
-	"29":{
-	"name":"트위치"
-	},
-	"77":{
-	"name":"우디르"
-	},
-	"6":{
-	"name":"우르곳"
-	},
-	"110":{
-	"name":"바루스"
-	},
-	"67":{
-	"name":"베인"
-	},
-	"45":{
-	"name":"베이가"
-	},
-	"161":{
-	"name":"벨코즈"
-	},
-	"254":{
-	"name":"바이"
-	},
-	"112":{
-	"name":"빅토르"
-	},
-	"8":{
-	"name":"블라디미르"
-	},
-	"106":{
-	"name":"볼리베어"
-	},
-	"19":{
-	"name":"워윅"
-	},
-	"498":{
-	"name":"자야"
-	},
-	"101":{
-	"name":"제라스"
-	},
-	"5":{
-	"name":"신 짜오"
-	},
-	"157":{
-	"name":"야스오"
-	},
-	"83":{
-	"name":"요릭"
-	},
-	"350":{
-	"name":"유미"
-	},
-	"154":{
-	"name":"자크"
-	},
-	"238":{
-	"name":"제드"
-	},
-	"115":{
-	"name":"직스"
-	},
-	"26":{
-	"name":"질리언"
-	},
-	"142":{
-	"name":"조이"
-	},
-	"143":{
-	"name":"자이라"
+	[
+	{
+		"266": {
+			"name": "아트록스",
+			"imgsrc": "./champion/tiles/Aatrox_0.jpg","engname":"Aatrox"
+		},
+		"103": {
+			"name": "아리",
+			"imgsrc": "./champion/tiles/Ahri_0.jpg","engname":"Ahri"
+		},
+		"84": {
+			"name": "아칼리",
+			"imgsrc": "./champion/tiles/Akali_0.jpg","engname":"Akali"
+		},
+		"12": {
+			"name": "알리스타",
+			"imgsrc": "./champion/tiles/Alistar_0.jpg","engname":"Alistar"
+		},
+		"32": {
+			"name": "아무무",
+			"imgsrc": "./champion/tiles/Amumu_0.jpg","engname":"Amumu"
+		},
+		"34": {
+			"name": "애니비아",
+			"imgsrc": "./champion/tiles/Anivia_0.jpg","engname":"Anivia"
+		},
+		"1": {
+			"name": "애니",
+			"imgsrc": "./champion/tiles/Annie_0.jpg","engname":"Annie"
+		},
+		"523": {
+			"name": "아펠리오스",
+			"imgsrc": "./champion/tiles/Aphelios_0.jpg","engname":"Aphelios"
+		},
+		"22": {
+			"name": "애쉬",
+			"imgsrc": "./champion/tiles/Ashe_0.jpg","engname":"Ashe"
+		},
+		"136": {
+			"name": "아우렐리온 솔",
+			"imgsrc": "./champion/tiles/AurelionSol_0.jpg","engname":"AurelionSol"
+		},
+		"268": {
+			"name": "아지르",
+			"imgsrc": "./champion/tiles/Azir_0.jpg","engname":"Azir"
+		},
+		"432": {
+			"name": "바드",
+			"imgsrc": "./champion/tiles/Bard_0.jpg","engname":"Bard"
+		},
+		"53": {
+			"name": "블리츠크랭크",
+			"imgsrc": "./champion/tiles/Blitzcrank_0.jpg","engname":"Blitzcrank"
+		},
+		"63": {
+			"name": "브랜드",
+			"imgsrc": "./champion/tiles/Brand_0.jpg","engname":"Brand"
+		},
+		"201": {
+			"name": "브라움",
+			"imgsrc": "./champion/tiles/Braum_0.jpg","engname":"Braum"
+		},
+		"51": {
+			"name": "케이틀린",
+			"imgsrc": "./champion/tiles/Caitlyn_0.jpg","engname":"Caitlyn"
+		},
+		"164": {
+			"name": "카밀",
+			"imgsrc": "./champion/tiles/Camille_0.jpg","engname":"Camille"
+		},
+		"69": {
+			"name": "카시오페아",
+			"imgsrc": "./champion/tiles/Cassiopeia_0.jpg","engname":"Cassiopeia"
+		},
+		"31": {
+			"name": "초가스",
+			"imgsrc": "./champion/tiles/Chogath_0.jpg","engname":"Chogath"
+		},
+		"42": {
+			"name": "코르키",
+			"imgsrc": "./champion/tiles/Corki_0.jpg","engname":"Corki"
+		},
+		"122": {
+			"name": "다리우스",
+			"imgsrc": "./champion/tiles/Darius_0.jpg","engname":"Darius"
+		},
+		"131": {
+			"name": "다이애나",
+			"imgsrc": "./champion/tiles/Diana_0.jpg","engname":"Diana"
+		},
+		"119": {
+			"name": "드레이븐",
+			"imgsrc": "./champion/tiles/Draven_0.jpg","engname":"Draven"
+		},
+		"36": {
+			"name": "문도 박사",
+			"imgsrc": "./champion/tiles/DrMundo_0.jpg","engname":"DrMundo"
+		},
+		"245": {
+			"name": "에코",
+			"imgsrc": "./champion/tiles/Ekko_0.jpg","engname":"Ekko"
+		},
+		"60": {
+			"name": "엘리스",
+			"imgsrc": "./champion/tiles/Elise_0.jpg","engname":"Elise"
+		},
+		"28": {
+			"name": "이블린",
+			"imgsrc": "./champion/tiles/Evelynn_0.jpg","engname":"Evelynn"
+		},
+		"81": {
+			"name": "이즈리얼",
+			"imgsrc": "./champion/tiles/Ezreal_0.jpg","engname":"Ezreal"
+		},
+		"9": {
+			"name": "피들스틱",
+			"imgsrc": "./champion/tiles/FiddleSticks_0.jpg","engname":"FiddleSticks"
+		},
+		"114": {
+			"name": "피오라",
+			"imgsrc": "./champion/tiles/Fiora_0.jpg","engname":"Fiora"
+		},
+		"105": {
+			"name": "피즈",
+			"imgsrc": "./champion/tiles/Fizz_0.jpg","engname":"Fizz"
+		},
+		"3": {
+			"name": "갈리오",
+			"imgsrc": "./champion/tiles/Galio_0.jpg","engname":"Galio"
+		},
+		"41": {
+			"name": "갱플랭크",
+			"imgsrc": "./champion/tiles/Gangplank_0.jpg","engname":"Gangplank"
+		},
+		"86": {
+			"name": "가렌",
+			"imgsrc": "./champion/tiles/Garen_0.jpg","engname":"Garen"
+		},
+		"150": {
+			"name": "나르",
+			"imgsrc": "./champion/tiles/Gnar_0.jpg","engname":"Gnar"
+		},
+		"79": {
+			"name": "그라가스",
+			"imgsrc": "./champion/tiles/Gragas_0.jpg","engname":"Gragas"
+		},
+		"104": {
+			"name": "그레이브즈",
+			"imgsrc": "./champion/tiles/Graves_0.jpg","engname":"Graves"
+		},
+		"120": {
+			"name": "헤카림",
+			"imgsrc": "./champion/tiles/Hecarim_0.jpg","engname":"Hecarim"
+		},
+		"74": {
+			"name": "하이머딩거",
+			"imgsrc": "./champion/tiles/Heimerdinger_0.jpg","engname":"Heimerdinger"
+		},
+		"420": {
+			"name": "일라오이",
+			"imgsrc": "./champion/tiles/Illaoi_0.jpg","engname":"Illaoi"
+		},
+		"39": {
+			"name": "이렐리아",
+			"imgsrc": "./champion/tiles/Irelia_0.jpg","engname":"Irelia"
+		},
+		"427": {
+			"name": "아이번",
+			"imgsrc": "./champion/tiles/Ivern_0.jpg","engname":"Ivern"
+		},
+		"40": {
+			"name": "잔나",
+			"imgsrc": "./champion/tiles/Janna_0.jpg","engname":"Janna"
+		},
+		"59": {
+			"name": "자르반 4세",
+			"imgsrc": "./champion/tiles/JarvanIV_0.jpg","engname":"JarvanIV"
+		},
+		"24": {
+			"name": "잭스",
+			"imgsrc": "./champion/tiles/Jax_0.jpg","engname":"Jax"
+		},
+		"126": {
+			"name": "제이스",
+			"imgsrc": "./champion/tiles/Jayce_0.jpg","engname":"Jayce"
+		},
+		"202": {
+			"name": "진",
+			"imgsrc": "./champion/tiles/Jhin_0.jpg","engname":"Aatrox"
+		},
+		"222": {
+			"name": "징크스",
+			"imgsrc": "./champion/tiles/Jinx_0.jpg","engname":"Aatrox"
+		},
+		"145": {
+			"name": "카이사",
+			"imgsrc": "./champion/tiles/Kaisa_0.jpg","engname":"Aatrox"
+		},
+		"429": {
+			"name": "칼리스타",
+			"imgsrc": "./champion/tiles/Kalista_0.jpg","engname":"Aatrox"
+		},
+		"43": {
+			"name": "카르마",
+			"imgsrc": "./champion/tiles/Karma_0.jpg","engname":"Aatrox"
+		},
+		"30": {
+			"name": "카서스",
+			"imgsrc": "./champion/tiles/Karthus_0.jpg","engname":"Aatrox"
+		},
+		"38": {
+			"name": "카사딘",
+			"imgsrc": "./champion/tiles/Kassadin_0.jpg","engname":"Aatrox"
+		},
+		"55": {
+			"name": "카타리나",
+			"imgsrc": "./champion/tiles/Katarina_0.jpg","engname":"Aatrox"
+		},
+		"10": {
+			"name": "케일",
+			"imgsrc": "./champion/tiles/Kayle_0.jpg","engname":"Aatrox"
+		},
+		"141": {
+			"name": "케인",
+			"imgsrc": "./champion/tiles/Kayn_0.jpg","engname":"Aatrox"
+		},
+		"85": {
+			"name": "케넨",
+			"imgsrc": "./champion/tiles/Kennen_0.jpg","engname":"Aatrox"
+		},
+		"121": {
+			"name": "카직스",
+			"imgsrc": "./champion/tiles/Khazix_0.jpg","engname":"Aatrox"
+		},
+		"203": {
+			"name": "킨드레드",
+			"imgsrc": "./champion/tiles/Kindred_0.jpg","engname":"Aatrox"
+		},
+		"240": {
+			"name": "클레드",
+			"imgsrc": "./champion/tiles/Kled_0.jpg","engname":"Aatrox"
+		},
+		"96": {
+			"name": "코그모",
+			"imgsrc": "./champion/tiles/KogMaw_0.jpg","engname":"Aatrox"
+		},
+		"7": {
+			"name": "르블랑",
+			"imgsrc": "./champion/tiles/Leblanc_0.jpg","engname":"Aatrox"
+		},
+		"64": {
+			"name": "리 신",
+			"imgsrc": "./champion/tiles/LeeSin_0.jpg","engname":"Aatrox"
+		},
+		"89": {
+			"name": "레오나",
+			"imgsrc": "./champion/tiles/Leona_0.jpg","engname":"Aatrox"
+		},
+		"127": {
+			"name": "리산드라",
+			"imgsrc": "./champion/tiles/Lissandra_0.jpg","engname":"Aatrox"
+		},
+		"236": {
+			"name": "루시안",
+			"imgsrc": "./champion/tiles/Lucian_0.jpg","engname":"Aatrox"
+		},
+		"117": {
+			"name": "룰루",
+			"imgsrc": "./champion/tiles/Lulu_0.jpg","engname":"Aatrox"
+		},
+		"99": {
+			"name": "럭스",
+			"imgsrc": "./champion/tiles/Lux_0.jpg","engname":"Aatrox"
+		},
+		"54": {
+			"name": "말파이트",
+			"imgsrc": "./champion/tiles/Malphite_0.jpg","engname":"Aatrox"
+		},
+		"90": {
+			"name": "말자하",
+			"imgsrc": "./champion/tiles/Malzahar_0.jpg","engname":"Aatrox"
+		},
+		"57": {
+			"name": "마오카이",
+			"imgsrc": "./champion/tiles/Maokai_0.jpg","engname":"Aatrox"
+		},
+		"11": {
+			"name": "마스터 이",
+			"imgsrc": "./champion/tiles/MasterYi_0.jpg","engname":"Aatrox"
+		},
+		"21": {
+			"name": "미스 포츈",
+			"imgsrc": "./champion/tiles/MissFortune_0.jpg","engname":"Aatrox"
+		},
+		"62": {
+			"name": "오공",
+			"imgsrc": "./champion/tiles/MonkeyKing_0.jpg","engname":"Aatrox"
+		},
+		"82": {
+			"name": "모데카이저",
+			"imgsrc": "./champion/tiles/Mordekaiser_0.jpg","engname":"Aatrox"
+		},
+		"25": {
+			"name": "모르가나",
+			"imgsrc": "./champion/tiles/Morgana_0.jpg","engname":"Aatrox"
+		},
+		"267": {
+			"name": "나미",
+			"imgsrc": "./champion/tiles/Nami_0.jpg","engname":"Aatrox"
+		},
+		"75": {
+			"name": "나서스",
+			"imgsrc": "./champion/tiles/Nasus_0.jpg","engname":"Aatrox"
+		},
+		"111": {
+			"name": "노틸러스",
+			"imgsrc": "./champion/tiles/Nautilus_0.jpg","engname":"Aatrox"
+		},
+		"518": {
+			"name": "니코",
+			"imgsrc": "./champion/tiles/Neeko_0.jpg","engname":"Aatrox"
+		},
+		"76": {
+			"name": "니달리",
+			"imgsrc": "./champion/tiles/Nidalee_0.jpg","engname":"Aatrox"
+		},
+		"56": {
+			"name": "녹턴",
+			"imgsrc": "./champion/tiles/Nocturne_0.jpg","engname":"Aatrox"
+		},
+		"20": {
+			"name": "누누",
+			"imgsrc": "./champion/tiles/Nunu_0.jpg","engname":"Aatrox"
+		},
+		"2": {
+			"name": "올라프",
+			"imgsrc": "./champion/tiles/Olaf_0.jpg","engname":"Aatrox"
+		},
+		"61": {
+			"name": "오리아나",
+			"imgsrc": "./champion/tiles/Orianna_0.jpg","engname":"Aatrox"
+		},
+		"516": {
+			"name": "오른",
+			"imgsrc": "./champion/tiles/Ornn_0.jpg","engname":"Aatrox"
+		},
+		"80": {
+			"name": "판테온",
+			"imgsrc": "./champion/tiles/Pantheon_0.jpg","engname":"Aatrox"
+		},
+		"78": {
+			"name": "뽀삐",
+			"imgsrc": "./champion/tiles/Poppy_0.jpg","engname":"Aatrox"
+		},
+		"555": {
+			"name": "파이크",
+			"imgsrc": "./champion/tiles/Pyke_0.jpg","engname":"Aatrox"
+		},
+		"246": {
+			"name": "키아나",
+			"imgsrc": "./champion/tiles/Qiyana_0.jpg","engname":"Aatrox"
+		},
+		"133": {
+			"name": "퀸",
+			"imgsrc": "./champion/tiles/Quinn_0.jpg","engname":"Aatrox"
+		},
+		"497": {
+			"name": "라칸",
+			"imgsrc": "./champion/tiles/Rakan_0.jpg","engname":"Aatrox"
+		},
+		"33": {
+			"name": "람머스",
+			"imgsrc": "./champion/tiles/Rammus_0.jpg","engname":"Aatrox"
+		},
+		"421": {
+			"name": "렉사이",
+			"imgsrc": "./champion/tiles/RekSai_0.jpg","engname":"Aatrox"
+		},
+		"58": {
+			"name": "레넥톤",
+			"imgsrc": "./champion/tiles/Renekton_0.jpg","engname":"Aatrox"
+		},
+		"107": {
+			"name": "렝가",
+			"imgsrc": "./champion/tiles/Rengar_0.jpg","engname":"Aatrox"
+		},
+		"92": {
+			"name": "리븐",
+			"imgsrc": "./champion/tiles/Riven_0.jpg","engname":"Aatrox"
+		},
+		"68": {
+			"name": "럼블",
+			"imgsrc": "./champion/tiles/Rumble_0.jpg","engname":"Aatrox"
+		},
+		"13": {
+			"name": "라이즈",
+			"imgsrc": "./champion/tiles/Ryze_0.jpg","engname":"Aatrox"
+		},
+		"113": {
+			"name": "세주아니",
+			"imgsrc": "./champion/tiles/Sejuani_0.jpg","engname":"Aatrox"
+		},
+		"235": {
+			"name": "세나",
+			"imgsrc": "./champion/tiles/Senna_0.jpg","engname":"Aatrox"
+		},
+		"875": {
+			"name": "세트",
+			"imgsrc": "./champion/tiles/Sett_0.jpg","engname":"Aatrox"
+		},
+		"35": {
+			"name": "샤코",
+			"imgsrc": "./champion/tiles/Shaco_0.jpg","engname":"Aatrox"
+		},
+		"98": {
+			"name": "쉔",
+			"imgsrc": "./champion/tiles/Shen_0.jpg","engname":"Aatrox"
+		},
+		"102": {
+			"name": "쉬바나",
+			"imgsrc": "./champion/tiles/Shyvana_0.jpg","engname":"Aatrox"
+		},
+		"27": {
+			"name": "신지드",
+			"imgsrc": "./champion/tiles/Singed_0.jpg","engname":"Aatrox"
+		},
+		"14": {
+			"name": "사이온",
+			"imgsrc": "./champion/tiles/Sion_0.jpg","engname":"Aatrox"
+		},
+		"15": {
+			"name": "시비르",
+			"imgsrc": "./champion/tiles/Sivir_0.jpg","engname":"Aatrox"
+		},
+		"72": {
+			"name": "스카너",
+			"imgsrc": "./champion/tiles/Skarner_0.jpg","engname":"Aatrox"
+		},
+		"37": {
+			"name": "소나",
+			"imgsrc": "./champion/tiles/Sona_0.jpg","engname":"Aatrox"
+		},
+		"16": {
+			"name": "소라카",
+			"imgsrc": "./champion/tiles/Soraka_0.jpg","engname":"Aatrox"
+		},
+		"50": {
+			"name": "스웨인",
+			"imgsrc": "./champion/tiles/Swain_0.jpg","engname":"Aatrox"
+		},
+		"517": {
+			"name": "사일러스",
+			"imgsrc": "./champion/tiles/Sylas_0.jpg","engname":"Sylas"
+		},
+		"134": {
+			"name": "신드라",
+			"imgsrc": "./champion/tiles/Syndra_0.jpg","engname":"Aatrox"
+		},
+		"223": {
+			"name": "탐 켄치",
+			"imgsrc": "./champion/tiles/TahmKench_0.jpg","engname":"Aatrox"
+		},
+		"163": {
+			"name": "탈리야",
+			"imgsrc": "./champion/tiles/Taliyah_0.jpg","engname":"Aatrox"
+		},
+		"91": {
+			"name": "탈론",
+			"imgsrc": "./champion/tiles/Talon_0.jpg","engname":"Aatrox"
+		},
+		"44": {
+			"name": "타릭",
+			"imgsrc": "./champion/tiles/Taric_0.jpg","engname":"Aatrox"
+		},
+		"17": {
+			"name": "티모",
+			"imgsrc": "./champion/tiles/Teemo_0.jpg","engname":"Aatrox"
+		},
+		"412": {
+			"name": "쓰레쉬",
+			"imgsrc": "./champion/tiles/Thresh_0.jpg","engname":"Aatrox"
+		},
+		"18": {
+			"name": "트리스타나",
+			"imgsrc": "./champion/tiles/Tristana_0.jpg","engname":"Aatrox"
+		},
+		"48": {
+			"name": "트런들",
+			"imgsrc": "./champion/tiles/Trundle_0.jpg","engname":"Aatrox"
+		},
+		"23": {
+			"name": "트린다미어",
+			"imgsrc": "./champion/tiles/Tryndamere_0.jpg","engname":"Aatrox"
+		},
+		"4": {
+			"name": "트위스티드 페이트",
+			"imgsrc": "./champion/tiles/TwistedFate_0.jpg","engname":"Aatrox"
+		},
+		"29": {
+			"name": "트위치",
+			"imgsrc": "./champion/tiles/Twitch_0.jpg","engname":"Aatrox"
+		},
+		"77": {
+			"name": "우디르",
+			"imgsrc": "./champion/tiles/Udyr_0.jpg","engname":"Aatrox"
+		},
+		"6": {
+			"name": "우르곳",
+			"imgsrc": "./champion/tiles/Urgot_0.jpg","engname":"Aatrox"
+		},
+		"110": {
+			"name": "바루스",
+			"imgsrc": "./champion/tiles/Varus_0.jpg","engname":"Aatrox"
+		},
+		"67": {
+			"name": "베인",
+			"imgsrc": "./champion/tiles/Vayne_0.jpg","engname":"Aatrox"
+		},
+		"45": {
+			"name": "베이가",
+			"imgsrc": "./champion/tiles/Veigar_0.jpg","engname":"Aatrox"
+		},
+		"161": {
+			"name": "벨코즈",
+			"imgsrc": "./champion/tiles/Velkoz_0.jpg","engname":"Aatrox"
+		},
+		"254": {
+			"name": "바이",
+			"imgsrc": "./champion/tiles/Vi_0.jpg","engname":"Aatrox"
+		},
+		"112": {
+			"name": "빅토르",
+			"imgsrc": "./champion/tiles/Viktor_0.jpg","engname":"Aatrox"
+		},
+		"8": {
+			"name": "블라디미르",
+			"imgsrc": "./champion/tiles/Vladimir_0.jpg","engname":"Aatrox"
+		},
+		"106": {
+			"name": "볼리베어",
+			"imgsrc": "./champion/tiles/Volibear_0.jpg","engname":"Aatrox"
+		},
+		"19": {
+			"name": "워윅",
+			"imgsrc": "./champion/tiles/Warwick_0.jpg","engname":"Aatrox"
+		},
+		"498": {
+			"name": "자야",
+			"imgsrc": "./champion/tiles/Xayah_0.jpg","engname":"Aatrox"
+		},
+		"101": {
+			"name": "제라스",
+			"imgsrc": "./champion/tiles/Xerath_0.jpg","engname":"Aatrox"
+		},
+		"5": {
+			"name": "신 짜오",
+			"imgsrc": "./champion/tiles/XinZhao_0.jpg","engname":"Aatrox"
+		},
+		"157": {
+			"name": "야스오",
+			"imgsrc": "./champion/tiles/Yasuo_0.jpg","engname":"Aatrox"
+		},
+		"83": {
+			"name": "요릭",
+			"imgsrc": "./champion/tiles/Yorick_0.jpg","engname":"Aatrox"
+		},
+		"350": {
+			"name": "유미",
+			"imgsrc": "./champion/tiles/Yuumi_0.jpg","engname":"Aatrox"
+		},
+		"154": {
+			"name": "자크",
+			"imgsrc": "./champion/tiles/Zac_0.jpg","engname":"Aatrox"
+		},
+		"238": {
+			"name": "제드",
+			"imgsrc": "./champion/tiles/Zed_0.jpg","engname":"Aatrox"
+		},
+		"115": {
+			"name": "직스",
+			"imgsrc": "./champion/tiles/Ziggs_0.jpg","engname":"Aatrox"
+		},
+		"26": {
+			"name": "질리언",
+			"imgsrc": "./champion/tiles/Zilean_0.jpg","engname":"Aatrox"
+		},
+		"142": {
+			"name": "조이",
+			"imgsrc": "./champion/tiles/Zoe_0.jpg","engname":"Aatrox"
+		},
+		"143": {
+			"name": "자이라",
+			"imgsrc": "./champion/tiles/Zyra_0.jpg","engname":"Aatrox"
+		}
 	}
-	
-
-}
-
 ]
