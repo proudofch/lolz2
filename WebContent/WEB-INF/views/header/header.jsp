@@ -35,7 +35,7 @@
 								</ul>
 							</li>
 							<li><a href="elements.html">Elements</a></li>
-							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
+							<li><a href="Search.Search">Search</a></li>
 						
 		 <c:choose>
 				 <c:when test="${sessionScope.id == 'admin' }">
