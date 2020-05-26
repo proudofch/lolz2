@@ -13,6 +13,10 @@
 
 
  <script type="text/javascript">
+ function test(){
+	 
+ }
+ 
  function myFunction(){
 	 var r=confirm("정말 탈퇴하시겠습니까?");
 	 if(r==true){
@@ -131,7 +135,7 @@
  
 
          <input type="submit" class="button primary small" value="수정완료" >
-         <input type="reset" class="button small" value="입력취소">
+         
       	 <button type="button" onclick="myFunction()" class="button small">회원탈퇴</button>
    	
       </form>

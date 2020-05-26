@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,12 +35,19 @@
 								</ul>
 							</li>
 							<li><a href="elements.html">Elements</a></li>
-							<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
 							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
-							<li><a href="#" class="button primary">Sign Up</a></li>
-							
+						
+		 <c:choose>
+            	<c:when test="${sessionScope.id == null }"> 
+							<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
 							<li><a href="Login.Lolz">Sign in</a></li>
+				 </c:when>
+            	<c:otherwise> 
+							<li><a href="Logout.Lolz">Sign out</a></li>
 							<li><a href="prvMemberEdit.Lolz?id=${sessionScope.id}">Settings</a></li>
+							
+				 </c:otherwise>
+         </c:choose> 
 							<li><a href="FreeBoardWrite.Board" class="button primary">게시판 글쓰기</a></li>
 
 						</ul>
