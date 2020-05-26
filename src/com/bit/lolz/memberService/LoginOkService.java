@@ -30,14 +30,16 @@ public class LoginOkService implements Action{
 	        	session.setAttribute("id", id); 
 	        	msg="로그인 되었습니다.";
 	        	url="Index.Lolz";
-	        	System.out.println("e");
+	        	System.out.println("로그인됐음.session설정도 된거임.");
 	         }else if(member.getId()=="null"){
 	        	 msg="아이디가 없습니다.";
 	        	 url ="Login.Lolz";
+	        	 System.out.println("id없을때");
 	         }
 	         else if(!pwd.equals(member.getPwd())) {
 		        msg="비밀번호가 틀렸습니다.";
 		        url = "Login.Lolz";
+		        System.out.println("비번틀렸을때");
 		        }
 	         request.setAttribute("board_msg", msg);
 	         request.setAttribute("board_url", url);

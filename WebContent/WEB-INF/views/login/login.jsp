@@ -11,8 +11,11 @@
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
 
 <body>
+<div id="main" class="wrapper style1">
    <div class="container">
-   		<h3 style="text-align: center;">로그인</h3>
+      		<header class="major">
+				<h2>로그인</h2>		
+		    </header>
 		<br>
       	<form action="LoginOk.Lolz" method="post" id="joinform">
 
@@ -27,5 +30,6 @@
          <input type="submit" class="btn btn-warning" value="로그인">
       </form>
    </div>
+ </div>
 </body>
 </html>
