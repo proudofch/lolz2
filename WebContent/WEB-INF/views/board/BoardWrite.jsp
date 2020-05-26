@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시판 글쓰기</title>
+	<title>자유게시판 글쓰기</title>
 	
 	<style type="text/css">
 		h2 {
@@ -46,8 +46,8 @@
 				<h2>Write</h2>
 				<p>notice blahblahblah</p>
 			</header>
-				<form name="board_write" id="board_write" action="FreeBoardWriteOk.Board" method="post" enctype="multipart/form-data">
-				<input type="hidden" id="id" name="id" value="idishello"> <!--  value="${sesssionScope.id}" -->
+			<form name="board_write" id="board_write" action="FreeBoardWriteOk.Board" method="post" enctype="multipart/form-data">
+				<input type="hidden" id="id" name="id" value="${sessionScope.id}">
 				제목<br> 
 				<input type="text" name="title" id="title" placeholder="제목을 입력하세요">
 				<br>
@@ -60,7 +60,7 @@
 				<input type="reset" class="button primary small" value="다시 쓰기">
 				목록으로 돌아가기
 				
-				</form>
+			</form>
 		</div> <!-- container end -->
 	</div> <!-- wrapper end -->
 </body>

@@ -12,7 +12,7 @@ import com.bit.lolz.dto.BoardDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class FreeBoardWriteOk implements Action {
+public class FreeBoardWriteOkService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
@@ -44,7 +44,9 @@ public class FreeBoardWriteOk implements Action {
 			boarddata.setBoardtitle((multi.getParameter("title")));
 			boarddata.setBoardcontent(multi.getParameter("content"));
 			boarddata.setBoardfile(multi.getParameter("file"));
+			
 			boarddata.setId(multi.getParameter("id"));
+				System.out.println("id: "+boarddata.getId());
 			
 			boarddao dao = new boarddao();
 			int result = dao.writeOk(boarddata, 1);
@@ -54,10 +56,10 @@ public class FreeBoardWriteOk implements Action {
 			
 			if(result > 0) {
 				msg = "글쓰기 성공!";
-				url = "Emplist.Emp";
+				url = "FreeBoardList.Board"; //보통 성공하면 쓴 글 상세보기로 감... 나중에 고치기
 			} else {
 				msg = "글쓰기 실패";
-				url = "emp.jsp";
+				url = "FreeBoardWrite.Board"; //실패하면 목록으로 가고? 아님 글 쓰던 상태로 가던가? 훔 ... 이것도 나중에 수정
 			}
 			
 			request.setAttribute("board_msg", msg);
@@ -65,7 +67,7 @@ public class FreeBoardWriteOk implements Action {
 			
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/board/FreeBoardList.jsp");	
+			forward.setPath("/WEB-INF/views/redirect.jsp");
 			
 		} catch (Exception e) {
 			System.out.println("자유게시판 글쓰기ok에 문제 발생");
