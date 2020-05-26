@@ -22,16 +22,30 @@ public class LoginOkService implements Action{
 	         String pwd = request.getParameter("pwd");
 	         
 	         MemberDto member = dao.getMember(id);
-	                          
+	      
+	         String url = ""; 
+	         String msg ="";
 	         if(pwd.equals(member.getPwd())) {
 	        	HttpSession session= request.getSession();        		
-	        	session.setAttribute("id", id);    	
+	        	session.setAttribute("id", id); 
+	        	msg="로그인 되었습니다.";
+	        	url="Index.Lolz";
+	        	System.out.println("e");
+	         }else if(member.getId()=="null"){
+	        	 msg="아이디가 없습니다.";
+	        	 url ="Login.Lolz";
 	         }
-	          
+	         else if(!pwd.equals(member.getPwd())) {
+		        msg="비밀번호가 틀렸습니다.";
+		        url = "Login.Lolz";
+		        }
+	         request.setAttribute("board_msg", msg);
+	         request.setAttribute("board_url", url);
+	         
 	          forward = new ActionForward();
 	          forward.setRedirect(false);
-	          forward.setPath("index.jsp");
-	          
+	         // forward.setPath("index.jsp");
+	  		forward.setPath("/WEB-INF/views/redirect.jsp");
 	      }catch (Exception e) {
 	         System.out.println(e.getMessage());
 	      }

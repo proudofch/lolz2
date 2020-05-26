@@ -32,7 +32,10 @@ public class MemberDao {
 	               member = new MemberDto();
 	               member.setId(rs.getString("id"));
 	               member.setPwd(rs.getString("pwd"));
-
+	         }else {
+	        	 System.out.println("아이디가 없는 경우 등..");
+	        	 member = new MemberDto();
+	             member.setId("null");
 	         }
 	         } catch (Exception e) {
 	            System.out.println(e.getMessage());
