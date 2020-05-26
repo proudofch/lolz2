@@ -27,7 +27,7 @@ public class MemberDao {
 	        		 sql = "select adminid, adminpwd from admin where adminid = ?";  
 	        		 System.out.println("admin");
 	        	 }else {	        	 
-	        		 sql = "select id, pwd from member where id = ?";         
+	        		 sql = "select id, pwd,summonerId from member where id = ?";         
 	        	 }
 	        	 try {
 	            pstmt = conn.prepareStatement(sql);
@@ -41,6 +41,7 @@ public class MemberDao {
 	               }else {
 	               member.setId(rs.getString("id"));
 	               member.setPwd(rs.getString("pwd"));}
+	               member.setSummonerId(rs.getString("summonerId"));
 	               }else {
 	        	 System.out.println("아이디가 없는 경우 등..");
 	        	 member = new MemberDto();
@@ -213,8 +214,8 @@ public class MemberDao {
 		
 	}
 	*/
-	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 사원 목록 조회
-		Connection conn = ConnectionHelper.getConnection("oracle"); //객체 얻기
+	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 회원 목록
+		Connection conn = ConnectionHelper.getConnection("oracle"); 
 		PreparedStatement pstmt = null;
 		String sql="select id, pwd, email, bd, summonerId from Member";
 		pstmt = conn.prepareStatement(sql);

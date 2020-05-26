@@ -38,13 +38,17 @@
 							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
 						
 		 <c:choose>
+				 <c:when test="${sessionScope.id == 'admin' }">
+							 <li><a href="MemberList.Lolz">Member List</a></li>
+							 <li><a href="Logout.Lolz">Sign out</a></li>
+				 </c:when>
             	<c:when test="${sessionScope.id == null }"> 
 							<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
 							<li><a href="Login.Lolz">Sign in</a></li>
 				 </c:when>
-            	<c:otherwise> 
+            	<c:otherwise>
+							<li><a href="MyPage.Lolz">My page</a></li>
 							<li><a href="Logout.Lolz">Sign out</a></li>
-							<li><a href="prvMemberEdit.Lolz?id=${sessionScope.id}">Settings</a></li>
 							
 				 </c:otherwise>
          </c:choose> 

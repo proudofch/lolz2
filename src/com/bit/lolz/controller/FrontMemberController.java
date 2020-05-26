@@ -18,6 +18,7 @@ import com.bit.lolz.memberService.MemberDeleteService;
 import com.bit.lolz.memberService.MemberEditPrvService;
 import com.bit.lolz.memberService.MemberEditService;
 import com.bit.lolz.memberService.MemberIdCheckService;
+import com.bit.lolz.memberService.MemberListService;
 
 
 
@@ -54,12 +55,12 @@ public class FrontMemberController extends HttpServlet {
 		 else if(url_Command.equals("/Logout.Lolz")) { //로그아웃 처리
 			 action = new LogoutService();
 			 forward = action.execute(request, response);
-			} /*
-				 * else if(url_Command.equals("/Emplist.Emp")) { //전체 사원 목록 보기 action = new
-				 * EmpListService(); forward = action.execute(request, response);
-				 * 
-				 * }
-				 */ else if(url_Command.equals("/MemberEditOk.Lolz")) { //내 정보 수정
+			} 
+		else if(url_Command.equals("/MemberList.Lolz")) { //회원 목록 보기
+			action = new MemberListService();
+			forward = action.execute(request, response);
+				
+		} else if(url_Command.equals("/MemberEditOk.Lolz")) { //내 정보 수정
 		  action = new MemberEditService();
    		forward = action.execute(request, response); 
 			  
@@ -84,9 +85,14 @@ public class FrontMemberController extends HttpServlet {
         	action = new MemberAddService();
      		forward = action.execute(request, response); 
      		forward.setPath("/index.jsp");
-		}  else if(url_Command.equals("/MemberDelete.Lolz")) {//회원탈퇴
-			 action = new MemberDeleteService();
-			 forward = action.execute(request,response);
+		} else if(url_Command.equals("/MyPage.Lolz")) { //마이 페이지
+			action = new MemberAddService();
+			forward = action.execute(request, response);
+			forward.setPath("/WEB-INF/views/mypage.jsp");
+		}
+		  else if(url_Command.equals("/MemberDelete.Lolz")) {//회원탈퇴
+			action = new MemberDeleteService();
+			forward = action.execute(request,response);
 		}	  /*
 			 * else if(url_Command.equals("/DeptAdd.Emp")) { //부서 추가(지금까진 부서 추가 UI 페이지 뿌리는
 			 * 상태 > 수정해야 할 듯) forward = new ActionForward(); forward.setRedirect(false);
