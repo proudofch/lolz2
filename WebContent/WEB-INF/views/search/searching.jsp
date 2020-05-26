@@ -30,11 +30,13 @@ var mostthreeimg;
 
 </style>
 </head>
-
+<jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
 <body>
-	<input type="text" id="sname"><input type="button" value="search" onclick="get()">
+<div id="main" class="wrapper style1">
+		<div class="container">
+	<input type="text" id="sname"><input type="button" class="button primary small" value="search" onclick="get()">
 	<div id="display"></div>
-	<div id="donutdiv" style="height: 150px;"></div>
+	<div id="donutdiv" style="height: 150px;width: 50%"></div>
 	<table>
 	<tr>
 	<td>
@@ -45,7 +47,8 @@ var mostthreeimg;
 	</td>
 	</tr>
 	</table>
-	
+	</div>
+	</div>
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
@@ -64,13 +67,14 @@ function get() {
 	var champimg;
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
-		 let table = "<table>"
+		let table = "<table>"
 	 			+"<tr><th>소환사 이름</th><th>티어</th><th>랭크</th><th>승</th>"
 	 			+"<th>패</th><th>승률</th><th>모스트 챔피언</th></tr>";
 		var leagueInfo = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"
 		+data.id+"?api_key=" + apiKey;
 		var champinfo = "https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"
 			+summonerid+"?api_key="+apiKey;
+			
 			$.getJSON(champinfo, data, function(data, textStatus, req) {
 				 mostchamp = data[0].championId;
 				 smostchamp = data[1].championId;
@@ -100,6 +104,7 @@ function get() {
 									table += obj.summonerName;								
 									table += "</td><td>";
 									table += obj.tier;
+									table += "<img src='images/tier/"+obj.tier+".png' style=\"width:50px; height: 50px\"/>"
 									table += "</td><td>";
 									table += obj.rank;
 									table += "</td><td>";
