@@ -31,10 +31,7 @@ var mostthree;
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
 <script type="text/javascript">
-/*
-function fuck() {
-	console.log(win, lose, winrate);
-}*/
+
 function get() {
 	var id = document.getElementById("sname").value;
 	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 

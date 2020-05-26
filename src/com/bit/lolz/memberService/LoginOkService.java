@@ -21,8 +21,10 @@ public class LoginOkService implements Action{
 	         String id = request.getParameter("id");
 	         String pwd = request.getParameter("pwd");
 	         
-	         MemberDto member = dao.getMember(id);
 	      
+	         MemberDto member = dao.getMember(id);
+	         
+	         
 	         String url = ""; 
 	         String msg ="";
 	         if(pwd.equals(member.getPwd())) {
