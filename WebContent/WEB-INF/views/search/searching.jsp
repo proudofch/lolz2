@@ -61,7 +61,7 @@ function get() {
 	var mostchamp;
 	var smostchamp;
 	var tmostchamp;
-	var sibal;
+	var champimg;
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
 		 let table = "<table>"
@@ -109,14 +109,14 @@ function get() {
 									table += "</td><td>";
 									table += (((obj.wins/(obj.wins+obj.losses))*100).toFixed(1)+"%");
 									table += "</td><td><ul style='list-style: none'>";
-									sibal = mostoneimg;
-									var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+sibal+"."+"png";
+									champimg = mostoneimg;
+									var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
 									table += "<li><div class = 'images'><img src ='"+imgsource+"' style='width:50px'></div>"+mostone+"</li>";
-									sibal = mosttwoimg;
-									var simgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+sibal+"."+"png";
+									champimg = mosttwoimg;
+									var simgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
 									table += "<li><div class = 'images'><img src ='"+simgsource+"' style='width:50px'></div>"+mosttwo+"</li>";
-									sibal = mostthreeimg;
-									var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+sibal+"."+"png";
+									champimg = mostthreeimg;
+									var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
 									
 									table += "<li><div class = 'images'><img src ='"+timgsource+"' style='width:50px'></div>"+mostthree+"</li>";
 									table += "</ul></td><td>";	
