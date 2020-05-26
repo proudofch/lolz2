@@ -13,20 +13,14 @@ public class MemberEditService implements Action{
 		
 		MemberDto dto = new MemberDto();
 		
-		//와 수정성공^^~id받는게 관건... url로 넘어오는 파라미터를 받아서 입력시키면되는데..
-		dto.setId(request.getAttribute("a")) ;
+
+		dto.setId(request.getParameter("id")) ;
 		dto.setPwd(request.getParameter("pwd")) ;
 		dto.setEmail(request.getParameter("email"));
 		dto.setSummonerId(request.getParameter("summonerId")) ;
-		dto.setBd(request.getParameter("bd")) ;
-		//틀렸었던거!
-		String pwd = request.getParameter("pwd");
-		String email = request.getParameter("email");
-		String bd = request.getParameter("bd");
-		String summonerId = request.getParameter("summonerId");
-		
-		System.out.println("membereditservice의 summonerId : "+summonerId);
-		System.out.println("memss id:"+request.getParameter("id"));
+
+		String id = request.getParameter("id");
+
 		
 		MemberDao dao = new MemberDao(); //POINT
 		int result = dao.updateMember(dto);
@@ -38,7 +32,7 @@ public class MemberEditService implements Action{
 		    	url ="Index.Lolz";
 		    }else{
 		    	msg="수정을 실패했습니다.";
-		    	url="MemberEdit.Lolz";
+		    	url="prvMemberEdit.Lolz?id="+id;
 		    }
 		    
 		    request.setAttribute("board_msg",msg);

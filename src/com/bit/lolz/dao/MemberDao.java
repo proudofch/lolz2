@@ -238,7 +238,7 @@ public class MemberDao {
 		Connection conn = null;
 		int resultrow = 0;
 		PreparedStatement pstmt = null;
-		String sql = "update member set pwd=?, email=?, bd=?, summonerId=? where id=?";
+		String sql = "update member set pwd=?, email=?, summonerId=? where id=?";
 				
 		try {
 			
@@ -246,12 +246,11 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);			
 			pstmt.setString(1, m.getPwd());
 			pstmt.setString(2, m.getEmail());
-			pstmt.setString(3, m.getBd());
-			pstmt.setString(4, m.getSummonerId());
-			pstmt.setString(5, m.getId());
+			pstmt.setString(3, m.getSummonerId());
+			pstmt.setString(4, m.getId());
 			
 System.out.println("Dao의updateMember함수의 summonerId: "+m.getSummonerId()); //test
-System.out.println("Dao의updateMember함수의 Id: "+m.getId()); //test		
+System.out.println("Dao의updateMember함수의 Id: "+m.getId()); //test		  
 			resultrow = pstmt.executeUpdate();
 			
 		} catch (Exception e2) {

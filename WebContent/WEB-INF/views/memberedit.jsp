@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,34 +88,37 @@
       	  <header class="major">
 				<h2>내 정보 수정</h2>		
 		  </header>
-       
+   
+        <c:set var="member" value="${requestScope.memberdata}"></c:set>
+	
 		<form name="memberedit" action="MemberEditOk.Lolz" method="post" onsubmit="return validate();"> 
-
+			
          <div class="form-group">
             <label for="id">아이디</label>
-            <input type="text" readonly class="form-control" id="id" name="id" maxlength="20" placeholder="아이디는 수정할 수 없습니다.">
+            <input type="text" readonly class="form-control" id="id" name="id"
+             maxlength="20" value="${member.id}" placeholder="${member.id}님 아이디는 수정할 수 없습니다.">
          </div>
          <div class="form-group">
             <label for="pwd">패스워드</label>
-            <input type="password" maxlength="20" class="form-control" id="pwd" name="pwd">
+            <input type="password" maxlength="20" value="${member.pwd}" class="form-control" id="pwd" name="pwd">
          </div>
          <div class="form-group">
             <label for="pwdCheck">패스워드 확인</label>
-            <input type="password" maxlength="20" class="form-control" id="pwdCheck" name="pwdCheck">
+            <input type="password" maxlength="20" value="${member.pwd}"class="form-control" id="pwdCheck" name="pwdCheck">
          </div>
 
          <div class="form-group">
             <label for="email">이메일</label>
-            <input type="text" class="form-control" id="email" name="email">
+            <input type="text" class="form-control" id="email" name="email" value="${member.email}">
          </div>
          <div class="form-group">
             <label for="bd">생일</label>
-             <input type="text" class="form-control" id="bd" name="bd">          
+             <input type="text" class="form-control" id="bd" name="bd" value="${member.bd}" readonly>          
          </div>
 
   		<div class="form-group">
             <label for="summonerId">소환사 아이디</label>
-            <input type="text" class="form-control" id="summonerId" name="summonerId">
+            <input type="text" class="form-control" id="summonerId" name="summonerId" value="${member.summonerId}">
          </div>
  
 

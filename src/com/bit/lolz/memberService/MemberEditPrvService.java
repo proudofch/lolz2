@@ -14,14 +14,13 @@ public class MemberEditPrvService implements Action{
 		ActionForward forward = null;
 		
 		String memberparam = request.getParameter("id");
-		System.out.println("id: "+memberparam);
 
 		try {
 			
 			MemberDao dao = new MemberDao();
 			MemberDto dto = dao.getMemberListByMemberId(memberparam);
 //질문!누구 아는 사람 서영한테 알려주세요. dto에 윗줄이 반환한member객체 갖다주면, 어케 인식하나요?
-			 request.setAttribute("memberdata", memberparam);
+			 request.setAttribute("memberdata", dto);
 			 forward = new ActionForward();
 			 forward.setRedirect(false); //forward
 			 forward.setPath("/WEB-INF/views/memberedit.jsp");
