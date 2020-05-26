@@ -9,14 +9,14 @@ public class MemberDto {
 	private String bd;
 	private String summonerId;
 	
-	public String getId() {
-		return id;
-	}
 
 	@Override
 	public String toString() {
 		return "MemberDto [id=" + id + ", pwd=" + pwd + ", email=" + email + ", bd=" + bd + ", summonerId=" + summonerId
 				+ "]";
+	}
+	public String getId() {
+		return id;
 	}
 
 	public void setId(String id) {

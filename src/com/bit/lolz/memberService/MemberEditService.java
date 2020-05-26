@@ -13,12 +13,13 @@ public class MemberEditService implements Action{
 		
 		MemberDto dto = new MemberDto();
 		
-		
+
+		dto.setId(request.getParameter("id")) ;
+		dto.setPwd(request.getParameter("pwd")) ;
+		dto.setEmail(request.getParameter("email"));
+		dto.setSummonerId(request.getParameter("summonerId")) ;
+
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		String email = request.getParameter("email");
-		String bd = request.getParameter("bd");
-		String summonerId = request.getParameter("summonerId");
 
 		
 		MemberDao dao = new MemberDao(); //POINT
@@ -31,7 +32,7 @@ public class MemberEditService implements Action{
 		    	url ="Index.Lolz";
 		    }else{
 		    	msg="수정을 실패했습니다.";
-		    	url="MemberEdit.Lolz";
+		    	url="prvMemberEdit.Lolz?id="+id;
 		    }
 		    
 		    request.setAttribute("board_msg",msg);

@@ -35,6 +35,14 @@
 								</ul>
 							</li>
 							<li><a href="elements.html">Elements</a></li>
+							<li><a href="Search.Search">Search</a></li>
+						
+		 <c:choose>
+				 <c:when test="${sessionScope.id == 'admin' }">
+							 <li><a href="MemberList.Lolz">Member List</a></li>
+							 <li><a href="Logout.Lolz">Sign out</a></li>
+				 </c:when>
+            	<c:when test="${sessionScope.id == null }"> 
 							<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
 							<li><a href="/WEB-INF/views/search/searching.jsp">Search</a></li>
 							<li><a href="#" class="button primary">Sign Up</a></li>
@@ -48,11 +56,17 @@
 								</c:otherwise>
 							</c:choose>
 							
+							<li><a href="MyPage.Lolz">My page</a></li>
 							<li><a href="MemberEdit.Lolz">Settings</a></li>
 							<c:if test="${sessionScope.id != null }">
 								<li><a href="FreeBoardWrite.Board" class="button primary">글쓰기</a></li>
 								<li><a href="FreeBoardList.Board" class="button primary">게시판목록</a></li>
+								<li><a href="FreeBoardWrite.Board" class="button primary">게시판 글쓰기</a></li>
 							</c:if>
+				 </c:when>
+         </c:choose> 
+							
+
 						</ul>
 					</nav>
 				</header>

@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>SignUp</title>
+	
+
+	
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -134,14 +137,11 @@
 </head>
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
 <body>
- 
+ <div id="main" class="wrapper style1">
    <div class="container">
-      <hr width=400>
-      <h3>회원가입</h3>
-      <hr width=400>
-      <br>
-      <br>
-      
+     	<header class="major">
+				<h2>회원가입</h2>		
+		</header>
 
       <form name="memberadd" action="MemberAddOk.Lolz" method="post" onsubmit="return validate();"> 
 
@@ -179,5 +179,6 @@
       
       </form>
    </div>
+ </div>
 </body>
 </html>

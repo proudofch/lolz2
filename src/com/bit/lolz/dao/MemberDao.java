@@ -20,19 +20,32 @@ public class MemberDao {
 	         
 	         Connection conn = ConnectionHelper.getConnection("oracle");        
 	         PreparedStatement pstmt = null;
-	         String sql = "select id, pwd from member where id = ?";         
 	         ResultSet rs = null;
 	         MemberDto member = null;
-	     
-	         try {
+	         String sql="";
+	        	 if(id.equals("admin")) {
+	        		 sql = "select adminid, adminpwd from admin where adminid = ?";  
+	        		 System.out.println("admin");
+	        	 }else {	        	 
+	        		 sql = "select id, pwd,summonerId from member where id = ?";         
+	        	 }
+	        	 try {
 	            pstmt = conn.prepareStatement(sql);
 	            pstmt.setString(1, id);
 	            rs = pstmt.executeQuery();
 	            if(rs.next()) {
 	               member = new MemberDto();
+	               if(id.equals("admin")) {
+		               member.setId(rs.getString("adminid"));
+		               member.setPwd(rs.getString("adminpwd"));
+	               }else {
 	               member.setId(rs.getString("id"));
-	               member.setPwd(rs.getString("pwd"));
-
+	               member.setPwd(rs.getString("pwd"));}
+	               member.setSummonerId(rs.getString("summonerId"));
+	               }else {
+	        	 System.out.println("아이디가 없는 경우 등..");
+	        	 member = new MemberDto();
+	             member.setId("null");
 	         }
 	         } catch (Exception e) {
 	            System.out.println(e.getMessage());
@@ -48,6 +61,7 @@ public class MemberDao {
 	         
 	         return member;
 	   }
+	  
 	//멤버 추가
 		public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
 			Connection conn = null;
@@ -200,8 +214,8 @@ public class MemberDao {
 		
 	}
 	*/
-	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 사원 목록 조회
-		Connection conn = ConnectionHelper.getConnection("oracle"); //객체 얻기
+	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 회원 목록
+		Connection conn = ConnectionHelper.getConnection("oracle"); 
 		PreparedStatement pstmt = null;
 		String sql="select id, pwd, email, bd, summonerId from Member";
 		pstmt = conn.prepareStatement(sql);
@@ -238,20 +252,19 @@ public class MemberDao {
 		Connection conn = null;
 		int resultrow = 0;
 		PreparedStatement pstmt = null;
-		String sql = "update Member set id=?, pwd=?, email=?, bd=?, summonerId=? where id=?";
+		String sql = "update member set pwd=?, email=?, summonerId=? where id=?";
 				
 		try {
 			
 			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, m.getPwd());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getSummonerId());
+			pstmt.setString(4, m.getId());
 			
-			pstmt.setString(1, m.getId());
-			pstmt.setString(2, m.getPwd());
-			pstmt.setString(3, m.getEmail());
-			pstmt.setString(4, m.getBd());
-			pstmt.setString(5, m.getSummonerId());
-	
-			
+System.out.println("Dao의updateMember함수의 summonerId: "+m.getSummonerId()); //test
+System.out.println("Dao의updateMember함수의 Id: "+m.getId()); //test		  
 			resultrow = pstmt.executeUpdate();
 			
 		} catch (Exception e2) {

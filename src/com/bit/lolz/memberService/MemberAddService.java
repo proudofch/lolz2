@@ -20,7 +20,6 @@ public class MemberAddService implements Action {
 		String email = request.getParameter("email");
 		String bd = request.getParameter("bd");
 		String summonerId = request.getParameter("summonerId");
-
 		String pwd = request.getParameter("pwd");
    
 

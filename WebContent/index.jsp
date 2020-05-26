@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>Landed by HTML5 </title>
+		<title>놀고싶다.. </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
