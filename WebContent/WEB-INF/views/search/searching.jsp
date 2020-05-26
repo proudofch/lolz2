@@ -148,6 +148,9 @@ function get() {
 				        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
 				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
 				        		}));
+				        	
+				        	
+				        	
 						});
 				});
 			});
