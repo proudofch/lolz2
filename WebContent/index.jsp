@@ -84,7 +84,24 @@
 					
 				</section>
 
-			<!-- Four -->
+		<section id="two" class="spotlight style2 right">
+			<span class="image fit main bottom"><img
+				src="images/rank02.jpg" alt="" /></span>
+			<div class="content">
+			<video preload="none" loop="" playsinline="" autoplay="" class="style__Video-sc-1s9oqga-2 gytcph" data-object-fit="cover" data-object-position="center top" src="https://assets.contentstack.io/v3/assets/blt731acb42bb3d1659/blt25562675602c81e8/5e1fc19ce2b3975498ead41a/footer-1080.mp4" style="object-fit: cover; object-position: center top;"><source src="https://assets.contentstack.io/v3/assets/blt731acb42bb3d1659/blt25562675602c81e8/5e1fc19ce2b3975498ead41a/footer-1080.mp4" srcset="1920w https://assets.contentstack.io/v3/assets/blt731acb42bb3d1659/blt25562675602c81e8/5e1fc19ce2b3975498ead41a/footer-1080.mp4" type="video/mp4"></video>
+				<header>
+					<h2>랭크소개</h2>
+					<p>랭크소개2</p>
+				</header>
+				<p>랭크소개3</p>
+				<ul class="actions">
+					<li><a href="#" class="button">서치페이지로</a></li>
+				</ul>
+			</div>
+			<a href="#three" class="goto-next scrolly">Next</a>
+		</section>
+		
+		<!-- Four -->
 				<section id="four" class="wrapper style1 special fade-up">
 					<div class="container">
 						<header class="major">
