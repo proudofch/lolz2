@@ -39,8 +39,8 @@ var mostthreeimg;
 	<tr>
 	<td>
 	<ul style="list-style: none">
-	<li>hello world</li>
-	<li> fuck you</li>
+	<li>검색</li>
+	<li> 해보자</li>
 	</ul>
 	</td>
 	</tr>
@@ -77,7 +77,7 @@ function get() {
 				 tmostchamp = data[2].championId;
 				
 				//console.log(mostchamp, smostchamp, tmostchamp);
-				$.getJSON('lolchamp.json', function(data, textStatus, req) {
+				$.getJSON('lolchamp.Search', function(data, textStatus, req) {
 						mostone = (data[0])[mostchamp].name;
 						mosttwo = (data[0])[smostchamp].name;
 						mostthree = (data[0])[tmostchamp].name;	
