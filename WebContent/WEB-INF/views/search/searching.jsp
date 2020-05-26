@@ -8,24 +8,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script type="text/javascript">
-//var jsonData;
+var jsonData;
 var apiKey = "RGAPI-bee1705e-d26c-4b7e-9f6a-534cf76117b4";
-//var testlist = new Array();
-//var datalist = new Object();
+var testlist = new Array();
+var datalist = new Object();
 var win = 0;
 var lose = 0;
 var winrate = null;
 var mostone;
 var mosttwo;
 var mostthree;
-	
+var mostoneimg;
+var mosttwoimg;
+var mostthreeimg;
 	
 </script>
+<style type="text/css">
+.images{
+	width: 50px;
+}
+
+</style>
 </head>
+
 <body>
 	<input type="text" id="sname"><input type="button" value="search" onclick="get()">
 	<div id="display"></div>
 	<div id="donutdiv" style="height: 150px;"></div>
+	<table>
+	<tr>
+	<td>
+	<ul style="list-style: none">
+	<li>hello world</li>
+	<li> fuck you</li>
+	</ul>
+	</td>
+	</tr>
+	</table>
 	
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
@@ -42,7 +61,7 @@ function get() {
 	var mostchamp;
 	var smostchamp;
 	var tmostchamp;
-	
+	var sibal;
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
 		 let table = "<table>"
@@ -56,18 +75,25 @@ function get() {
 				 mostchamp = data[0].championId;
 				 smostchamp = data[1].championId;
 				 tmostchamp = data[2].championId;
+				
 				//console.log(mostchamp, smostchamp, tmostchamp);
 				$.getJSON('lolchamp.json', function(data, textStatus, req) {
 						mostone = (data[0])[mostchamp].name;
 						mosttwo = (data[0])[smostchamp].name;
 						mostthree = (data[0])[tmostchamp].name;	
+						mostoneimg = (data[0])[mostchamp].engname;
+						mosttwoimg = (data[0])[smostchamp].engname;
+						mostthreeimg = (data[0])[tmostchamp].engname;
 						//console.log(mostone, mosttwo, mostthree);
 						$.getJSON(leagueInfo, function(data, textStatus, req) {
 							win = data[0].wins;
 				            lose = data[0].losses;
 				            winrate = ((data[0].wins/(data[0].wins+data[0].losses))*100).toFixed(1)+"%";
 				            //console.log(win, lose, winrate);
-							console.log(mostone, mosttwo, mostthree);
+							console.log(mostoneimg, mosttwoimg, mostthreeimg);
+							
+							
+							
 							$.each(data, function(index, obj){
 									//console.log(data);
 									table += "<tr><td>";
@@ -82,9 +108,18 @@ function get() {
 									table += obj.losses;
 									table += "</td><td>";
 									table += (((obj.wins/(obj.wins+obj.losses))*100).toFixed(1)+"%");
-									table += "</td><td>";
-									table += mostone+", "+mosttwo+", "+mostthree;
-									table += "</td><td>";	
+									table += "</td><td><ul style='list-style: none'>";
+									sibal = mostoneimg;
+									var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+sibal+"."+"png";
+									table += "<li><div class = 'images'><img src ='"+imgsource+"' style='width:50px'></div>"+mostone+"</li>";
+									sibal = mosttwoimg;
+									var simgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+sibal+"."+"png";
+									table += "<li><div class = 'images'><img src ='"+simgsource+"' style='width:50px'></div>"+mosttwo+"</li>";
+									sibal = mostthreeimg;
+									var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+sibal+"."+"png";
+									
+									table += "<li><div class = 'images'><img src ='"+timgsource+"' style='width:50px'></div>"+mostthree+"</li>";
+									table += "</ul></td><td>";	
 							});
 							table += "</table>";
 				            $('#display').empty();
