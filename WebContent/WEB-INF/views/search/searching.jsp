@@ -33,8 +33,9 @@ var mostthreeimg;
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
 <body>
 <div id="main" class="wrapper style1">
-		<div class="container">
-	<input type="text" id="sname"><input type="button" class="button primary small" value="search" onclick="get()">
+	<div class="container">
+	<input type="text" id="sname">
+	<input type="button" class="button primary small" value="search" onclick="get()">
 	<div id="display"></div>
 	<div id="donutdiv" style="height: 150px;width: 50%"></div>
 	<table>
@@ -53,10 +54,7 @@ var mostthreeimg;
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
 <script type="text/javascript">
-/*
-function fuck() {
-	console.log(win, lose, winrate);
-}*/
+
 function get() {
 	var id = document.getElementById("sname").value;
 	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
