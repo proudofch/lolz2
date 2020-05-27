@@ -14,6 +14,7 @@ import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.memberService.LoginOkService;
 import com.bit.lolz.memberService.LogoutService;
 import com.bit.lolz.memberService.MemberAddService;
+import com.bit.lolz.memberService.MemberBoardListService;
 import com.bit.lolz.memberService.MemberDeleteService;
 import com.bit.lolz.memberService.MemberEditPrvService;
 import com.bit.lolz.memberService.MemberEditService;
@@ -94,7 +95,10 @@ public class FrontMemberController extends HttpServlet {
 		  else if(url_Command.equals("/MemberDelete.Lolz")) {//회원탈퇴
 			action = new MemberDeleteService();
 			forward = action.execute(request,response);
-		}	  /*
+		} else if(url_Command.equals("/MemberBoardList.Lolz")) {//내가 쓴 글 목록
+			action = new MemberBoardListService();
+			forward = action.execute(request,response);
+		}  /*
 			 * else if(url_Command.equals("/DeptAdd.Emp")) { //부서 추가(지금까진 부서 추가 UI 페이지 뿌리는
 			 * 상태 > 수정해야 할 듯) forward = new ActionForward(); forward.setRedirect(false);
 			 * forward.setPath("/WEB-INF/views/deptadd.jsp");

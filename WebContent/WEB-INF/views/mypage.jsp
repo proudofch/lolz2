@@ -49,8 +49,8 @@
     <img src="images/icon.png" width="250" height="250">
     <h3>소환사 아이디가 없으시군요!</h3>
     </c:if>
-<button type="button" onclick='location.href="prvMemberEdit.Lolz?id=${sessionScope.id}"'class="button small">내 정보 수정</button>
-<button type="button" class="button small">내가 쓴 글/댓글</button> 
+<button type="button" onclick='location.href="prvMemberEdit.Lolz?id=${sessionScope.id}"' class="button small">내 정보 수정</button>
+<button type="button" onclick='location.href="MemberBoardList.Lolz?id=${sessionScope.id}"'class="button small">내가 쓴 글/댓글</button> 
  <!--<button type="button" class="button small" onclick="get()">내 티어확인</button>  -->
     <br>
  	
