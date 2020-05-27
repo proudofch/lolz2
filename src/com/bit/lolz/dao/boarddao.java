@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import com.bit.lolz.dto.BoardDto;
@@ -213,7 +214,7 @@ public class boarddao {
 		
 		try {
 			conn = ds.getConnection();
-			String sql = "SELECT BOARDNUM, ID, BOARDTYPE, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDHIT, BOARDFILE, BOARDREF, BOARDSTEP, BOARDDEPTH"
+			String sql = "SELECT BOARDNUM, ID, BOARDTYPE, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDHIT, NVL(BOARDFILE, 'NONE') BOARDFILE, BOARDREF, BOARDSTEP, BOARDDEPTH"
 					   + " FROM BOARD WHERE BOARDNUM = ?"; //FROM 앞에 띄어쓰기 없으면 오류 발생 (***QUERY 작성 시 띄어쓰기 주의***)
 			
 			pstmt = conn.prepareStatement(sql);
@@ -286,6 +287,54 @@ public class boarddao {
 		
 		return flag;
 		
+	}
+	
+	
+	//게시글 수정 - 수정할 게시글 내용 불러오기
+	public BoardDto getEditContent(int boardnum) {
+		return this.boardRead(boardnum);
+	}
+	
+	
+	//게시글 수정 OK
+	public int editOk(BoardDto boarddata) {
+		
+		int resultRow = 0;
+		
+		//title, content, file 수정할 수 있음
+		try {
+			conn = ds.getConnection();
+			
+			String select_sql = "SELECT BOARDNUM FROM BOARD WHERE BOARDNUM = ?";
+			String update_sql = "UPDATE BOARD SET BOARDTITLE = ?, BOARDCONTENT = ?, BOARDFILE = ? WHERE BOARDNUM = ?";
+			
+			int boardnum = boarddata.getBoardnum();
+			
+			pstmt = conn.prepareStatement(select_sql);
+			pstmt.setInt(1, boardnum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pstmt = conn.prepareStatement(update_sql);
+				pstmt.setString(1, boarddata.getBoardtitle());
+				pstmt.setString(2, boarddata.getBoardcontent());
+				pstmt.setString(3, boarddata.getBoardfile());
+				pstmt.setInt(4, boardnum); //이중으로 할 필요 없을 거 같은데...
+				
+				resultRow = pstmt.executeUpdate();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("editOk() 문제 발생");
+			
+		} finally {
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if(conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return resultRow;
 	}
 	
 }

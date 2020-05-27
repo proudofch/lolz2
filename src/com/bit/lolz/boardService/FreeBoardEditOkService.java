@@ -12,17 +12,17 @@ import com.bit.lolz.dto.BoardDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class FreeBoardWriteOkService implements Action {
+public class FreeBoardEditOkService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		String uploadPath = request.getServletContext().getRealPath("upload");
-			System.out.println("uploadpath: "+uploadPath);
+		System.out.println("uploadpath: "+uploadPath);
 		int size = 1024*1024*10; //파일 크기 설정
 		
 		ActionForward forward = null;
-
+	
 		try {
 			
 			MultipartRequest multi = new MultipartRequest(
@@ -35,31 +35,28 @@ public class FreeBoardWriteOkService implements Action {
 			
 			Enumeration fileNames = multi.getFileNames();
 			String file = (String)fileNames.nextElement();
-			String dbFileName = multi.getFilesystemName(file); //클라이언트가 올린 파일이 중복일 경우 숫자 붙는 파일명
-				System.out.println("dbFileName: "+dbFileName);
-			String originalName = multi.getOriginalFileName(file); //클라이언트가 올리려 한 실제 파일명
-				System.out.println("originalName: "+originalName);
+			String dbFileName = multi.getFilesystemName(file);
+			String originalName = multi.getOriginalFileName(file);
 			
 			BoardDto boarddata = new BoardDto();
-			boarddata.setBoardtitle((multi.getParameter("title")));
-			boarddata.setBoardcontent(multi.getParameter("content"));
-			boarddata.setBoardfile(dbFileName);
-			
+			boarddata.setBoardtitle((multi.getParameter("boardtitle")));
+			boarddata.setBoardcontent(multi.getParameter("boardcontent"));
+			boarddata.setBoardfile(multi.getParameter("boardfile"));
 			boarddata.setId(multi.getParameter("id"));
-				System.out.println("id: "+boarddata.getId());
+			boarddata.setBoardnum(Integer.parseInt(multi.getParameter("boardnum")));
 			
 			boarddao dao = new boarddao();
-			int result = dao.writeOk(boarddata, 1);
+			int result = dao.editOk(boarddata);
 			
 			String msg = "";
 			String url = "";
 			
 			if(result > 0) {
-				msg = "글쓰기 성공!";
-				url = "FreeBoardList.Board"; //보통 성공하면 쓴 글 상세보기로 감... 나중에 고치기
+				msg = "수정 성공!";
+				url = "FreeBoardList.Board"; //이것도 상세보기로 가야겟지...욤...
 			} else {
-				msg = "글쓰기 실패";
-				url = "FreeBoardWrite.Board"; //실패하면 목록으로 가고? 아님 글 쓰던 상태로 가던가? 훔 ... 이것도 나중에 수정
+				msg = "수정 실패";
+				url = "FreeBoardWrite.Board"; //목록?? 글쓰기 상태로 다시?? 
 			}
 			
 			request.setAttribute("board_msg", msg);
@@ -70,12 +67,13 @@ public class FreeBoardWriteOkService implements Action {
 			forward.setPath("/WEB-INF/views/redirect.jsp");
 			
 		} catch (Exception e) {
-			System.out.println("자유게시판 글쓰기ok에 문제 발생");
+			System.out.println("글 수정하기에 문제 발생");
 			e.printStackTrace();
 		}
 		
 		return forward;
-
-	}
+	
+		}
+		
 
 }
