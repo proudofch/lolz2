@@ -49,6 +49,7 @@ public class FrontMemberController extends HttpServlet {
             forward.setPath("/WEB-INF/views/login/login.jsp");
 		}
 		 else if(url_Command.equals("/LoginOk.Lolz")) { //로그인 처리
+			 System.out.println("loginok 탐");
 			 action = new LoginOkService();
 			 forward = action.execute(request, response);
 		 }

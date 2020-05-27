@@ -29,7 +29,7 @@
 
 </head>
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
-<body>
+<body onload="get();">
 <c:set var="member" value="${requestScope.memberdata}"></c:set>
 <div id="main" class="wrapper style1">
    <div class="container">
@@ -43,6 +43,7 @@
 <button type="button" class="button small">내가 쓴 글/댓글</button>
  <button type="button" class="button small" onclick="get()">내 티어확인</button>
  
+    	<c:if test="${sessionScope.summonerId==null }">소환사ID없으니까 img띄우면됨</c:if>
     <div id="display">
 	<div id="donutdiv" style="height: 150px;width: 50%">
 	<table>
@@ -54,6 +55,7 @@
 	</div>
 	</div>
 	
+	
  		</ul>
 	</div>
 </div>
@@ -63,6 +65,7 @@
  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
  <script type="text/javascript">
+
  function get() {
 	var id = '${sessionScope.summonerId}';
 	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
