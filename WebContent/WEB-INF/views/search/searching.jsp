@@ -34,10 +34,18 @@ var mostthreeimg;
 <body>
 <div id="main" class="wrapper style1">
 	<div class="container">
+	<div class="row gtr-150">
+	<div class="col-12 col-12-medium">
 	<input type="text" id="sname">
-	<input type="button" class="button primary small" value="search" onclick="get()">
+	<input type="button" class="button primary small" value="search" onclick="checkSummoner()">
 	<div id="display"></div>
-	<div id="donutdiv" style="height: 150px;width: 50%"></div>
+	</div>
+	</div>
+	<div class="container">
+		<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
+		<div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
+	</div>
+	<div class="col-12 col-12-medium">
 	<table>
 	<tr>
 	<td>
@@ -49,11 +57,36 @@ var mostthreeimg;
 	</tr>
 	</table>
 	</div>
+	
 	</div>
+	</div>
+	
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
 <script type="text/javascript">
+function checkSummoner(){
+	var id = document.getElementById("sname").value;
+	
+	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+		+id+"?api_key=" + apiKey;
+	
+	  $.ajax({
+          url: sohwan,
+          type: "GET",
+          processData: false, 
+          contentType: false,  
+          data: null, 
+          dataType:'json',
+          error : function(error) {
+            alert("없는 소환사");
+          },
+          success: function (data) {
+        	get();
+          }
+        })
+	};
+
 
 function get() {
 	var id = document.getElementById("sname").value;
@@ -89,22 +122,36 @@ function get() {
 						mostthreeimg = (data[0])[tmostchamp].engname;
 						//console.log(mostone, mosttwo, mostthree);
 						$.getJSON(leagueInfo, function(data, textStatus, req) {
+							
+							if(data == ""){
+								alert('랭크게임을 하지 않은 유저입니다.');
+							}
 							queuetype = data[0].queueType;
 							win = data[0].wins;
 				            lose = data[0].losses;
 				            winrate = ((data[0].wins/(data[0].wins+data[0].losses))*100).toFixed(1)+"%";
-				            //console.log(win, lose, winrate);
-							//console.log(mostoneimg, mosttwoimg, mostthreeimg);
+				            
+				            if(data[1]==null){
+				            	var win1 =null;
+				            	var lose1 = null;
+				            	
+				            }else if(data[1].wins!=null ){
+				            	var win1 = data[1].wins
+				            	var lose1 = data[1].losses
+				            }
+				           
+				            
 							
-							
+							//테이블 그리기
 							
 							$.each(data, function(index, obj){
-									//console.log(obj);
+									console.log(obj);
 									if(obj.queueType==="RANKED_SOLO_5x5"){
 										queuetype="솔로랭크";
 									}else{
 										queuetype="자유랭크";
 									}
+									
 									//console.log("queuetype: "+queuetype);
 									table += "<tr><td>";
 									table += obj.summonerName;								
@@ -136,22 +183,27 @@ function get() {
 							table += "</table>";
 				            $('#display').empty();
 				            $('#display').append(table);
-				            /*
-							datalist.nickname = data[0].summonerName;
-							datalist.win = data[0].wins;
-							datalist.lose = data[0].losses;
-							datalist.winrate = (data[0].wins/(data[0].wins+data[0].losses))*100+"%";
-							datalist.tierinfo = data[0].tier;
-							testlist.push(datalist);
-							jsonData = JSON.stringify(testlist);
-							console.log(jsonData);
-							*/
+				           
+							
+							//도넛그리기
 				            $('#donutdiv').empty();
+							$('#donutdiv2').empty();
+				            if(win1!=null){
+				        	$('#donutdiv2').append(Morris.Donut({
+				        		element: 'donutdiv2',     //그래프가 들어갈 위치의 ID를 적어주세요
+				        		data: [                                     //그래프에 들어갈 data를 적어주세요
+				        		{label: '승', value: win1},
+				        		{label: '패', value: lose1},
+				        		],
+				        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
+				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
+				        		}));
+				            }
 				        	$('#donutdiv').append( Morris.Donut({
 				        		element: 'donutdiv',     //그래프가 들어갈 위치의 ID를 적어주세요
 				        		data: [                                     //그래프에 들어갈 data를 적어주세요
-				        		{label: '승', value: win },
-				        		{label: '패', value: lose },
+				        		{label: '승', value: win, },
+				        		{label: '패', value: lose},
 				        		],
 				        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
 				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
@@ -162,7 +214,7 @@ function get() {
 						});
 				});
 			});
-	});
+	}); //json 끝나는곳
 }	
 
 
