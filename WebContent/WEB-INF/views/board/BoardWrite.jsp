@@ -5,27 +5,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>자유게시판 글쓰기</title>
-	
+    
 	<style type="text/css">
 		h2 {
 			margin-top: 100px;
 			padding-top: 100px;
 		}
+		
+		#summernote_wrapper {
+			background-color: white;
+			opacity: 0.95;
+		}
 	</style>
 	
+	
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		
 		function check() {
 	
 			if (!board_write.title.value) {
-				alert('제목을 입력하세요');
+				swal("안 돼요!", "제목을 입력하세요!", "warning"); /* https://sweetalert.js.org/guides/ */
 				board_write.title.focus();
 				return false;
 			}
 			
 			if (!board_write.content.value) {
-				alert('내용을 입력하세요');
+				swal("안 돼요!", "내용을 입력하세요!", "warning");
 				board_write.content.focus();
 				return false;
 			}
@@ -52,7 +59,10 @@
 				<input type="text" name="title" id="title" placeholder="제목을 입력하세요">
 				<br>
 				내용<br>
-				<textarea name="content" id="content" placeholder="내용을 입력하세요" rows="6"></textarea>
+				<!-- <textarea name="content" id="content"  rows="6"></textarea> -->
+				<div id="summernote_wrapper">
+					<textarea rows="10" cols="60" name="content" id="summernote" placeholder="내용을 입력하세요"></textarea>
+				</div>
 				파일<br>
 				<input type="file" id="file" name="file">
 				<br>
@@ -64,5 +74,27 @@
 		</div> <!-- container end -->
 	</div> <!-- wrapper end -->
 </body>
+ 
+ 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+ 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+	<script>
+	console.log($('#summernote'));
 
+	$('#summernote').summernote({
+		placeholder: 'Hello stand alone ui',
+		tabsize: 2,
+		height: 500,
+		/* focus: true, */
+		toolbar: [
+					['style', ['style']],
+					['font', ['bold', 'underline', 'clear']],
+					['color', ['color']],
+					['para', ['ul', 'ol', 'paragraph']],
+					['table', ['table']],
+					['insert', ['link', 'picture', 'video']],
+					['view', ['fullscreen', 'codeview', 'help']]
+				]
+	});
+    </script>
 </html>

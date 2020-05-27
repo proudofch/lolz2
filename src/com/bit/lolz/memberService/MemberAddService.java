@@ -32,7 +32,7 @@ public class MemberAddService implements Action {
 		
 		if(result > 0) {
 			msg = "회원가입이 완료되었습니다.";
-			url = "Index.Lolz";
+			url = "Login.Lolz";
 		} else {
 			msg = "등록 실패";
 			url = "/MemberAdd.Lolz";

@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
  <script type="text/javascript">
  var jsonData;
- var apiKey = "RGAPI-bee1705e-d26c-4b7e-9f6a-534cf76117b4";
+ var apiKey = "RGAPI-64ae9cf5-d437-43fc-964d-34107d0617ac";
  var testlist = new Array();
  var datalist = new Object();
  var win = 0;
@@ -25,39 +25,45 @@
  var mosttwoimg;
  var mostthreeimg;
  </script>
+<style>
+ div .container{
+ text-align:center;
+ }
 
+</style>
 
 </head>
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
 <body onload="get();">
 <c:set var="member" value="${requestScope.memberdata}"></c:set>
+<div id="all">
 <div id="main" class="wrapper style1">
    <div class="container">
      	<header class="major">
 				<h2>마이 페이지</h2>		
 		</header>
-		<ul>
-		<li>${sessionScope.id}님의 </li>
-		<li>소환사 ${sessionScope.summonerId} 의 정보입니다.</li>
+		
+		<h5>${sessionScope.id}님의
+		소환사 ${sessionScope.summonerId} 의 정보입니다.</h5>
+    <c:if test="${sessionScope.summonerId==null }">
+    <img src="images/icon.png" width="250" height="250">
+    <h3>소환사 아이디가 없으시군요!</h3>
+    </c:if>
 <button type="button" onclick='location.href="prvMemberEdit.Lolz?id=${sessionScope.id}"'class="button small">내 정보 수정</button>
-<button type="button" class="button small">내가 쓴 글/댓글</button>
- <button type="button" class="button small" onclick="get()">내 티어확인</button>
- 
-    	<c:if test="${sessionScope.summonerId==null }">소환사ID없으니까 img띄우면됨</c:if>
+<button type="button" class="button small">내가 쓴 글/댓글</button> 
+ <!--<button type="button" class="button small" onclick="get()">내 티어확인</button>  -->
+    <br>
+ 	
+   		 
     <div id="display">
 	<div id="donutdiv" style="height: 150px;width: 50%">
-	<table>
-	<tr>
-	<td>
-	</td>
-	</tr>
-	</table>
 	</div>
 	</div>
 	
 	
- 		</ul>
+ 		
 	</div>
+</div>
 </div>
 </body>
 
