@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script type="text/javascript">
 var jsonData;
-var apiKey = "RGAPI-bee1705e-d26c-4b7e-9f6a-534cf76117b4";
+var apiKey = "RGAPI-e8891101-f3e1-458e-87bc-0d2698d337a7";
 var testlist = new Array();
 var datalist = new Object();
 var win = 0;
@@ -59,6 +59,7 @@ function get() {
 	var id = document.getElementById("sname").value;
 	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
 		+id+"?api_key=" + apiKey;
+	var queuetype;
 	var mostchamp;
 	var smostchamp;
 	var tmostchamp;
@@ -66,7 +67,7 @@ function get() {
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
 		let table = "<table>"
-	 			+"<tr><th>소환사 이름</th><th>티어</th><th>랭크</th><th>승</th>"
+	 			+"<tr><th>소환사 이름</th><th>큐 타입</th><th>티어</th><th>랭크</th><th>승</th>"
 	 			+"<th>패</th><th>승률</th><th>모스트 챔피언</th></tr>";
 		var leagueInfo = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"
 		+data.id+"?api_key=" + apiKey;
@@ -88,18 +89,27 @@ function get() {
 						mostthreeimg = (data[0])[tmostchamp].engname;
 						//console.log(mostone, mosttwo, mostthree);
 						$.getJSON(leagueInfo, function(data, textStatus, req) {
+							queuetype = data[0].queueType;
 							win = data[0].wins;
 				            lose = data[0].losses;
 				            winrate = ((data[0].wins/(data[0].wins+data[0].losses))*100).toFixed(1)+"%";
 				            //console.log(win, lose, winrate);
-							console.log(mostoneimg, mosttwoimg, mostthreeimg);
+							//console.log(mostoneimg, mosttwoimg, mostthreeimg);
 							
 							
 							
 							$.each(data, function(index, obj){
-									//console.log(data);
+									//console.log(obj);
+									if(obj.queueType==="RANKED_SOLO_5x5"){
+										queuetype="솔로랭크";
+									}else{
+										queuetype="자유랭크";
+									}
+									//console.log("queuetype: "+queuetype);
 									table += "<tr><td>";
 									table += obj.summonerName;								
+									table += "</td><td>";
+									table += queuetype;
 									table += "</td><td>";
 									table += obj.tier;
 									table += "<img src='images/tier/"+obj.tier+".png' style=\"width:50px; height: 50px\"/>"

@@ -103,6 +103,34 @@
              );
           };
     });  
+	  $('#message2').click(function(){
+          if($('#summonerId').val() == ""){
+             alert("아이디를 입력하세요");
+             $('#id').focus();
+          }else{
+          $.ajax(
+                {   
+                   url:"IdCheck.Lolz",  
+                   data:{id:$('#id').val()},
+                   dataType:"html",
+                   success:function(responsedata){
+                      console.log(">" + responsedata + "<");
+                      if(responsedata == "true"){
+                         alert("사용 가능한 아이디 입니다.");
+                         $('#pwd').focus();
+                      }else{
+                         alert("이미 존재하는 아이디 입니다.");
+                         $('#id').val("");
+                         $('#id').focus();
+                      }
+                   },
+                   error:function(){
+                      console.log("errrrrrrr");
+                   }
+                }      
+             );
+          };
+    });  
 	    
 	 
 	  
@@ -171,6 +199,7 @@
   		<div class="form-group">
             <label for="summonerId">소환사 아이디</label>
             <input type="text" class="form-control" id="summonerId" name="summonerId">
+            <input type="button" value="유무 확인" id="message2"> 
          </div>
  
 
