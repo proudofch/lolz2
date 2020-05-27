@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
-import com.bit.lolz.boardService.FreeBoardList;
-import com.bit.lolz.boardService.FreeBoardWriteOk;
 
 @WebServlet("*.Search")
 public class FrontSearchController extends HttpServlet {
