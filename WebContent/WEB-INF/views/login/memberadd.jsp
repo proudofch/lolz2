@@ -18,7 +18,21 @@
    
 <!-- 위는 기존 css -->
    
+   <style>
+   div #textform{
+ 
+   margin-bottom:90px;}
+   
+	div #center{
+	text-align:center;
+	}
+   
+   </style>
  <script type="text/javascript">
+ var apiKey = "RGAPI-e8891101-f3e1-458e-87bc-0d2698d337a7";
+ function myFunction(){
+		 location.href="SummonerIdCheck.Lolz";
+ }
   function validate(){
 	  var re = /^[a-zA-Z0-9]{4,12}$/;
 	  var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -72,7 +86,32 @@
       what.focus();
       return false;
   }
-  
+  function checkSummoner(){
+		 if($('#summonerId').val() == ""){
+	         alert("소환사 아이디를 입력하세요");
+	         $('#summonerId').focus();
+	      }else{
+				var id = document.getElementById("summonerId").value;
+				
+				var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+					+id+"?api_key=" + apiKey;
+				
+				  $.ajax({
+			          url: sohwan,
+			          type: "GET",
+			          processData: false, 
+			          contentType: false,  
+			          data: null, 
+			          dataType:'json',
+			          error : function(error) {
+			            alert("존재하지 않는 소환사 아이디 입니다.");
+			          },
+			          success: function (data) {
+			        	  alert("존재하는 소환사 아이디 입니다.");
+			          }
+			        })
+	      }
+							};
   $(document).ready(function(){
 	 
 	  $('#message').click(function(){
@@ -105,23 +144,22 @@
     });  
 	  $('#message2').click(function(){
           if($('#summonerId').val() == ""){
-             alert("아이디를 입력하세요");
-             $('#id').focus();
+             alert("소환사 아이디를 입력하세요");
+             $('#summonerId').focus();
           }else{
           $.ajax(
                 {   
-                   url:"IdCheck.Lolz",  
-                   data:{id:$('#id').val()},
+                   url:"/WEB-INF/views/search/summoneridsearch.jsp",  
+                   data:{summonerId:$('#summonerId').val()},
                    dataType:"html",
                    success:function(responsedata){
                       console.log(">" + responsedata + "<");
                       if(responsedata == "true"){
-                         alert("사용 가능한 아이디 입니다.");
-                         $('#pwd').focus();
+                         alert("존재하는 소환사 아이디입니다.");
                       }else{
-                         alert("이미 존재하는 아이디 입니다.");
-                         $('#id').val("");
-                         $('#id').focus();
+                         alert("존재하지 않는 소환사 아이디 입니다.");
+                         $('#summonerId').val("");
+                         $('#summonerId').focus();
                       }
                    },
                    error:function(){
@@ -131,7 +169,8 @@
              );
           };
     });  
-	    
+
+
 	 
 	  
 	  $('#bd').datepicker(
@@ -172,40 +211,72 @@
 		</header>
 
       <form name="memberadd" action="MemberAddOk.Lolz" method="post" onsubmit="return validate();"> 
-
-         <div class="form-group">
-            <label for="id">아이디</label>
-            <input type="text" class="form-control" id="id" name="id" maxlength="20">
-            <input type="button" value="중복 확인" id="message">  
-         </div>
-         <div class="form-group">
+		 
+	<div class="row gtr-50 gtr-uniform" id="textform">
+		 <div class="col-2 col-12-xsmall">
+           <label for="id">아이디</label>
+           </div>
+		      <div class="col-2 col-12-xsmall">
+           <input type="text" class="form-control" id="id" name="id" maxlength="20">
+               </div>
+              <div class="col-8 col-12-xsmall">
+           <input type="button" class="button primary small" value="중복 확인" id="message">  
+              </div>
+         
+      
+         <div class="col-2 col-12-xsmall">
             <label for="pwd">패스워드</label>
+            </div>
+             <div class="col-5 col-12-xsmall">
             <input type="password" maxlength="20" class="form-control" id="pwd" name="pwd">
          </div>
-         <div class="form-group">
+         <div class="col-5 col-12-xsmall">  
+         </div>
+         
+         <div class="col-2 col-12-xsmall">
             <label for="pwdCheck">패스워드 확인</label>
+            </div>
+            <div class="col-5 col-12-xsmall">
             <input type="password" maxlength="20" class="form-control" id="pwdCheck" name="pwdCheck">
          </div>
+           <div class="col-5 col-12-xsmall">  
+         </div>
 
-         <div class="form-group">
+        <div class="col-2 col-12-xsmall">
             <label for="email">이메일</label>
-            <input type="text" class="form-control" id="email" name="email">
          </div>
-         <div class="form-group">
+           <div class="col-5 col-12-xsmall">
+            <input type="text" class="form-control" id="email" name="email">
+            </div>
+           <div class="col-5 col-12-xsmall">  
+         </div>
+         
+         <div class="col-2 col-12-xsmall">
             <label for="bd">생일</label>
-             <input type="text" class="form-control" id="bd" name="bd">          
+         </div>
+          <div class="col-5 col-12-xsmall">
+             <input type="text" class="form-control" id="bd" name="bd">      
+             </div>    
+           <div class="col-5 col-12-xsmall">  
          </div>
 
-  		<div class="form-group">
+  		 <div class="col-2 col-12-xsmall">
             <label for="summonerId">소환사 아이디</label>
+               </div>
+		      <div class="col-2 col-12-xsmall">
             <input type="text" class="form-control" id="summonerId" name="summonerId">
-            <input type="button" value="유무 확인" id="message2"> 
+              </div>
+              <div class="col-8 col-12-xsmall">
+        <!--      <input type="button" class="button primary small" value="유무 확인" "myFunction()"> --> 
+       <input type="button" class="button primary small" value="유무 확인" onclick="checkSummoner()">  
          </div>
  
-
+ 
+    </div>
+			 <div id="center">
+         <input type="reset" class="button small" value="입력취소">
          <input type="submit" class="button primary small" value="가입완료" >
-         <input type="reset" class="button small" value="입력취소"> 
-      
+         	</div> 
       </form>
    </div>
  </div>

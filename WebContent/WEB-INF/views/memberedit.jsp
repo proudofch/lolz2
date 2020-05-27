@@ -18,6 +18,7 @@
  }
  
  function myFunction(){
+	 
 	 var r=confirm("정말 탈퇴하시겠습니까?");
 	 if(r==true){
 		 location.href='MemberDelete.Lolz?id=${sessionScope.id}';
