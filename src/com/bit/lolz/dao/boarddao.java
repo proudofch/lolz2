@@ -49,8 +49,8 @@ public class boarddao {
 		try {
 			conn = ds.getConnection();
 			String sql = "insert into board"
-					   + "(boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile, boardref)"
-					   + "values(boardseq.nextval, ?, ?, ?, ?, sysdate, 0, ?, ?)";
+					   + "(boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile, boardref, boardnotice)"
+					   + "values(boardseq.nextval, ?, ?, ?, ?, sysdate, 0, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, boarddata.getId());
@@ -58,6 +58,7 @@ public class boarddao {
 			pstmt.setString(3, boarddata.getBoardtitle());
 			pstmt.setString(4, boarddata.getBoardcontent());
 			pstmt.setString(5, boarddata.getBoardfile());
+			pstmt.setString(7, boarddata.getBoardnotice());
 
 			int maxBoardRef = getMaxBoardRef(conn);
 			int boardRef = maxBoardRef + 1;
@@ -150,8 +151,8 @@ public class boarddao {
 
 			String sql = "SELECT * FROM"
 					   + "( SELECT ROWNUM rn, boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile,"
-					   + " boardref, boardstep, boarddepth"
-					   + " FROM ( SELECT * FROM board where boardtype = ? ORDER BY boardref DESC, boardstep ASC )"
+					   + " boardref, boardstep, boarddepth, boardnotice"
+					   + " FROM ( SELECT * FROM board where boardtype = ? ORDER BY boardnotice DESC, boardref DESC, boardstep ASC )"
 					   + ") WHERE rn BETWEEN ? AND ?";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -183,9 +184,10 @@ public class boarddao {
 					int boardref = rs.getInt("BOARDREF");
 					int boardstep = rs.getInt("BOARDSTEP");
 					int boarddepth = rs.getInt("BOARDDEPTH");
+					String boardnotice = rs.getString("BOARDNOTICE");
 					
 					BoardDto dto = new BoardDto(boardnum, id, boardtype, boardtitle, boardcontent,
-							boarddate, boardhit, boardfile, boardref, boardstep, boarddepth);
+							boarddate, boardhit, boardfile, boardref, boardstep, boarddepth, boardnotice);
 					
 					list.add(dto);
 					

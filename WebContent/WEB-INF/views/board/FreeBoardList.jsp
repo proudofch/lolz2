@@ -41,16 +41,34 @@
 						<tr>
 							<td>${list.boardnum}</td>
 							<td>
-								<a href="FreeBoardRead.Board?boardnum=${list.boardnum}&cp=${requestScope.currentpage}&ps=${requestScope.pagesize}">
-									<c:choose>
-										<c:when test="${list.boardtitle != null && fn:length(list.boardtitle) > 30}">
-		                            		${fn:substring(list.boardtitle, 0, 30)}...
-		                        		</c:when>
-										<c:otherwise>
-		                                  	${list.boardtitle}
-		                               </c:otherwise>
-									</c:choose>
-								</a>
+								<c:choose>
+									<c:when test="${list.boardnotice == 'Y'}">
+										[공지사항]&nbsp;&nbsp;
+										<a href="FreeBoardRead.Board?boardnum=${list.boardnum}&cp=${requestScope.currentpage}&ps=${requestScope.pagesize}">
+										<c:choose>
+											<c:when test="${list.boardtitle != null && fn:length(list.boardtitle) > 30}">
+			                            		${fn:substring(list.boardtitle, 0, 30)}...
+			                        		</c:when>
+											<c:otherwise>
+			                                  	${list.boardtitle}
+			                               </c:otherwise>
+										</c:choose>
+										</a>
+									</c:when>
+									
+									<c:otherwise>
+										<a href="FreeBoardRead.Board?boardnum=${list.boardnum}&cp=${requestScope.currentpage}&ps=${requestScope.pagesize}">
+										<c:choose>
+											<c:when test="${list.boardtitle != null && fn:length(list.boardtitle) > 30}">
+			                            		${fn:substring(list.boardtitle, 0, 30)}...
+			                        		</c:when>
+											<c:otherwise>
+			                                  	${list.boardtitle}
+			                               </c:otherwise>
+										</c:choose>
+										</a>
+									</c:otherwise>
+								</c:choose>
 							</td>
 							<!--<td><a href="">${list.boardtitle}</a></td> <i class="fas fa-caret-right"></i>  i 앞에 &nbsp; 붙이기 -->
 							<td>${list.id}</td>
