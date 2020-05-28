@@ -42,6 +42,52 @@
 		          }
 		        })
       }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 $.each(data, function(index, obj){
+			if(obj.tier=="IRON"){
+				score[index]+=0;
+			}else if(obj.tier=="BRONZE"){
+				score[index]+=4;									
+			}else if(obj.tier=="SILVER"){
+				score[index]+=8;									
+			}else if(obj.tier=="GOLD"){
+				score[index]+=12;									
+			}else if(obj.tier=="PLATINUM"){
+				score[index]+=16;									
+			}else if(obj.tier=="DIAMOND"){
+				score[index]+=20;									
+			}else if(obj.tier=="MASTER"){
+				score[index]+=24;									
+			}else if(obj.tier=="GRANDMASTER"){
+				score[index]+=25;								
+			}else if(obj.tier=="CHALLENGER"){
+				score[index]+=26;									
+			}
+			try{
+				console.log("이게나오는거: "+obj.rank);
+				if(obj.rank=="IV"){	
+					score[index] += 0;
+				}else if(obj.rank=="III"){
+					score[index] +=1 ;	
+				}else if(obj.rank=="II"){
+					score[index] += 2;		
+				}else if(obj.rank=="I"){
+					score[index] += 3;	
+				}else{
+					console.log("rank아무거도 안타지롱");
+				}
+			}catch(e){
+				console.log(e);
+				console.log("score, rank에러")
+			}
+		});
+		console.log("유저의 스코어는 "+score[0]);
 						};
  
  function myFunction(){

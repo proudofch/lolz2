@@ -198,8 +198,6 @@ function get() {
 							//스코어 메기기
 							 
 							$.each(data, function(index, obj){
-								console.log(score[index]);
-								
 								if(obj.tier=="IRON"){
 									score[index]+=0;
 								}else if(obj.tier=="BRONZE"){
@@ -219,35 +217,26 @@ function get() {
 								}else if(obj.tier=="CHALLENGER"){
 									score[index]+=26;									
 								}
-								console.log(score[index]);
-								
-								
 								try{
 									console.log("이게나오는거: "+obj.rank);
 									if(obj.rank=="IV"){	
 										score[index] += 0;
-										console.log(score[index]);
 									}else if(obj.rank=="III"){
 										score[index] +=1 ;	
-										console.log(score[index]);
 									}else if(obj.rank=="II"){
 										score[index] += 2;		
-										console.log(score[index]);
 									}else if(obj.rank=="I"){
 										score[index] += 3;	
-										console.log(score[index]);
 									}else{
 										console.log("rank아무거도 안타지롱");
 									}
-									
 								}catch(e){
 									console.log(e);
 									console.log("score, rank에러")
 								}
-								
 							});
-							console.log(score[0]);
-							console.log(score[1]);
+							console.log("유저의 스코어는 "+score[0]);
+						
 							
 				            $('#display').empty();
 				            $('#display').append(table);

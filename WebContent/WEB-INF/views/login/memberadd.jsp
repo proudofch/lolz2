@@ -29,6 +29,43 @@
    </style>
  <script type="text/javascript">
  var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+ function checkSummoner(){
+		 if($('#summonerId').val() == ""){
+	         alert("소환사 아이디를 입력하세요");
+	         $('#summonerId').focus();
+	      }else{
+				var id = document.getElementById("summonerId").value;
+				var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+					+id+"?api_key=" + apiKey;
+				
+				  $.ajax({
+			          url: sohwan,
+			          type: "GET",
+			          processData: false, 
+			          contentType: false,  
+			          data: null, 
+			          dataType:'json',
+			          error : function(error) {
+			            alert("존재하지 않는 소환사 아이디 입니다.");
+			          },
+			          success: function (data) {
+			        	  alert("존재하는 소환사 아이디 입니다.");
+			          }
+			        })
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+	      }
+							};
  function myFunction(){
 		 location.href="SummonerIdCheck.Lolz";
  }
@@ -85,32 +122,7 @@
       what.focus();
       return false;
   }
-  function checkSummoner(){
-		 if($('#summonerId').val() == ""){
-	         alert("소환사 아이디를 입력하세요");
-	         $('#summonerId').focus();
-	      }else{
-				var id = document.getElementById("summonerId").value;
-				
-				var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
-					+id+"?api_key=" + apiKey;
-				
-				  $.ajax({
-			          url: sohwan,
-			          type: "GET",
-			          processData: false, 
-			          contentType: false,  
-			          data: null, 
-			          dataType:'json',
-			          error : function(error) {
-			            alert("존재하지 않는 소환사 아이디 입니다.");
-			          },
-			          success: function (data) {
-			        	  alert("존재하는 소환사 아이디 입니다.");
-			          }
-			        })
-	      }
-							};
+  
   $(document).ready(function(){
 	 
 	  $('#message').click(function(){
