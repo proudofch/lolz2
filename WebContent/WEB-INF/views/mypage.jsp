@@ -144,26 +144,7 @@
 							table += "</table>";
 				            $('#display').empty();
 				            $('#display').append(table);
-				            /*
-							datalist.nickname = data[0].summonerName;
-							datalist.win = data[0].wins;
-							datalist.lose = data[0].losses;
-							datalist.winrate = (data[0].wins/(data[0].wins+data[0].losses))*100+"%";
-							datalist.tierinfo = data[0].tier;
-							testlist.push(datalist);
-							jsonData = JSON.stringify(testlist);
-							console.log(jsonData);
-							*/
-				            $('#donutdiv').empty();
-				        	$('#donutdiv').append( Morris.Donut({
-				        		element: 'donutdiv',     //그래프가 들어갈 위치의 ID를 적어주세요
-				        		data: [                                     //그래프에 들어갈 data를 적어주세요
-				        		{label: '승', value: win },
-				        		{label: '패', value: lose },
-				        		],
-				        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
-				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
-				        		}));
+				 
 						});
 				});
 			});

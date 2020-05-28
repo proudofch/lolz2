@@ -38,23 +38,25 @@
 					<li><a href="Search.Search">Search</a></li>
 						
 		
-            	<c:if test="${sessionScope.id=='admin' }">
-					<li><a href="MemberList.Lolz">Member List</a></li>            	
-            	</c:if>
+            	
 				 <c:choose>
             	<c:when test="${sessionScope.id == null }">
 		            <li><a href="Login.Lolz">Sign In</a></li>
 					<li><a href="MemberAdd.Lolz" class="button primary">Sign Up</a></li>
             	</c:when>
             	<c:otherwise>
-		            <li><a href="Logout.Lolz">Sign out</a></li>         		
-					<li><a href="MyPage.Lolz">My page</a></li>
+	            		<c:if test="${sessionScope.id=='admin' }">
+						<li><a href="MemberList.Lolz">Member List</a></li>            	
+	            		</c:if>
+		            <li><a href="Logout.Lolz">Sign out</a></li>   
+		        	    <c:if test="${sessionScope.id!='admin' }">      		
+						<li><a href="MyPage.Lolz">My page</a></li>
+						</c:if>
+	            	<li><a href="FreeBoardWrite.Board" >글쓰기</a></li>
             	</c:otherwise>
             </c:choose>
 			
-				<!-- 	<li><a href="MemberEdit.Lolz">Settings</a></li> -->
-			
-					<li><a href="FreeBoardWrite.Board" >글쓰기</a></li>
+					
 					<li><a href="FreeBoardList.Board" >게시판목록</a></li>				
      
 							
