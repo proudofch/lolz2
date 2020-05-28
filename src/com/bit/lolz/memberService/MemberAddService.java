@@ -21,11 +21,11 @@ public class MemberAddService implements Action {
 		String bd = request.getParameter("bd");
 		String summonerId = request.getParameter("summonerId");
 		String pwd = request.getParameter("pwd");
-   
+		String summonerScore = request.getParameter("summonerScore");
 
 		
 		MemberDao dao = new MemberDao(); //POINT
-		int result = dao.insertMember(id,pwd,email, bd, summonerId);
+		int result = dao.insertMember(id,pwd,email, bd, summonerId,summonerScore);
 		
 		String msg = "";
 		String url = "";

@@ -73,7 +73,7 @@ public class MemberDao {
 	   }
 	  
 	//멤버 추가
-		public int insertMember(String id, String pwd, String email, String bd, String summonerId) {
+		public int insertMember(String id, String pwd, String email, String bd, String summonerId,String summonerScore ) {
 			Connection conn = null;
 			int resultrow = 0;
 			PreparedStatement pstmt = null;
@@ -81,13 +81,15 @@ public class MemberDao {
 			try {
 					conn= ConnectionHelper.getConnection("oracle");//추가
 					
-					String sql = "insert into Member(id,pwd,email,bd,summonerId) values(?,?,?,?,?)";
+					String sql = "insert into Member(id,pwd,email,bd,summonerId,summonerscore) values(?,?,?,?,?,?)";
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.setString(2, pwd);
 					pstmt.setString(3, email);
 					pstmt.setString(4, bd);
 					pstmt.setString(5, summonerId);
+					pstmt.setString(6, summonerScore);
+					
 					
 					
 					
@@ -262,7 +264,8 @@ public class MemberDao {
 		Connection conn = null;
 		int resultrow = 0;
 		PreparedStatement pstmt = null;
-		String sql = "update member set pwd=?, email=?, summonerId=? where id=?";
+		String sql = "update member set pwd=?, email=?, summonerId=?, summonerScore=? where id=?";
+		
 				
 		try {
 			
@@ -271,10 +274,9 @@ public class MemberDao {
 			pstmt.setString(1, m.getPwd());
 			pstmt.setString(2, m.getEmail());
 			pstmt.setString(3, m.getSummonerId());
-			pstmt.setString(4, m.getId());
-			
-System.out.println("Dao의updateMember함수의 summonerId: "+m.getSummonerId()); //test
-System.out.println("Dao의updateMember함수의 Id: "+m.getId()); //test		  
+			pstmt.setString(4, m.getSummonerScore());
+			pstmt.setString(5, m.getId());
+	  
 			resultrow = pstmt.executeUpdate();
 			
 		} catch (Exception e2) {

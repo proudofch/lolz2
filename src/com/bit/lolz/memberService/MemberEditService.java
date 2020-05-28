@@ -18,6 +18,7 @@ public class MemberEditService implements Action{
 		dto.setPwd(request.getParameter("pwd")) ;
 		dto.setEmail(request.getParameter("email"));
 		dto.setSummonerId(request.getParameter("summonerId")) ;
+		dto.setSummonerScore(request.getParameter("summonerScore")) ;
 
 		String id = request.getParameter("id");
 

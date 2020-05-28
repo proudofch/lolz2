@@ -6,11 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>SignUp</title>
-	
-
-	
+		
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
    <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -29,10 +26,101 @@
    
    </style>
  <script type="text/javascript">
- var apiKey = "RGAPI-e8891101-f3e1-458e-87bc-0d2698d337a7";
- function myFunction(){
+ var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+ var score = [0,0];
+ function checkSummoner(){
+		 if($('#summonerId').val() == ""){
+	         alert("소환사 아이디를 입력하세요");
+	         $('#summonerId').focus();
+	      }else{
+				var id = document.getElementById("summonerId").value;
+				var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+					+id+"?api_key=" + apiKey;
+				
+				  $.ajax({
+			          url: sohwan,
+			          type: "GET",
+			          processData: false, 
+			          contentType: false,  
+			          data: null, 
+			          dataType:'json',
+			          error : function(error) {
+			            alert("존재하지 않는 소환사 아이디 입니다.");
+			          },
+			          success: function (data) {
+			        	  alert("존재하는 소환사 아이디 입니다.");
+			        	  
+			          }
+			        })
+      $.getJSON(sohwan, function(data, textStatus, req) {
+				let summonerid = data.id;
+				var leagueInfo = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"
+				+data.id+"?api_key=" + apiKey;
+	
+				$.getJSON(leagueInfo, function(data, textStatus, req) {
+				
+						if(data == ""){
+							alert('랭크게임을 하지 않은 유저입니다.');
+						}
+						queuetype = data[0].queueType;
+			
+						//스코어 메기기
+						 
+						$.each(data, function(index, obj){
+							if(obj.tier=="IRON"){
+								score[index]+=0;
+							}else if(obj.tier=="BRONZE"){
+								score[index]+=4;									
+							}else if(obj.tier=="SILVER"){
+								score[index]+=8;									
+							}else if(obj.tier=="GOLD"){
+								score[index]+=12;									
+							}else if(obj.tier=="PLATINUM"){
+								score[index]+=16;									
+							}else if(obj.tier=="DIAMOND"){
+								score[index]+=20;									
+							}else if(obj.tier=="MASTER"){
+								score[index]+=24;									
+							}else if(obj.tier=="GRANDMASTER"){
+								score[index]+=25;								
+							}else if(obj.tier=="CHALLENGER"){
+								score[index]+=26;									
+							}
+							try{
+								console.log("이게나오는거: "+obj.rank);
+								if(obj.rank=="IV"){	
+									score[index] += 0;
+								}else if(obj.rank=="III"){
+									score[index] +=1 ;	
+								}else if(obj.rank=="II"){
+									score[index] += 2;		
+								}else if(obj.rank=="I"){
+									score[index] += 3;	
+								}else{
+									console.log("rank아무거도 안타지롱");
+								}
+							}catch(e){
+								console.log(e);
+								console.log("score, rank에러")
+							}
+						});
+						/* summonerScore=score[0];
+						$('#summonerScore').val(summonerScore); */
+						$('#summonerScore').val(score[0]);
+						console.log("콜솔"+score[0]);
+					});
+				
+			}); //json 끝나는곳
+			        
+			        
+			        
+	      }
+							};
+							
+
+	function myFunction(){
 		 location.href="SummonerIdCheck.Lolz";
- }
+ 	}
   function validate(){
 	  var re = /^[a-zA-Z0-9]{4,12}$/;
 	  var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -86,32 +174,7 @@
       what.focus();
       return false;
   }
-  function checkSummoner(){
-		 if($('#summonerId').val() == ""){
-	         alert("소환사 아이디를 입력하세요");
-	         $('#summonerId').focus();
-	      }else{
-				var id = document.getElementById("summonerId").value;
-				
-				var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
-					+id+"?api_key=" + apiKey;
-				
-				  $.ajax({
-			          url: sohwan,
-			          type: "GET",
-			          processData: false, 
-			          contentType: false,  
-			          data: null, 
-			          dataType:'json',
-			          error : function(error) {
-			            alert("존재하지 않는 소환사 아이디 입니다.");
-			          },
-			          success: function (data) {
-			        	  alert("존재하는 소환사 아이디 입니다.");
-			          }
-			        })
-	      }
-							};
+  
   $(document).ready(function(){
 	 
 	  $('#message').click(function(){
@@ -142,35 +205,6 @@
              );
           };
     });  
-	  $('#message2').click(function(){
-          if($('#summonerId').val() == ""){
-             alert("소환사 아이디를 입력하세요");
-             $('#summonerId').focus();
-          }else{
-          $.ajax(
-                {   
-                   url:"/WEB-INF/views/search/summoneridsearch.jsp",  
-                   data:{summonerId:$('#summonerId').val()},
-                   dataType:"html",
-                   success:function(responsedata){
-                      console.log(">" + responsedata + "<");
-                      if(responsedata == "true"){
-                         alert("존재하는 소환사 아이디입니다.");
-                      }else{
-                         alert("존재하지 않는 소환사 아이디 입니다.");
-                         $('#summonerId').val("");
-                         $('#summonerId').focus();
-                      }
-                   },
-                   error:function(){
-                      console.log("errrrrrrr");
-                   }
-                }      
-             );
-          };
-    });  
-
-
 	 
 	  
 	  $('#bd').datepicker(
@@ -179,7 +213,7 @@
                  dateFormat: "yy-mm-dd",
                  numberOfMonths: 1,
                  onSelect: function(date){
-                    alert("onSelect : " + date);
+                    alert("선택된 날짜는 : " + date);
                  }
                  ,
                  onClose: function(date){
@@ -267,8 +301,9 @@
             <input type="text" class="form-control" id="summonerId" name="summonerId">
               </div>
               <div class="col-8 col-12-xsmall">
-        <!--      <input type="button" class="button primary small" value="유무 확인" "myFunction()"> --> 
        <input type="button" class="button primary small" value="유무 확인" onclick="checkSummoner()">  
+      <!--   <input type="button" class="button primary small" value="임시 확인" onclick="addSummoner()">  -->
+        <input type="hidden" class="form-control" id="summonerScore" name="summonerScore"> 
          </div>
  
  

@@ -1,6 +1,7 @@
 package com.bit.lolz.memberService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
@@ -16,10 +17,11 @@ public class MemberDeleteService implements Action{
 
     	MemberDao dao = new MemberDao();
 		int result = dao.deleteMember(id);
-				
+		HttpSession session = request.getSession();
 		 	String msg="";
 		 	String url="";
 		    if(result > 0){
+		    	session.invalidate();
 		    	msg = "그동안 이용해주셔서 감사합니다.";
 		    	url = "Index.Lolz";
 		    }else{

@@ -105,6 +105,7 @@
 			<div class="col-6 col-6-medium"  id="gaugeChart" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
 			<div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
 		<!-- </div> -->
+
 	</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
@@ -140,6 +141,7 @@
 	          });
 	};
 	
+
 	
 	function get() {
 		var id = document.getElementById("sname").value;
@@ -153,6 +155,9 @@
 		var score = [0,0];
 		
 		$.getJSON(sohwan, function(data, textStatus, req) {
+			if(data.summonerLevel<30){
+				alert('소환사레벨이 30미만입니다.');
+			}
 			let summonerid = data.id;
 			let table = "<table>"
 		 			+"<tr><th>소환사 이름</th><th>큐 타입</th><th>티어</th><th>랭크</th><th>승</th>"
@@ -439,6 +444,7 @@
 					        	
 							});
 					});
+
 				});
 		}); //json 끝나는곳
 	}	

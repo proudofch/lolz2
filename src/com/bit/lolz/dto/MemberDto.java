@@ -8,8 +8,9 @@ public class MemberDto {
 	private String email;
 	private String bd;
 	private String summonerId;
-	
+	private String summonerScore;
 
+	
 	@Override
 	public String toString() {
 		return "MemberDto [id=" + id + ", pwd=" + pwd + ", email=" + email + ", bd=" + bd + ", summonerId=" + summonerId
@@ -55,6 +56,12 @@ public class MemberDto {
 		this.summonerId = summonerId;
 	}
 
+	public String getSummonerScore() {
+		return summonerScore;
+	}
+	public void setSummonerScore(String summonerScore) {
+		this.summonerScore = summonerScore;
+	}
 	public MemberDto() {}
 	
 
