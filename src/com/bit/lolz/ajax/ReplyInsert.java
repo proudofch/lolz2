@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bit.lolz.dao.boarddao;
 import com.bit.lolz.dto.ReplyDto;
@@ -30,7 +31,9 @@ public class ReplyInsert extends HttpServlet {
 		
 		String strboardnum = request.getParameter("boardnum");
 		int boardnum_fk = Integer.parseInt(strboardnum);
-		String id = request.getParameter("id");
+		
+		HttpSession session= request.getSession();        		
+    	String id = (String)session.getAttribute("id");
 		String comment = request.getParameter("comment");
 		
 		//댓글 달기
