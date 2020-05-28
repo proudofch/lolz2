@@ -7,15 +7,42 @@
 <head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <title>Member Edit</title>
 
 
  <script type="text/javascript">
- function test(){
-	 
- }
+ var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+ 
+ function checkSummoner(){
+	 console.log("dg");
+	 if($('#summonerId').val() == ""){
+         alert("소환사 아이디를 입력하세요");
+         $('#summonerId').focus();
+      }else{
+			var id = document.getElementById("summonerId").value;
+			
+			var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+				+id+"?api_key=" + apiKey;
+			
+			  $.ajax({
+		          url: sohwan,
+		          type: "GET",
+		          processData: false, 
+		          contentType: false,  
+		          data: null, 
+		          dataType:'json',
+		          error : function(error) {
+		            alert("존재하지 않는 소환사 아이디 입니다.");
+		          },
+		          success: function (data) {
+		        	  alert("존재하는 소환사 아이디 입니다.");
+		          }
+		        })
+      }
+						};
  
  function myFunction(){
 	 
@@ -31,7 +58,7 @@
       var email = document.getElementById("email");
       var checkpw = document.getElementById("pwdCheck");
 
-      if(!check(re,pw,"패스워드는 4~12자의 영문 대소문자와 숫자로만 입력")) {
+      if(!check(re,pw,"패스워드는 4~12자의 영문 대소문자와 숫자로만 입력해주세요")) {
           return false;
       }
 
@@ -44,11 +71,6 @@
       if(memberadd.email.value=="") {
           alert("이메일을 입력해 주세요");
           memberadd.email.focus();
-          return false;
-      }
-      if(memberadd.bd.value=="") {
-          alert("생년월일을 입력해 주세요");
-          memberadd.bd.focus();
           return false;
       }
       if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
@@ -67,24 +89,10 @@
       return false;
   }
   
-  $(document).ready(function(){
-	  $('#bd').datepicker(
-              {
-                 dateFormat: "yy-mm-dd",
-                 numberOfMonths: 1,
-                 onSelect: function(date){
-                    alert("onSelect : " + date);
-                 }
-                 ,
-                 onClose: function(date){
-                    let currentdate = $('#bd').datepicker('getDate');
-                    console.log(date + " / " + currentdate);
-                    let date2 = new Date(currentdate);
-                 }
-              }
-                          );
+/*   $(document).ready(function(){
+	 
   });
-  
+   */
   
  
   </script>
@@ -129,11 +137,16 @@
             <h6>생일은 수정할 수 없습니다.</h6>
          </div>
 
-  		<div class="form-group">
-            <label for="summonerId">소환사 아이디</label>
-            <input type="text" class="form-control" id="summonerId" name="summonerId" value="${member.summonerId}">
-         </div>
- 
+   			<label for="summonerId">소환사 아이디</label>
+		<div class="row gtr-50 gtr-uniform" id="textform">
+  			  <div class="col-2 col-12-xsmall">
+          		  <input type="text" class="form-control" id="summonerId" name="summonerId" value="${member.summonerId}">
+              </div>
+              <div class="col-8 col-12-xsmall">
+      			  <input type="button" class="button primary small" value="유무 확인" onclick="checkSummoner()">  
+        	  </div>
+		</div>
+
 
          <input type="submit" class="button primary small" value="수정완료" >
          

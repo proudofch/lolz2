@@ -10,7 +10,6 @@
 
 	
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
    <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -29,7 +28,7 @@
    
    </style>
  <script type="text/javascript">
- var apiKey = "RGAPI-e8891101-f3e1-458e-87bc-0d2698d337a7";
+ var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
  function myFunction(){
 		 location.href="SummonerIdCheck.Lolz";
  }
@@ -142,35 +141,6 @@
              );
           };
     });  
-	  $('#message2').click(function(){
-          if($('#summonerId').val() == ""){
-             alert("소환사 아이디를 입력하세요");
-             $('#summonerId').focus();
-          }else{
-          $.ajax(
-                {   
-                   url:"/WEB-INF/views/search/summoneridsearch.jsp",  
-                   data:{summonerId:$('#summonerId').val()},
-                   dataType:"html",
-                   success:function(responsedata){
-                      console.log(">" + responsedata + "<");
-                      if(responsedata == "true"){
-                         alert("존재하는 소환사 아이디입니다.");
-                      }else{
-                         alert("존재하지 않는 소환사 아이디 입니다.");
-                         $('#summonerId').val("");
-                         $('#summonerId').focus();
-                      }
-                   },
-                   error:function(){
-                      console.log("errrrrrrr");
-                   }
-                }      
-             );
-          };
-    });  
-
-
 	 
 	  
 	  $('#bd').datepicker(
