@@ -36,7 +36,7 @@
 						
 						<!-- 게시물이 한 건도 없을 경우의 처리 (추가) -->
 						
-						<c:forEach var="list" items="${boardlist}">
+						 <c:forEach var="list" items="${boardlist}">
 						<tr>
 							<td>${list.boardnum}</td>
 							<td>
@@ -56,15 +56,15 @@
 							<td>${list.boarddate}</td>
 							<td>${list.boardhit}</td>
 						</tr>
-						</c:forEach>
+						</c:forEach> 
 					</tbody>
 					<tfoot>
 						<tr>
 							<td colspan="5">
-								<c:if test="${currentpage > 1}">
+					<%-- 			<c:if test="${currentpage > 1}">
 									<a href="FreeBoardList.Board?cp=${currentpage-1}&ps=${pagesize}">이전</a>
-								</c:if>
-
+								</c:if> --%>
+<%-- 
 								<c:forEach var="i" begin="1" end="${pagecount}" step="1">
 									<c:choose>
 										<c:when test="${currentpage == i}">
@@ -78,7 +78,7 @@
 
 								<c:if test="${currentpage < pagecount}">
 									<a href="FreeBoardList.Board?cp=${currentpage+1}&ps=${pagesize}">다음</a>
-								</c:if>
+								</c:if> --%>
 								
 							</td>
 						</tr>

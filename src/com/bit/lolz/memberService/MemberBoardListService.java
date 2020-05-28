@@ -19,14 +19,14 @@ public class MemberBoardListService implements Action{
 
 
 		boarddao dao = new boarddao();
-		int totalBoardCount = dao.totalBoardCount(); //전체 게시물 건수 얻기
+//		int totalBoardCount = dao.totalBoardCount(); //전체 게시물 건수 얻기
 		
 		
 		//List<BoardDto> list = dao.list(currentPage, pageSize, 1);
 //		List<BoardDto> memberboardlist = dao.list(1, 3, 1);
 		List<BoardDto> memberboardlist = dao.memberboardlist(id);
 		request.setAttribute("boardlist", memberboardlist);
-		request.setAttribute("totalboardcount", totalBoardCount);
+//		request.setAttribute("totalboardcount", totalBoardCount);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
