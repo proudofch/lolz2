@@ -73,8 +73,6 @@
 			margin-bottom: 120px;
 		}
 	
-		
-		
 	</style>
 </head>
 
@@ -88,24 +86,18 @@
 				<p>랭크 게임을 한 소환사만 검색할 수 있습니다.</p>
 			</header>
 			<div id="searchbox_wrapper">
-				<div id="searchbox"> <!-- <div class="row gtr-150"> -->
-					<!-- <div class="col-12 col-12-medium"> -->
+				<div id="searchbox">
 					<input type="text" id="sname">
 					<input type="button" class="button primary small" value="search" id="btn" onclick="checkSummoner()">
 				</div>
 			</div> <!-- searchbox_wrapper end -->
-		<!-- </div> -->
-			<!-- <div class="container"> -->
 			<div id="display"></div>
 			
 				<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
 				<div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
 			</div>
-		<!-- <div class="container"> -->
 			<div class="col-6 col-6-medium"  id="gaugeChart" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
 			<div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
-		<!-- </div> -->
-
 	</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
@@ -238,7 +230,7 @@
 										champimg = mostthreeimg;
 										var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
 										table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+timgsource+"' style='width:50px'></div>";
-										/* table += "</td><td>"; */	
+										
 								});
 								table += "</table>";//테이블 그리기끝
 								
@@ -299,7 +291,7 @@
 								
 					            $('#display').empty();
 					            $('#display').append(table);
-					           /*  $('th').css("text-align", "center"); */
+					            $('th').css("text-align", "center");
 					           
 								
 								//도넛그리기
