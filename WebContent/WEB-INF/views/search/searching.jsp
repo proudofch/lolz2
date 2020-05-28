@@ -21,7 +21,8 @@ var mostthree;
 var mostoneimg;
 var mosttwoimg;
 var mostthreeimg;
-	
+var score = [0,0];
+
 </script>
 <style type="text/css">
 .images{
@@ -34,10 +35,22 @@ var mostthreeimg;
 <body>
 <div id="main" class="wrapper style1">
 	<div class="container">
+	<div class="row gtr-150">
+	<div class="col-12 col-12-medium">
 	<input type="text" id="sname">
-	<input type="button" class="button primary small" value="search" onclick="get()">
+	<input type="button" class="button primary small" value="search" onclick="checkSummoner()">
 	<div id="display"></div>
-	<div id="donutdiv" style="height: 150px;width: 50%"></div>
+	</div>
+	</div>
+	<div class="container">
+		<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
+		<div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
+	</div>
+	<div class="container">
+		<div class="col-6 col-6-medium"  id="gaugeChart" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
+		<div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
+	</div>
+	<div class="col-12 col-12-medium">
 	<table>
 	<tr>
 	<td>
@@ -49,11 +62,41 @@ var mostthreeimg;
 	</tr>
 	</table>
 	</div>
+	
 	</div>
+	</div>
+	
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
+ <!-- 게이지차트 시작 -->
+ <script src="https://d3js.org/d3.v5.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.12.10/billboard.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.12.10/billboard.js"></script>
+  <!-- 게이지차트 끝 -->
 <script type="text/javascript">
+function checkSummoner(){
+	var id = document.getElementById("sname").value;
+	
+	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+		+id+"?api_key=" + apiKey;
+	console.log()
+	  $.ajax({
+          url: sohwan,
+          type: "GET",
+          processData: false, 
+          contentType: false,  
+          data: null, 
+          dataType:'json',
+          error : function(error) {
+            alert("없는 소환사");
+          },
+          success: function (data) {
+        	get();
+          }
+        })
+	};
+
 
 function get() {
 	var id = document.getElementById("sname").value;
@@ -64,6 +107,8 @@ function get() {
 	var smostchamp;
 	var tmostchamp;
 	var champimg;
+	
+	
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
 		let table = "<table>"
@@ -89,22 +134,36 @@ function get() {
 						mostthreeimg = (data[0])[tmostchamp].engname;
 						//console.log(mostone, mosttwo, mostthree);
 						$.getJSON(leagueInfo, function(data, textStatus, req) {
+							
+							if(data == ""){
+								alert('랭크게임을 하지 않은 유저입니다.');
+							}
 							queuetype = data[0].queueType;
 							win = data[0].wins;
 				            lose = data[0].losses;
 				            winrate = ((data[0].wins/(data[0].wins+data[0].losses))*100).toFixed(1)+"%";
-				            //console.log(win, lose, winrate);
-							//console.log(mostoneimg, mosttwoimg, mostthreeimg);
+				            
+				            if(data[1]==null){
+				            	var win1 =null;
+				            	var lose1 = null;
+				            	
+				            }else if(data[1].wins!=null ){
+				            	var win1 = data[1].wins
+				            	var lose1 = data[1].losses
+				            }
+				           
+				            
 							
-							
+							//테이블 그리기
 							
 							$.each(data, function(index, obj){
-									//console.log(obj);
+									//console.log(index); each는 index 0부터 시작!
 									if(obj.queueType==="RANKED_SOLO_5x5"){
 										queuetype="솔로랭크";
 									}else{
 										queuetype="자유랭크";
 									}
+									
 									//console.log("queuetype: "+queuetype);
 									table += "<tr><td>";
 									table += obj.summonerName;								
@@ -133,36 +192,192 @@ function get() {
 									table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+timgsource+"' style='width:50px'></div>";
 									table += "</td><td>";	
 							});
-							table += "</table>";
+							table += "</table>";//테이블 그리기끝
+							
+							
+							//스코어 메기기
+							 
+							$.each(data, function(index, obj){
+								console.log(score[index]);
+								
+								if(obj.tier=="IRON"){
+									score[index]+=0;
+								}else if(obj.tier=="BRONZE"){
+									score[index]+=4;									
+								}else if(obj.tier=="SILVER"){
+									score[index]+=8;									
+								}else if(obj.tier=="GOLD"){
+									score[index]+=12;									
+								}else if(obj.tier=="PLATINUM"){
+									score[index]+=16;									
+								}else if(obj.tier=="DIAMOND"){
+									score[index]+=20;									
+								}else if(obj.tier=="MASTER"){
+									score[index]+=24;									
+								}else if(obj.tier=="GRANDMASTER"){
+									score[index]+=25;								
+								}else if(obj.tier=="CHALLENGER"){
+									score[index]+=26;									
+								}
+								console.log(score[index]);
+								
+								
+								try{
+									console.log("이게나오는거: "+obj.rank);
+									if(obj.rank=="IV"){	
+										score[index] += 0;
+										console.log(score[index]);
+									}else if(obj.rank=="III"){
+										score[index] +=1 ;	
+										console.log(score[index]);
+									}else if(obj.rank=="II"){
+										score[index] += 2;		
+										console.log(score[index]);
+									}else if(obj.rank=="I"){
+										score[index] += 3;	
+										console.log(score[index]);
+									}else{
+										console.log("rank아무거도 안타지롱");
+									}
+									
+								}catch(e){
+									console.log(e);
+									console.log("score, rank에러")
+								}
+								
+							});
+							console.log(score[0]);
+							console.log(score[1]);
+							
 				            $('#display').empty();
 				            $('#display').append(table);
-				            /*
-							datalist.nickname = data[0].summonerName;
-							datalist.win = data[0].wins;
-							datalist.lose = data[0].losses;
-							datalist.winrate = (data[0].wins/(data[0].wins+data[0].losses))*100+"%";
-							datalist.tierinfo = data[0].tier;
-							testlist.push(datalist);
-							jsonData = JSON.stringify(testlist);
-							console.log(jsonData);
-							*/
+				           
+							
+							//도넛그리기
 				            $('#donutdiv').empty();
-				        	$('#donutdiv').append( Morris.Donut({
-				        		element: 'donutdiv',     //그래프가 들어갈 위치의 ID를 적어주세요
+							$('#donutdiv2').empty();
+				            if(win1!=null){
+				        	$('#donutdiv2').append(Morris.Donut({
+				        		element: 'donutdiv2',     //그래프가 들어갈 위치의 ID를 적어주세요
 				        		data: [                                     //그래프에 들어갈 data를 적어주세요
-				        		{label: '승', value: win },
-				        		{label: '패', value: lose },
+				        		{label: '승', value: win1},
+				        		{label: '패', value: lose1},
 				        		],
 				        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
 				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
 				        		}));
+				            }
+				        	$('#donutdiv').append( Morris.Donut({
+				        		element: 'donutdiv',     //그래프가 들어갈 위치의 ID를 적어주세요
+				        		data: [                                     //그래프에 들어갈 data를 적어주세요
+				        		{label: '승', value: win, },
+				        		{label: '패', value: lose},
+				        		],
+				        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
+				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
+				        		}));
+				        	///
+				        	var chart = bb.generate({
+				        		  data: {
+				        		    columns: [
+				        			["data", 100]
+				        		    ],
+				        		    type: "gauge",
+				        		    onclick: function(d, i) {
+				        			console.log("onclick", d, i);
+				        		   },
+				        		    onover: function(d, i) {
+				        			console.log("onover", d, i);
+				        		   },
+				        		    onout: function(d, i) {
+				        			console.log("onout", d, i);
+				        		   }
+				        		  },
+				        		  gauge: {},
+				        		  color: {
+				        		    pattern: [
+				        		      "#FF0000",
+				        		      "#F97600",
+				        		      "#F6C600",
+				        		      "#60B044"
+				        		    ],
+				        		    threshold: {
+				        		      values: [
+				        		        30,
+				        		        60,
+				        		        90,
+				        		        100
+				        		      ]
+				        		    }
+				        		  },
+				        		  size: {
+				        		    height: 180
+				        		  },
+				        		  bindto: "#gaugeChart"
+				        		});
+								console.log(score[0]);
+				        		setTimeout(function() {
+				        			chart.load({
+				        				columns: [["data", (score[0]/27)*100]]
+				        			});
+				        		}, 1000);
+
+
+				        	////
+				        	///
 				        	
+				        	var chart = bb.generate({
+				        		  data: {
+				        		    columns: [
+				        			["data", 100]
+				        		    ],
+				        		    type: "gauge",
+				        		    onclick: function(d, i) {
+				        			console.log("onclick", d, i);
+				        		   },
+				        		    onover: function(d, i) {
+				        			console.log("onover", d, i);
+				        		   },
+				        		    onout: function(d, i) {
+				        			console.log("onout", d, i);
+				        		   }
+				        		  },
+				        		  gauge: {},
+				        		  color: {
+				        		    pattern: [
+				        		      "#FF0000",
+				        		      "#F97600",
+				        		      "#F6C600",
+				        		      "#60B044"
+				        		    ],
+				        		    threshold: {
+				        		      values: [
+				        		        30,
+				        		        60,
+				        		        90,
+				        		        100
+				        		      ]
+				        		    }
+				        		  },
+				        		  size: {
+				        		    height: 180
+				        		  },
+				        		  bindto: "#gaugeChart2"
+				        		});
+
+				        		setTimeout(function() {
+				        			chart.load({
+				        				columns: [["data", (score[1]/27)*100]]
+				        			});
+				        		}, 1000);
 				        	
+
+				        	////
 				        	
 						});
 				});
 			});
-	});
+	}); //json 끝나는곳
 }	
 
 

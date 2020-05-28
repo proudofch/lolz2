@@ -416,9 +416,7 @@ public class boarddao {
 			replylist = new ArrayList<>();
 			
 			if(rs.next()) {
-				
 				do {
-					
 					int replynum = rs.getInt("REPLYNUM");
 					String id = rs.getString("ID");
 					int boardnum = rs.getInt("BOARDNUM");
@@ -427,7 +425,7 @@ public class boarddao {
 					
 					replydto = new ReplyDto(replynum, id, boardnum, replycont, replydate);
 					replylist.add(replydto);
-					
+				
 				} while (rs.next());
 			}
 			
@@ -447,32 +445,73 @@ public class boarddao {
 		
 		return replylist;
 	}
+			
 	
+	//자기가 쓴 글 목록보기
+	public List<BoardDto> memberboardlist(String id) {
+		
+		List<BoardDto> memberboardlist = null;
+		
+		try {
+			conn = ds.getConnection();
+
+//			String sql = "SELECT * FROM"
+//					   + "( SELECT ROWNUM rn, boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile,"
+//					   + " boardref, boardstep, boarddepth"
+//					   + " FROM ( SELECT * FROM board where boardtype = ? ORDER BY boardref DESC, boardstep ASC )"
+//					   + ") WHERE rn BETWEEN ? AND ?";
+//			
+			String sql = "SELECT * FROM ( SELECT * FROM board ORDER BY boardref DESC, boardstep ASC ) WHERE ID=?";
+			//자유게시판인지,공략게시판인지는 상관없이 출력
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			//페이징 처리 방법이 이것만 있는 건 아님(start, end를 왜 구하는지를 이해한다면 다른 방식으로도 풀 수 있음)
+		
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			memberboardlist = new ArrayList<BoardDto>();
+			
+			if(rs.next()) {
+				
+				do {
+					int boardnum = rs.getInt("BOARDNUM");
+					id = rs.getString("ID");
+					int boardtype = rs.getInt("BOARDTYPE");
+					String boardtitle = rs.getString("BOARDTITLE");
+					String boardcontent = rs.getString("BOARDCONTENT");
+					Date boarddate = rs.getDate("BOARDDATE");
+					int boardhit = rs.getInt("BOARDHIT");
+					String boardfile = rs.getString("BOARDFILE");
+					int boardref = rs.getInt("BOARDREF");
+					int boardstep = rs.getInt("BOARDSTEP");
+					int boarddepth = rs.getInt("BOARDDEPTH");
+					
+					BoardDto dto = new BoardDto(boardnum, id, boardtype, boardtitle, boardcontent,
+							boarddate, boardhit, boardfile, boardref, boardstep, boarddepth);
+					
+					memberboardlist.add(dto);
+				} while(rs.next());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("SQL 오류");
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return memberboardlist;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
