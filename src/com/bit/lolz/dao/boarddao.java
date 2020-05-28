@@ -359,7 +359,6 @@ public class boarddao {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			//페이징 처리 방법이 이것만 있는 건 아님(start, end를 왜 구하는지를 이해한다면 다른 방식으로도 풀 수 있음)
 		
 			pstmt.setString(1, id);
 			
