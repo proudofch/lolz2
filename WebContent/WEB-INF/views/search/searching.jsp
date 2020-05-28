@@ -21,7 +21,7 @@ var mostthree;
 var mostoneimg;
 var mosttwoimg;
 var mostthreeimg;
-var score = [0,0];
+
 
 </script>
 <style type="text/css">
@@ -76,11 +76,11 @@ var score = [0,0];
   <!-- 게이지차트 끝 -->
 <script type="text/javascript">
 function checkSummoner(){
+	
 	var id = document.getElementById("sname").value;
 	
 	var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
 		+id+"?api_key=" + apiKey;
-	console.log()
 	  $.ajax({
           url: sohwan,
           type: "GET",
@@ -107,7 +107,7 @@ function get() {
 	var smostchamp;
 	var tmostchamp;
 	var champimg;
-	
+	var score = [0,0];
 	
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
@@ -198,7 +198,7 @@ function get() {
 							//스코어 메기기
 							 
 							$.each(data, function(index, obj){
-								console.log(score[index]);
+								//console.log(score[index]);
 								
 								if(obj.tier=="IRON"){
 									score[index]+=0;
@@ -219,23 +219,23 @@ function get() {
 								}else if(obj.tier=="CHALLENGER"){
 									score[index]+=26;									
 								}
-								console.log(score[index]);
+								//console.log(score[index]);
 								
 								
 								try{
-									console.log("이게나오는거: "+obj.rank);
+									//console.log("이게나오는거: "+obj.rank);
 									if(obj.rank=="IV"){	
 										score[index] += 0;
-										console.log(score[index]);
+										//console.log(score[index]);
 									}else if(obj.rank=="III"){
 										score[index] +=1 ;	
-										console.log(score[index]);
+										//console.log(score[index]);
 									}else if(obj.rank=="II"){
 										score[index] += 2;		
-										console.log(score[index]);
+										//console.log(score[index]);
 									}else if(obj.rank=="I"){
 										score[index] += 3;	
-										console.log(score[index]);
+										//console.log(score[index]);
 									}else{
 										console.log("rank아무거도 안타지롱");
 									}
@@ -246,8 +246,8 @@ function get() {
 								}
 								
 							});
-							console.log(score[0]);
-							console.log(score[1]);
+							console.log("score[0]"+score[0]);
+							console.log("score[1]"+score[1]);
 							
 				            $('#display').empty();
 				            $('#display').append(table);
@@ -257,6 +257,10 @@ function get() {
 				            $('#donutdiv').empty();
 							$('#donutdiv2').empty();
 				            if(win1!=null){
+				            $('#donutdiv2').prepend("승률");
+				            $('#donutdiv2').append("<br>");
+				            $('#donutdiv2').append("<br>");
+				            $('#donutdiv2').append("당신 티어의 <br> 위치");
 				        	$('#donutdiv2').append(Morris.Donut({
 				        		element: 'donutdiv2',     //그래프가 들어갈 위치의 ID를 적어주세요
 				        		data: [                                     //그래프에 들어갈 data를 적어주세요
@@ -267,6 +271,10 @@ function get() {
 				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
 				        		}));
 				            }
+				            $('#donutdiv').append("승률");
+				            $('#donutdiv').append("<br>");
+				            $('#donutdiv').append("<br>");
+				            $('#donutdiv').append("당신 티어의 <br> 위치");
 				        	$('#donutdiv').append( Morris.Donut({
 				        		element: 'donutdiv',     //그래프가 들어갈 위치의 ID를 적어주세요
 				        		data: [                                     //그래프에 들어갈 data를 적어주세요
@@ -277,6 +285,8 @@ function get() {
 				        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
 				        		}));
 				        	///
+				        	$('#gaugeChart').empty();
+							$('#gaugeChart2').empty();
 				        	var chart = bb.generate({
 				        		  data: {
 				        		    columns: [
@@ -315,18 +325,23 @@ function get() {
 				        		  },
 				        		  bindto: "#gaugeChart"
 				        		});
-								console.log(score[0]);
+								//console.log(score[0]);
 				        		setTimeout(function() {
 				        			chart.load({
 				        				columns: [["data", (score[0]/27)*100]]
 				        			});
+				        			console.log("gaugeChart score[0] 초기화 전: "+score[0]);
+				        			score[0]=0;
+				        			console.log("gaugeChart score[0] 초기화 후: "+score[0]);
 				        		}, 1000);
+				        	
 
 
 				        	////
 				        	///
-				        	
-				        	var chart = bb.generate({
+				        	if(score[1]!=0){
+				        		
+				        	var chart2 = bb.generate({
 				        		  data: {
 				        		    columns: [
 				        			["data", 100]
@@ -366,11 +381,15 @@ function get() {
 				        		});
 
 				        		setTimeout(function() {
-				        			chart.load({
+				        			chart2.load({
 				        				columns: [["data", (score[1]/27)*100]]
 				        			});
+				        			console.log("gaugeChart score[1] 초기화 전: "+score[1]);
+				        			score[1]=0;
+				        			console.log("gaugeChart score[1] 초기화 후: "+score[1]);
 				        		}, 1000);
-				        	
+				        		
+				        	}
 
 				        	////
 				        	
