@@ -45,6 +45,14 @@ public class FreeBoardWriteOkService implements Action {
 			boarddata.setBoardcontent(multi.getParameter("content"));
 			boarddata.setBoardfile(dbFileName);
 			
+			String notice = multi.getParameter("notice");
+			
+			if(notice != null) {
+				boarddata.setBoardnotice(notice);
+			} else {
+				boarddata.setBoardnotice("N");
+			}
+			
 			boarddata.setId(multi.getParameter("id"));
 				System.out.println("id: "+boarddata.getId());
 			

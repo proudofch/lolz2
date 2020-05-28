@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,8 +56,13 @@
 			</header>
 			<form name="board_write" id="board_write" action="FreeBoardWriteOk.Board" method="post" enctype="multipart/form-data">
 				<input type="hidden" id="id" name="id" value="${sessionScope.id}">
+				
 				제목<br> 
 				<input type="text" name="title" id="title" placeholder="제목을 입력하세요">
+				<c:if test="${sessionScope.id == 'admin'}">
+					<input type="checkbox" id="notice" name="notice" value="Y">
+					<label for="notice">공지사항</label>
+				</c:if>
 				<br>
 				내용<br>
 				<!-- <textarea name="content" id="content"  rows="6"></textarea> -->

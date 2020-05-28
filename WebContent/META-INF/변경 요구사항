@@ -1,62 +1,118 @@
-/* 회원 */
-CREATE TABLE MEMBER (
-	ID VARCHAR2(4000) NOT NULL, /* 아이디 */
-	PWD VARCHAR2(4000) NOT NULL, /* 비밀번호 */
-	EMAIL VARCHAR2(4000) NOT NULL, /* 이메일 */
-	BD DATE NOT NULL, /* 생일 */
-	SUMMONERID VARCHAR2(4000) /* 소환사아이디 */
-);
 
-/* 게시판 */
+--목요일 오전 10시 작성(작성자: 채현아)
+--샘플 데이터 쿼리 더 넣어야 함 *****
+
+
+--계정 생성
+
+CREATE USER "LOL" IDENTIFIED BY "1004"  
+DEFAULT TABLESPACE "USERS"
+TEMPORARY TABLESPACE "TEMP";
+
+GRANT "CONNECT" TO "LOL" WITH ADMIN OPTION;
+GRANT "RESOURCE" TO "LOL" WITH ADMIN OPTION;
+ALTER USER "LOL" DEFAULT ROLE "CONNECT","RESOURCE";
+
+
+--게시판 테이블
 CREATE TABLE BOARD (
-	BOARDNUM NUMBER NOT NULL, /* 글번호 */
-	ID VARCHAR2(4000) NOT NULL, /* 아이디 */
-	BOARDTYPE NUMBER NOT NULL, /* 게시판코드 */
-	BOARDTITLE VARCHAR2(4000) NOT NULL, /* 제목 */
-	BOARDDATE DATE NOT NULL, /* 날짜 */
-	BOARDHIT NUMBER NOT NULL, /* 조회수 */
-	BOARDFILE VARCHAR2(4000), /* 파일 */
-	BOARDREF NUMBER NOT NULL, /* REF */
-	BOARDSTEP NUMBER NOT NULL, /* STEP */
-	BOARDDEPT NUMBER NOT NULL /* DEPT */
+   BOARDNUM NUMBER, /* 글번호 */
+   ID VARCHAR2(200) NOT NULL, /* 아이디 */
+   BOARDTYPE NUMBER NOT NULL, /* 게시판코드 */
+   BOARDTITLE VARCHAR2(200) NOT NULL, /* 제목 */
+   BOARDContent VARCHAR2(4000), /* 내용 */
+   BOARDDATE DATE NOT NULL, /* 날짜 */
+   BOARDHIT NUMBER DEFAULT 0, /* 조회수 */
+   BOARDFILE VARCHAR2(200), /* 파일 */
+   BOARDREF NUMBER DEFAULT 0, /* REF */
+   BOARDSTEP NUMBER DEFAULT 0, /* STEP */
+   BOARDDEPTH NUMBER DEFAULT 0, /* DEPTH */
+   BOARDNOTICE VARCHAR2(10) DEFAULT 'N' /* 공지유무 */
 );
 
-/* 게시판종류 */
+--회원 테이블
+CREATE TABLE MEMBER (
+   ID VARCHAR2(4000) NOT NULL, /* 아이디 */
+   PWD VARCHAR2(4000) NOT NULL, /* 비밀번호 */
+   EMAIL VARCHAR2(4000) NOT NULL, /* 이메일 */
+   BD DATE NOT NULL, /* 생일 */
+   SUMMONERID VARCHAR2(4000) /* 소환사아이디 */
+);
+
+--게시판 종류 테이블
 CREATE TABLE BOARDTYPE (
-	BOARDTYPE NUMBER NOT NULL, /* 게시판코드 */
-	BOARDNAME VARCHAR2(4000) NOT NULL /* 게시판이름 */
+   BOARDTYPE NUMBER, /* 게시판코드 */
+   BOARDNAME VARCHAR2(4000) NOT NULL /* 게시판이름 */
 );
 
-/* 댓글 */
+--댓글 테이블
 CREATE TABLE REPLY (
-	REPLYNUM NUMBER NOT NULL, /* 댓글식별번호 */
-	ID VARCHAR2(4000), /* 아이디 */
-	BOARDNUM NUMBER, /* 글번호 */
-	REPLYCONT VARCHAR2(4000), /* 내용 */
-	REPLYDATE DATE /* 작성일자 */
+   REPLYNUM NUMBER NOT NULL, /* 댓글식별번호 */
+   ID VARCHAR2(4000), /* 아이디 */
+   BOARDNUM NUMBER, /* 글번호 */
+   REPLYCONT VARCHAR2(4000), /* 내용 */
+   REPLYDATE DATE /* 작성일자 */
 );
 
-/* 관리자 */
+--관리자 테이블
 CREATE TABLE ADMIN (
-	ADMINID VARCHAR2(4000) NOT NULL, /* 아이디 */
-	ADMINPWD VARCHAR2(4000) NOT NULL /* 비밀번호 */
+   ADMINID VARCHAR2(4000) NOT NULL, /* 아이디 */
+   ADMINPWD VARCHAR2(4000) NOT NULL /* 비밀번호 */
 );
 
-/* 소환사아이디가있는회원 */
+--소환사 아이디가 있는 회원 테이블
 CREATE TABLE SUMMONERID (
 	ID VARCHAR2(4000) NOT NULL, /* 아이디 */
 	TIER VARCHAR2(4000), /* 티어 */
-	SUMMONERID VARCHAR2(4000) NOT NULL, /* 소환사아이디 */
-	WINNINGRATE NUMBER, /* 승률 */
-	WIN NUMBER, /* 승 */
-	LOSE NUMBER, /* 패 */
-	CHARACTER VARCHAR2(4000) /* 사용캐릭터 */
+	Rank NUMBER, /* 랭크 */
+	SUMMONERID VARCHAR2(4000) NOT NULL /* 소환사아이디 */
 );
 
-/* 티어 */
+--소환사 아이디가 있는 회원 테이블에 제약 추가
+ALTER TABLE SUMMONERID ADD CONSTRAINT PK_SUMMONERID PRIMARY KEY (ID);
+
+--티어
 CREATE TABLE TIER (
-	TIER VARCHAR2(4000) NOT NULL, /* 티어 */
-	TIERIMG VARCHAR2(4000) NOT NULL, /* 티어이미지 */
-	RATIO NUMBER NOT NULL /* 100분위 */
+   TIER VARCHAR2(4000) NOT NULL, /* 티어 */
+   TIERIMG VARCHAR2(4000) NOT NULL, /* 티어이미지 */
+   RATIO NUMBER NOT NULL /* 100분위 */
 );
 
+--게시판 제약 설정
+ALTER TABLE MEMBER ADD CONSTRAINT pk_member_id PRIMARY KEY(id);
+ALTER TABLE BOARDTYPE ADD CONSTRAINT pk_boardtype_boardtype PRIMARY KEY(boardtype);
+ALTER TABLE BOARD ADD CONSTRAINT pk_board_boardnum PRIMARY KEY(boardnum);
+ALTER TABLE BOARD ADD CONSTRAINT fk_board_id FOREIGN KEY(id) REFERENCES member(id);
+ALTER TABLE BOARD ADD CONSTRAINT fk_board_boardtype FOREIGN KEY(boardtype) REFERENCES BOARDTYPE(boardtype);
+
+--게시판 글번호 시퀀스
+CREATE SEQUENCE BOARDSEQ
+INCREMENT BY 1
+START WITH 1
+NOCYCLE
+;
+
+--게시판 종류 추가
+insert into boardtype (BOARDTYPE, BOARDname) values (1, '자유게시판');
+insert into boardtype (BOARDTYPE, BOARDname) values (2, '공략게시판');
+
+--댓글 번호 시퀀스
+CREATE SEQUENCE REPLYSEQ
+INCREMENT BY 1
+START WITH 1
+NOCYCLE
+;
+
+--관리자 추가
+insert into admin values ('admin', '1004');
+
+--회원 샘플
+insert into member(id, pwd, email, bd, summonerid) values ('bit1004', 'bit1004', 'bit@gmail.com', sysdate, 'hide on bush');
+insert into member(id, pwd, email, bd) values ('lolz555', 'lolz555', 'lolz555@naver.com', sysdate);
+
+--게시판 샘플
+insert into board(boardnum, id, boardtype, boardtitle, boardcontent, boarddate)
+values(boardseq.nextval, 'bit1004', 1, '안녕하세요', '반갑습니다', sysdate);
+
+
+commit;

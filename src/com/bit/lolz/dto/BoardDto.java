@@ -15,6 +15,7 @@ public class BoardDto {
 	private int boardref;
 	private int boardstep;
 	private int boarddepth;
+	private String boardnotice;
 	
 	public BoardDto() { }
 	
@@ -31,6 +32,22 @@ public class BoardDto {
 		this.boardref = boardref;
 		this.boardstep = boardstep;
 		this.boarddepth = boarddepth;
+	}
+	
+	public BoardDto(int boardnum, String id, int boardtype, String boardtitle, String boardcontent,
+			Date boarddate, int boardhit, String boardfile, int boardref, int boardstep, int boarddepth, String boardnotice) {
+		this.boardnum = boardnum;
+		this.id = id;
+		this.boardtype = boardtype;
+		this.boardtitle = boardtitle;
+		this.boardcontent = boardcontent;
+		this.boarddate = boarddate;
+		this.boardhit = boardhit;
+		this.boardfile = boardfile;
+		this.boardref = boardref;
+		this.boardstep = boardstep;
+		this.boarddepth = boarddepth;
+		this.boardnotice = boardnotice;
 	}
 	
 	public int getBoardnum() {
@@ -99,9 +116,12 @@ public class BoardDto {
 	public void setBoarddepth(int boarddepth) {
 		this.boarddepth = boarddepth;
 	}
-	
-	
-	
+	public String getBoardnotice() {
+		return boardnotice;
+	}
+	public void setBoardnotice(String boardnotice) {
+		this.boardnotice = boardnotice;
+	}
 	
 
 }
