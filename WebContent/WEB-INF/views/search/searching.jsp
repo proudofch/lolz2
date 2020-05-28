@@ -110,6 +110,11 @@ function get() {
 	var score = [0,0];
 	
 	$.getJSON(sohwan, function(data, textStatus, req) {
+		console.log(data);
+		//소환사 레벨 30미만
+		if(data.summonerLevel<30){
+			alert('소환사레벨이 30미만입니다.');
+		}
 		let summonerid = data.id;
 		let table = "<table>"
 	 			+"<tr><th>소환사 이름</th><th>큐 타입</th><th>티어</th><th>랭크</th><th>승</th>"
