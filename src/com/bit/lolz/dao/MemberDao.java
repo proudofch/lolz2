@@ -22,27 +22,37 @@ public class MemberDao {
 	         PreparedStatement pstmt = null;
 	         ResultSet rs = null;
 	         MemberDto member = null;
-	         String sql="";
+	         String sql="select id, pwd,summonerId from member where id = ?";
+	         	/*
 	        	 if(id.equals("admin")) {
 	        		 sql = "select adminid, adminpwd from admin where adminid = ?";  
 	        		 System.out.println("admin");
 	        	 }else {	        	 
 	        		 sql = "select id, pwd,summonerId from member where id = ?";         
 	        	 }
+	        	 */
 	        	 try {
 	            pstmt = conn.prepareStatement(sql);
 	            pstmt.setString(1, id);
 	            rs = pstmt.executeQuery();
+	            
 	            if(rs.next()) {
-	               member = new MemberDto();
-	               if(id.equals("admin")) {
-		               member.setId(rs.getString("adminid"));
-		               member.setPwd(rs.getString("adminpwd"));
-	               }else {
-	               member.setId(rs.getString("id"));
-	               member.setPwd(rs.getString("pwd"));}
-	               member.setSummonerId(rs.getString("summonerId"));
-	               }else {
+	               
+	            	member = new MemberDto();
+	               
+	            	/*
+	                if(id.equals("admin")) {
+		            	member.setId(rs.getString("adminid"));
+		            	member.setPwd(rs.getString("adminpwd"));
+	                } else
+	                */
+	                
+		            member.setId(rs.getString("id"));
+		            member.setPwd(rs.getString("pwd"));
+		            
+	                member.setSummonerId(rs.getString("summonerId"));
+	             
+	             } else {
 	        	 System.out.println("아이디가 없는 경우 등..");
 	        	 member = new MemberDto();
 	             member.setId("null");

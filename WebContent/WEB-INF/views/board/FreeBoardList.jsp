@@ -103,6 +103,7 @@
 						</tr>
 					</tfoot>
 				</table>
+				<li><a href="FreeBoardWrite.Board" class="button">글쓰기</a></li>
 			</div> <!-- table-wrapper end -->
 		</div> <!-- container end -->
 	</div> <!-- wrapper end -->
