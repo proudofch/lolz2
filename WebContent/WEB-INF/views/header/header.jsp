@@ -55,9 +55,7 @@
 				<!-- 	<li><a href="MemberEdit.Lolz">Settings</a></li> -->
 			
 					<li><a href="FreeBoardWrite.Board" >글쓰기</a></li>
-					<li><a href="FreeBoardList.Board" >게시판목록</a></li>
-					<li><a href="FreeBoardWrite.Board" >게시판 글쓰기</a></li>
-				
+					<li><a href="FreeBoardList.Board" >게시판목록</a></li>				
      
 							
 

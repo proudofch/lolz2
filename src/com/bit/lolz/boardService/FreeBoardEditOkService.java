@@ -41,7 +41,7 @@ public class FreeBoardEditOkService implements Action {
 			BoardDto boarddata = new BoardDto();
 			boarddata.setBoardtitle((multi.getParameter("boardtitle")));
 			boarddata.setBoardcontent(multi.getParameter("boardcontent"));
-			boarddata.setBoardfile(multi.getParameter("boardfile"));
+			boarddata.setBoardfile(dbFileName);
 			boarddata.setId(multi.getParameter("id"));
 			boarddata.setBoardnum(Integer.parseInt(multi.getParameter("boardnum")));
 			

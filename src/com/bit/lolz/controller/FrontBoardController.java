@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
+import com.bit.lolz.boardService.FreeBoardDeleteService;
 import com.bit.lolz.boardService.FreeBoardEditOkService;
 import com.bit.lolz.boardService.FreeBoardEditService;
 import com.bit.lolz.boardService.FreeBoardListService;
 import com.bit.lolz.boardService.FreeBoardReadService;
+import com.bit.lolz.boardService.FreeBoardReplyOkService;
 import com.bit.lolz.boardService.FreeBoardWriteOkService;
 
 @WebServlet("*.Board")
@@ -58,8 +60,12 @@ public class FrontBoardController extends HttpServlet {
     	} else if(url_Command.equals("/FreeBoardEditOk.Board")) { //자유게시판 글 수정 로직 처리
     		action = new FreeBoardEditOkService();
     		forward = action.execute(request, response);
-    	}
-    		
+    	
+    	} else if(url_Command.equals("/FreeBoardDelete.Board")) { //자유게시판 글 삭제
+    		action = new FreeBoardDeleteService();
+    		forward = action.execute(request, response);
+    	
+    	} 
     	
     	
     	

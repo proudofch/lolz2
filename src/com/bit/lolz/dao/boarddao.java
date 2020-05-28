@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import com.bit.lolz.dto.BoardDto;
+import com.bit.lolz.dto.ReplyDto;
+import com.sun.org.apache.regexp.internal.RE;
 
 public class boarddao {
 
@@ -259,6 +261,7 @@ public class boarddao {
 	
 	
 	//게시글 조회수 증가
+	//세션값 같으면 안 올라가게 하면 좋을 듯...
 	public boolean getBoardHit(int boardnum) {
 
 		boolean flag = false; 
@@ -337,4 +340,139 @@ public class boarddao {
 		return resultRow;
 	}
 	
+	
+	//게시글 삭제
+	public int deleteBoardContent(int boardnum) {
+		
+		int resultRow = 0;
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "DELETE FROM BOARD WHERE BOARDNUM = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardnum);
+			
+			resultRow = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("delete board content에 문제 발생");
+			
+		} finally {
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if(conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return resultRow;
+	}
+	
+	
+	//댓글 달기
+	public int replyOk(int boardnum_fk, String id, String comment) {
+		
+		int resultRow = 0;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "INSERT INTO REPLY(REPLYNUM, ID, BOARDNUM, REPLYCONT, REPLYDATE)"
+					   + " VALUES(REPLYSEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, boardnum_fk);
+			pstmt.setString(3, comment);
+			
+			resultRow = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("replyok 문제 발생!");
+			
+		} finally {
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if(conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return resultRow;
+	}
+	
+	
+	//댓글 목록 가져오기
+	public List<ReplyDto> getReplyList(int boardnum_fk) {
+		
+		ArrayList<ReplyDto> replylist = null;
+		ReplyDto replydto = null;
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "SELECT * FROM REPLY WHERE BOARDNUM = ? ORDER BY REPLYNUM ASC";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardnum_fk);
+			
+			rs = pstmt.executeQuery();
+			
+			replylist = new ArrayList<>();
+			
+			if(rs.next()) {
+				
+				do {
+					
+					int replynum = rs.getInt("REPLYNUM");
+					String id = rs.getString("ID");
+					int boardnum = rs.getInt("BOARDNUM");
+					String replycont = rs.getString("REPLYCONT");
+					String replydate = rs.getString("REPLYDATE");
+					
+					replydto = new ReplyDto(replynum, id, boardnum, replycont, replydate);
+					replylist.add(replydto);
+					
+				} while (rs.next());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("댓글 목록 가져오기에 문제 발생");
+			
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return replylist;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

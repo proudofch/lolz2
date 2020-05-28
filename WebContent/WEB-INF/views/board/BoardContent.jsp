@@ -16,10 +16,30 @@
 			padding-top: 100px;
 		}
 		
+		hr.dot {
+			border: none;
+			border: 1px dashed #ffffff;
+			opacity: 0.4;
+			margin: 20px 0px; /* 0 > 40px */
+		}
+		
+		#replybox, #reply {
+			margin: 0 40px;
+		}
+		
+		#reply_h4 {
+			margin-left: 40px;
+		}
+		
+	
+		
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
+
 
 <body>
 	<div id="main" class="wrapper style1">
@@ -42,19 +62,54 @@
 				</c:if>
 				
 				<hr>
-				<b>댓글</b>
+				<h4 id="reply_h4">댓글</h4>
+				<!-- <div class="replybox">
+					<div id="reply_id"><b>아이디 aaaa1111 proudofch</b></div>
+					<div id="reply_comment">코멘트내용이 들어갑니다</div>
+					<div id="reply_date"><h6>20200527</h6></div>
+				</div>
+				
+				<hr class="dot">
+				<div class="replybox">
+					<div id="reply_id"><b>hyeonachae</b></div>
+					<div id="reply_comment">코멘트내용이 들어갑니다</div>
+					<div id="reply_date"><h6>2020-05-27 11:41:23</h6></div>
+				</div>
+				<hr class="dot"> -->
+				
+				<div id="replybox"></div>
+				<!-- 여기부터 댓글 -->
+				
+				
+				
 				<br>
-				<textarea rows="2" cols="5"></textarea>
-				<br>
-				<input type="button" class="button primary small" value="등록" onclick="check();">
-				<input type="reset" class="button primary small" value="다시 쓰기"> <!-- 왜 동작 안 한담...? -->
-				<br>
+				<form name="reply" id="reply" method="POST">
+					${sessionScope.id}<br>
+					<input type="hidden" name="boardnum" id="boardnum" value="${dto.boardnum}">
+					<input type="hidden" name="id" id="id" value="${sessionScope.id}"> <!-- 여기를 뭘로 잡아줘야 댓글 입력에 반영이 될까... 원래는 dto.id였음  -->
+					<textarea rows="2" cols="5" id="comment" name="comment"></textarea>
+					<br>
+					<input type="button" class="button primary small" value="댓글 등록" id="writecom">
+					<input type="reset" class="button primary small" value="다시 쓰기">
+				</form>
+				
+				
+				
+				<!-- 댓글 끝 -->
+				
+				
+				
+				<hr>
+
+				<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
+				<input type="button" class="button primary small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+				<!-- 목록으로에 파라미터 주기 !!! -->
+				<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
+			
+				
 				
 				<ul>
-					<li><a href="FreeBoardList.Board">목록으로</a></li> <!-- 글 있던 페이지로 가지 않는 듯? 확인 -->
 					<li><a href="#">top</a></li>
-					<li><a href="FreeBoardEdit.Board?boardnum=${dto.boardnum}">수정하기</a></li>
-					<li><a href="#">삭제</a></li>
 					<li><a href="#">답글</a></li>
 				</ul>
 			</div>
@@ -63,11 +118,93 @@
 	</div>
 </body>
 
+
 <script type="text/javascript">
 
-	function check() {
+
+	$.ajax({
+		url:"GetReplyList",
+		datatype: "json",
+		data: { boardnum:'${dto.boardnum}'},
+		success: function(data) {
+			
+			var html = "";
+			
+			$.each(JSON.parse(data), function(index, element) {
+				html += "<div id='reply_id'><b>";
+				html += element.id;
+				html += "</b></div><div id='reply_comment'>";
+				html += element.replycont;
+				html += "</div><div id='reply_date'><h6>";
+				html += element.replydate;
+				html += "</h6></div><hr class='dot'>"
+			});
+			
+			$('#replybox').append(html);
+		}
+	});
+
+
+
+	
+		$('#writecom').click(function(){
 		
-	}
+			if(!reply.comment.value) {
+				swal('댓글 내용을 입력하세요!');
+				reply.comment.focus();
+				return false;
+			}
+			
+			
+			//댓글 쓰기
+			$.ajax ({
+				url:"ReplyInsert",
+				datatype:"json",
+				data: { boardnum:'${dto.boardnum}',
+						id: '${dto.id}',
+						comment: $('#comment').val()
+					  },
+				success: function(data) {
+						console.log(data);
+						
+						$('#replybox').empty();
+						var html = "";
+						$.each(JSON.parse(data), function(index, element) {
+							html += "<div id='reply_id'><b>";
+							html += element.id;
+							html += "</b></div><div id='reply_comment'>";
+							html += element.replycont;
+							html += "</div><div id='reply_date'><h6>";
+							html += element.replydate;
+							html += "</h6></div><hr class='dot'>"
+						});
+						
+						$('#replybox').append(html);
+						$('#comment').val("");
+						
+					}
+					
+			});
+		});
+	
+	
+	
+	/* ----마지막에----- SWEET ALERT 참고(뭔가 있음)
+	$(function(){
+		/* var result = confirm("정말 삭제하시겠습니까?");
+		if(result) {
+			
+		} */
+	/*	$('#delete').click(function() {
+			let result = confirm("정말 삭제하시겠습니까?");
+			if(result) {
+				location.href('index.jsp');
+			}
+		});
+	});
+	*/
+	
+	
 	
 </script>	
 
