@@ -303,7 +303,7 @@ function get() {
 				        			console.log("onout", d, i);
 				        		   }
 				        		  },
-				        		  gauge: {},
+				        		  gauge: {label:{show:false}},
 				        		  color: {
 				        		    pattern: [
 				        		      "#FF0000",
@@ -357,7 +357,7 @@ function get() {
 				        			console.log("onout", d, i);
 				        		   }
 				        		  },
-				        		  gauge: {},
+				        		  gauge: {label:{show:false}},
 				        		  color: {
 				        		    pattern: [
 				        		      "#FF0000",
