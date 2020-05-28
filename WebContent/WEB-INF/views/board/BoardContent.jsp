@@ -46,7 +46,7 @@
 		<div class="container">
 			<header class="major" style="display: none;">
 				<h2>Board</h2>
-				<p>여기는 상세보기입니다... 일단 안 보이는 중...</p>
+				<p>여기는 상세보기입니다....</p>
 			</header>
 			
 			<c:set var="dto" value="${requestScope.dto}"></c:set>
@@ -84,7 +84,7 @@
 				
 				<br>
 				<form name="reply" id="reply" method="POST">
-					${sessionScope.id}<br>
+					작성자&nbsp;&nbsp;${sessionScope.id}<br>
 					<input type="hidden" name="boardnum" id="boardnum" value="${dto.boardnum}">
 					<input type="hidden" name="id" id="id" value="${sessionScope.id}"> <!-- 여기를 뭘로 잡아줘야 댓글 입력에 반영이 될까... 원래는 dto.id였음  -->
 					<textarea rows="2" cols="5" id="comment" name="comment"></textarea>
