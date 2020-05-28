@@ -43,7 +43,7 @@ var mostthreeimg;
 	</div>
 	</div>
 	<div class="container">
-		<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
+		<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;back" ></div>
 		<div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
 	</div>
 	<div class="container">
@@ -297,7 +297,7 @@ function get() {
 				        			console.log("onout", d, i);
 				        		   }
 				        		  },
-				        		  gauge: {label:{show:false}},
+				        		  gauge: {},
 				        		  color: {
 				        		    pattern: [
 				        		      "#FF0000",
@@ -351,7 +351,7 @@ function get() {
 				        			console.log("onout", d, i);
 				        		   }
 				        		  },
-				        		  gauge: {label:{show:false}},
+				        		  gauge: {},
 				        		  color: {
 				        		    pattern: [
 				        		      "#FF0000",
