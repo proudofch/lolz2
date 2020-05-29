@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>My Page</title>
 <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -34,9 +35,40 @@
 
 </style>
 
+=======
+	<meta charset="UTF-8">
+	<title>마이페이지</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+	<script type="text/javascript">
+		var jsonData;
+		var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+		var testlist = new Array();
+		var datalist = new Object();
+		var win = 0;
+		var lose = 0;
+		var winrate = null;
+		var mostone;
+		var mosttwo;
+		var mostthree;
+		var mostoneimg;
+		var mosttwoimg;
+		var mostthreeimg;
+	</script>
+	<style>
+	
+		div .container {
+			text-align: center;
+		}
+	
+	</style>
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 </head>
+
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
+
 <body onload="get();">
+<<<<<<< HEAD
 <c:set var="member" value="${requestScope.memberdata}"></c:set>
 <div id="all">
 <div id="main" class="wrapper style1">
@@ -70,14 +102,37 @@
 	
 	
  		
+=======
+	<c:set var="member" value="${requestScope.memberdata}"></c:set>
+	<div id="main" class="wrapper style1">
+		<div class="container">
+			<header class="major">
+				<h2>마이페이지</h2>	
+				<p>[${sessionScope.id}] 님의 소환사 [${sessionScope.summonerId}]의 정보입니다.</p>	
+			</header>
+			
+	    	<c:if test="${sessionScope.summonerId==null }">
+	    		<img src="images/icon.png" width="250" height="250">
+	    		<h3>소환사 아이디가 없으시군요!</h3>
+	    	</c:if>
+	    	
+			<button type="button" onclick='location.href="prvMemberEdit.Lolz?id=${sessionScope.id}"' class="button small">내 정보 수정</button>
+			<button type="button" onclick='location.href="MemberBoardList.Lolz?id=${sessionScope.id}"'class="button small">내가 쓴 글/댓글</button> 
+	 		<!--<button type="button" class="button small" onclick="get()">내 티어확인</button>  -->
+	    	<br>
+	   		 
+		    <div id="display">
+				<div id="donutdiv" style="height: 150px;width: 50%">
+				</div>
+			</div>
+		</div>
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 	</div>
-</div>
-</div>
 </body>
 
-
- <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
+<<<<<<< HEAD
  <script type="text/javascript">
  function get() {
 		var id =  "${sessionScope.summonerId}";
@@ -85,21 +140,42 @@
 		var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
 			+id+"?api_key=" + apiKey;
 		var queuetype;
+=======
+<script type="text/javascript">
+
+	function get() {
+		
+		var id = '${sessionScope.summonerId}';
+		var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+					+ id + "?api_key=" + apiKey;
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 		var mostchamp;
 		var smostchamp;
 		var tmostchamp;
 		var champimg;
+<<<<<<< HEAD
 		var score = [0,0];
+=======
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 		
 		$.getJSON(sohwan, function(data, textStatus, req) {
 			let summonerid = data.id;
 			let table = "<table>"
+<<<<<<< HEAD
 		 			+"<tr><th>소환사 이름</th><th>큐 타입</th><th>티어</th><th>랭크</th><th>승</th>"
 		 			+"<th>패</th><th>승률</th><th>모스트 챔피언</th></tr>";
 			var leagueInfo = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"
 			+data.id+"?api_key=" + apiKey;
 			var champinfo = "https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"
 				+summonerid+"?api_key="+apiKey;
+=======
+		 			+"<tr><th>소환사 이름</th><th>티어</th><th>랭크</th><th>승</th>"
+		 			+"<th>패</th><th>승률</th><th>모스트 챔피언</th></tr>";
+			var leagueInfo = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"
+							+ data.id + "?api_key=" + apiKey;
+			var champinfo = "https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"
+							+ summonerid + "?api_key="+apiKey;
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 				
 				$.getJSON(champinfo, data, function(data, textStatus, req) {
 					 mostchamp = data[0].championId;
@@ -116,6 +192,7 @@
 							mostthreeimg = (data[0])[tmostchamp].engname;
 							//console.log(mostone, mosttwo, mostthree);
 							$.getJSON(leagueInfo, function(data, textStatus, req) {
+<<<<<<< HEAD
 								
 								if(data == ""){
 									alert('랭크게임을 하지 않은 유저입니다.');
@@ -152,6 +229,19 @@
 										table += "</td><td>";
 										table += queuetype;
 										table += "</td><td>";
+=======
+								win = data[0].wins;
+					            lose = data[0].losses;
+					            winrate = ((data[0].wins/(data[0].wins+data[0].losses))*100).toFixed(1)+"%";
+					            //console.log(win, lose, winrate);
+								console.log(mostoneimg, mosttwoimg, mostthreeimg);
+								
+								$.each(data, function(index, obj){
+										//console.log(data);
+										table += "<tr><td>";
+										table += obj.summonerName;								
+										table += "</td><td>";
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 										table += obj.tier;
 										table += "<img src='images/tier/"+obj.tier+".png' style=\"width:50px; height: 50px\"/>"
 										table += "</td><td>";
@@ -162,6 +252,7 @@
 										table += obj.losses;
 										table += "</td><td>";
 										table += (((obj.wins/(obj.wins+obj.losses))*100).toFixed(1)+"%");
+<<<<<<< HEAD
 										table += "</td><td>";
 										champimg = mostoneimg;
 										var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
@@ -371,5 +462,32 @@
 	}	
 
 
+=======
+										table += "</td><td><ul style='list-style: none'>";
+										champimg = mostoneimg;
+										var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
+										table += "<li><div class = 'images'><img src ='"+imgsource+"' style='width:50px'></div>"+mostone+"</li>";
+										champimg = mosttwoimg;
+										var simgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
+										table += "<li><div class = 'images'><img src ='"+simgsource+"' style='width:50px'></div>"+mosttwo+"</li>";
+										champimg = mostthreeimg;
+										var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
+										
+										table += "<li><div class = 'images'><img src ='"+timgsource+"' style='width:50px'></div>"+mostthree+"</li>";
+										table += "</ul></td>";	
+								});
+								
+								table += "</table>";
+					            $('#display').empty();
+					            $('#display').append(table);
+					            $('th').css("text-align", "center");
+					            $('table').css("margin-top", "100px");
+					 
+							});
+					});
+				});
+		});
+	}	
+>>>>>>> bf86b39cbadbf0dbbc1f45cc6404ec782be8353b
 </script>
 </html>

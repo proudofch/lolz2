@@ -17,6 +17,23 @@
 			background-color: white;
 			opacity: 0.95;
 		}
+		
+		#btns {
+			position: relative;
+			margin-top: 90px;
+		}
+		
+		#gotolist {
+			position: absolute;
+			right: 93px;
+			/* top: 0; */
+		}
+		
+		#top {
+			position: absolute;
+			right: 0;
+		}
+		
 	</style>
 	
 	
@@ -41,6 +58,17 @@
 			document.board_edit.submit();
 			
 		}
+		
+		/* $(function() {
+			
+			var flag = ${ boarddata.boardnotice };
+			
+			if( flag == "Y" ) {
+				$("input:checkbox[id='notice']").prop("checked", true);
+			};
+
+			
+		}); */
 	
 	</script>
 </head>
@@ -51,10 +79,8 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major">
-				<h2>Edit</h2>
-				<p>글 수정하기...입니다...</p>
+				<h2>글 수정하기</h2>
 			</header>
-			
 			
 			<!-- request 객체에 boarddata 넘어온 상태 -->
 			
@@ -67,6 +93,10 @@
 				
 				제목<br> 
 				<input type="text" name="boardtitle" id="boardtitle" placeholder="제목을 입력하세요" value="${boarddata.boardtitle}">
+				<c:if test="${sessionScope.id == 'admin'}">
+					<input type="checkbox" id="notice" name="notice" value="Y">
+					<label for="notice">공지사항</label>
+				</c:if>
 				<br>
 				내용<br>
 				<div id="summernote_wrapper">
@@ -76,14 +106,14 @@
 				첨부된 파일&nbsp;&nbsp;[${boarddata.boardfile}] <br>
 				새 첨부 파일<br>
 				<input type="file" id="boardfile" name="boardfile">
-				<br>
-				<input type="button" class="button primary small" value="수정하기" onclick="check();">
-				<input type="reset" class="button primary small" value="다시 쓰기"> <!-- reset 안됨 손보기!-->
-				<ul>
-					<li><a href="FreeBoardList.Board">목록으로</a></li> <!-- cp, ps값 추적하기 / 파라미터 붙여줘야 돼....?currentpage=-->
-					<li><a href="#">top</a></li>
-				</ul>
 				
+				
+				<div id="btns">
+					<input type="button" class="button primary small" value="수정하기" onclick="check();">
+					<input type="reset" class="button primary small" value="다시 쓰기"> <!-- reset 안됨 손보기!-->
+					<input type="button" class="button small" id="gotolist" value="목록으로" onclick="location.href='FreeBoardList.Board'"> <!-- cp, ps... --> 
+					<input type="reset" class="button small" id="top" value="TOP" onclick="location.href='#'">
+				</div>
 			</form>
 		</div> <!-- container end -->
 	</div> <!-- wrapper end -->

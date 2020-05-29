@@ -31,11 +31,19 @@
 			margin-left: 40px;
 		}
 		
+		#btns_wrapper {
+			text-align: right;
+		}
+		
+		#btns {
+			display: inline-block;
+		}
+		
 	
 		
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
@@ -45,8 +53,8 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major" style="display: none;">
-				<h2>Board</h2>
-				<p>여기는 상세보기입니다....</p>
+				<h2>상세보기</h2>
+				<p>header는 단 맞추기 용도</p>
 			</header>
 			
 			<c:set var="dto" value="${requestScope.dto}"></c:set>
@@ -62,63 +70,49 @@
 				</c:if>
 				
 				<hr>
-				<h4 id="reply_h4">댓글</h4>
-				<!-- <div class="replybox">
-					<div id="reply_id"><b>아이디 aaaa1111 proudofch</b></div>
-					<div id="reply_comment">코멘트내용이 들어갑니다</div>
-					<div id="reply_date"><h6>20200527</h6></div>
-				</div>
 				
-				<hr class="dot">
-				<div class="replybox">
-					<div id="reply_id"><b>hyeonachae</b></div>
-					<div id="reply_comment">코멘트내용이 들어갑니다</div>
-					<div id="reply_date"><h6>2020-05-27 11:41:23</h6></div>
-				</div>
-				<hr class="dot"> -->
+				<c:if test="${sessionScope.id != null}">
 				
-				<div id="replybox"></div>
-				<!-- 여기부터 댓글 -->
-				
-				
-				
-				<br>
-				<form name="reply" id="reply" method="POST">
-					작성자&nbsp;&nbsp;${sessionScope.id}<br>
-					<input type="hidden" name="boardnum" id="boardnum" value="${dto.boardnum}">
-					<input type="hidden" name="id" id="id" value="${sessionScope.id}"> <!-- 여기를 뭘로 잡아줘야 댓글 입력에 반영이 될까... 원래는 dto.id였음  -->
-					<textarea rows="2" cols="5" id="comment" name="comment"></textarea>
+					<h4 id="reply_h4">댓글</h4>
+					
+					<div id="replybox"></div>
+					
+					<!-- 댓글 폼 -->
 					<br>
-					<input type="button" class="button primary small" value="댓글 등록" id="writecom">
-					<input type="reset" class="button primary small" value="다시 쓰기">
-				</form>
+					<form name="reply" id="reply" method="POST">
+						작성자&nbsp;&nbsp;${sessionScope.id}<br>
+						<input type="hidden" name="boardnum" id="boardnum" value="${dto.boardnum}">
+						<input type="hidden" name="id" id="id" value="${sessionScope.id}">
+						<textarea rows="2" cols="5" id="comment" name="comment"></textarea>
+						<br>
+						<input type="button" class="button primary small" value="댓글 등록" id="writecom">
+						<input type="reset" class="button primary small" value="다시 쓰기">
+					</form>
+					<!-- 댓글 폼 끝 -->
+					
+					<hr>
+	
+					<div id="btns_wrapper">
+						<div id="btns">
+							<c:if test="${sessionScope.id == dto.id}">
+								<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
+								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
+							</c:if>
+								
+							<input type="button" class="button small" value="답글" onclick="location.href='#'">
+				</c:if>
+						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+							<!-- 목록으로에 파라미터 주기 !!! -->
+						<input type="button" class="button small" value="TOP" onclick="location.href='#'">
+					</div>
+				</div>
 				
-				
-				
-				<!-- 댓글 끝 -->
-				
-				
-				
-				<hr>
-
-				<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
-				<input type="button" class="button primary small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
-				<!-- 목록으로에 파라미터 주기 !!! -->
-				<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
-			
-				
-				
-				<ul>
-					<li><a href="#">top</a></li>
-					<li><a href="#">답글</a></li>
-				</ul>
 			</div>
-			
 		</div>
 	</div>
 </body>
 
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
 
@@ -186,24 +180,6 @@
 					
 			});
 		});
-	
-	
-	
-	/* ----마지막에----- SWEET ALERT 참고(뭔가 있음)
-	$(function(){
-		/* var result = confirm("정말 삭제하시겠습니까?");
-		if(result) {
-			
-		} */
-	/*	$('#delete').click(function() {
-			let result = confirm("정말 삭제하시겠습니까?");
-			if(result) {
-				location.href('index.jsp');
-			}
-		});
-	});
-	*/
-	
 	
 	
 </script>	

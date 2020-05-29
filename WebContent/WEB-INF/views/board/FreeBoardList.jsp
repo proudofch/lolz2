@@ -9,6 +9,60 @@
 	<meta charset="UTF-8">
 	<title>자유게시판</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+	
+		.pagination {
+		  	display: inline-block;
+		}
+		
+		.pagination a {
+		  	background-color: #EAEAEA;
+		  	color: black;
+		  	float: left;
+		  	padding: 8px 16px;
+		  	text-decoration: none;
+		  	border: 1px solid #ddd;
+		}
+		
+		.pagination a.active {
+		  	background-color: #e44c65;
+		  	color: white;
+		  	border: 1px solid #e44c65;
+		}
+		
+		.pagination a:hover:not(.active) {background-color: #ddd;}
+		
+		.pagination a:first-child {
+		  	border-top-left-radius: 10px;
+		  	border-bottom-left-radius: 10px;
+		}
+		
+		.pagination a:last-child {
+		  	border-top-right-radius: 10px;
+		  	border-bottom-right-radius: 10px;
+		}
+		
+		#pagination_wrapper, table, thead, tbody, tr {
+			text-align: center;
+		}
+		
+		.left {
+			text-align: left;
+		}
+		
+		#btn {
+			float: right;
+		}
+		
+	
+	</style>
+	<script type="text/javascript">
+		
+		$(function() {
+			$('tr > th').css("text-align", "center");
+		});
+		
+	</script>
 </head>
 
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
@@ -17,8 +71,7 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major">
-				<h2>Board</h2>
-				<p>여기는 자유게시판입니다</p>
+				<h2>자유게시판</h2>
 			</header>
 			
 			<div class="table-wrapper">
@@ -35,15 +88,19 @@
 					<tbody>
 						<c:set var="boardlist" value="${requestScope.boardlist}" />
 						
-						<!-- 게시물이 한 건도 없을 경우의 처리 (추가) -->
+						<c:if test="${boardlist == null}">
+							<tr>
+								<td colspan="5">게시물이 없습니다!</td> <!-- 동작하는 코드인지 테스트 안 해봄 -->
+							</tr>
+						</c:if>
 						
 						<c:forEach var="list" items="${boardlist}">
 						<tr>
 							<td>${list.boardnum}</td>
-							<td>
+							<td class="left">
 								<c:choose>
 									<c:when test="${list.boardnotice == 'Y'}">
-										[공지사항]&nbsp;&nbsp;
+										<i class="far fa-flag"></i>&nbsp;공지&nbsp;&nbsp;
 										<a href="FreeBoardRead.Board?boardnum=${list.boardnum}&cp=${requestScope.currentpage}&ps=${requestScope.pagesize}">
 										<c:choose>
 											<c:when test="${list.boardtitle != null && fn:length(list.boardtitle) > 30}">
@@ -77,32 +134,36 @@
 						</tr>
 						</c:forEach>
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="5">
-								<c:if test="${currentpage > 1}">
-									<a href="FreeBoardList.Board?cp=${currentpage-1}&ps=${pagesize}">이전</a>
-								</c:if>
-
-								<c:forEach var="i" begin="1" end="${pagecount}" step="1">
-									<c:choose>
-										<c:when test="${currentpage == i}">
-											<font color="tomato">[${i}]</font>
-										</c:when>
-										<c:otherwise>
-											<a href="FreeBoardList.Board?cp=${i}&ps=${pagesize}">[${i}]</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<c:if test="${currentpage < pagecount}">
-									<a href="FreeBoardList.Board?cp=${currentpage+1}&ps=${pagesize}">다음</a>
-								</c:if>
-								
-							</td>
-						</tr>
-					</tfoot>
+					<tfoot></tfoot>
 				</table>
+				
+				<div id="pagination_wrapper">
+					<div class="pagination">
+						<c:if test="${currentpage > 1}">
+							<a href="FreeBoardList.Board?cp=${currentpage-1}&ps=${pagesize}"><i class="fas fa-angle-double-left"></i></a>
+						</c:if>
+						
+						<c:forEach var="i" begin="1" end="${pagecount}" step="1">
+							<c:choose>
+								<c:when test="${currentpage == i}">
+									<a href="#" class="active">${i}</a>
+								</c:when>
+								<c:otherwise>
+									<a href="FreeBoardList.Board?cp=${i}&ps=${pagesize}">${i}</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
+						<c:if test="${currentpage < pagecount}">
+							<a href="FreeBoardList.Board?cp=${currentpage+1}&ps=${pagesize}"><i class="fas fa-angle-double-right"></i></a>
+						</c:if>
+					</div>
+				</div>
+				
+				<c:if test="${sessionScope.id != null }">
+					<a href="FreeBoardWrite.Board" class="button primary" id="btn">글쓰기</a>
+				</c:if>
+				
 			</div> <!-- table-wrapper end -->
 		</div> <!-- container end -->
 	</div> <!-- wrapper end -->
