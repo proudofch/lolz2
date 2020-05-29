@@ -216,6 +216,33 @@ public class MemberDao {
 		
 	}
 	*/
+	public ArrayList<MemberDto> findDuo(int summonerscore) throws SQLException{
+		Connection conn = ConnectionHelper.getConnection("oracle");
+		PreparedStatement pstmt = null;
+		String sql = "select summonerId from member where summonerscore between ? and ?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, summonerscore-2);
+		pstmt.setInt(2, summonerscore+2);
+		ResultSet rs = pstmt.executeQuery();
+		
+		ArrayList<MemberDto> Memberlist = new ArrayList<>();
+		try {
+			while (rs.next()) {
+				MemberDto m = new MemberDto();
+				m.setSummonerId(rs.getString("summonerId"));
+				m.setSummonerScore(rs.getString("summonerscore"));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+			conn.close(); //반환하기
+		}
+		
+		
+		return Memberlist;
+	}
 	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 회원 목록
 		Connection conn = ConnectionHelper.getConnection("oracle"); 
 		PreparedStatement pstmt = null;

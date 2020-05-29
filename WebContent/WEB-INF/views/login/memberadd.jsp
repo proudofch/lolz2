@@ -136,7 +136,7 @@
           return false;
       }
 
-      if(memberadd.pw.value != checkpw.value) {
+      if(pw.value != checkpw.value) {
           alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
           checkpw.value = "";
           checkpw.focus();
