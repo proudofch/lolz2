@@ -11,6 +11,7 @@
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<title>Header</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
 	<script type="text/javascript">
 		$(function() {
 			
@@ -24,7 +25,9 @@
 			});
 			
 		});
-	</script>
+	</script>  
+	
+	
 	<style type="text/css">
 		
 		body {
@@ -70,6 +73,14 @@
 			</ul>
 		</nav>
 	</header>
+	<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 </body>
 
 </html>
