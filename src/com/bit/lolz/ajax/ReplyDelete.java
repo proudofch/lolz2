@@ -1,9 +1,6 @@
 package com.bit.lolz.ajax;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,15 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.bit.lolz.action.Action;
 import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.dao.boarddao;
-import com.bit.lolz.dto.BoardDto;
-import com.bit.lolz.dto.ReplyDto;
-
-import net.sf.json.JSONArray;
 
 @WebServlet("/ReplyDelete")
 public class ReplyDelete extends HttpServlet {
