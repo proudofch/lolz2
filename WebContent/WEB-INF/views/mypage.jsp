@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 	<script type="text/javascript">
 		var jsonData;
-		var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+		var apiKey = "RGAPI-ae90f648-5797-4f10-9476-b493a22796b0";
 		var testlist = new Array();
 		var datalist = new Object();
 		var win = 0;

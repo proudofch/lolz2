@@ -65,8 +65,7 @@ public class FrontBoardController extends HttpServlet {
     		action = new FreeBoardDeleteService();
     		forward = action.execute(request, response);
     	
-    	} 
-    	
+    	}
     	
     	
     	

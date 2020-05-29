@@ -399,7 +399,33 @@ public class boarddao {
 		
 		return resultRow;
 	}
-	
+//리플지우기	
+public int replyDeleteOk(int replynum) {
+		
+		int resultRow = 0;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "delete from reply where replynum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, replynum);
+			
+			resultRow = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("replyDeleteok 문제 발생!");
+			
+		} finally {
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if(conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		
+		return resultRow;
+	}
 	
 	//댓글 목록 가져오기
 	public List<ReplyDto> getReplyList(int boardnum_fk) {
