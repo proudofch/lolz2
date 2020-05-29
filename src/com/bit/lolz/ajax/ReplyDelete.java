@@ -26,7 +26,6 @@ public class ReplyDelete extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int replynum = Integer.parseInt(request.getParameter("replynum"));
-		System.out.println("replynum넘어옴: "+replynum);
 		
 		//댓글 삭제
 		boarddao boarddao = new boarddao();
@@ -35,16 +34,19 @@ public class ReplyDelete extends HttpServlet {
 		
 		
 		//다시뿌려보자
-    	ActionForward forward = null;
-    	forward = new ActionForward();
+    	ActionForward forward = new ActionForward();
         forward.setRedirect(false);
         forward.setPath("/WEB-INF/views/board/FreeBoardList.jsp");
+        System.out.println("replyDeleteOk 실행");
         
-        if(forward != null) {
-    		RequestDispatcher dis  = request.getRequestDispatcher(forward.getPath());
-    		dis.forward(request, response);
-    	} 
-    	 
+		if(forward != null) { 
+		RequestDispatcher dis =
+		request.getRequestDispatcher(forward.getPath());
+		dis.forward(request,response);
+		System.out.println("replyDeleteOk 실행");
+		}
+		 
+		
         
 	}
     
@@ -54,6 +56,7 @@ public class ReplyDelete extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
+		
 	}
 
 }
