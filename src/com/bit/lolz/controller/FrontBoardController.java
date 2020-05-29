@@ -71,6 +71,7 @@ public class FrontBoardController extends HttpServlet {
     		action = new FreeBoardDeleteService();
     		forward = action.execute(request, response);
     	
+
     	} else if(url_Command.equals("/KnowHowBoardList.Board")) { //공략게시판 목록 보기
     		action = new KnowHowBoardListService();
     		forward = action.execute(request, response);
@@ -87,7 +88,7 @@ public class FrontBoardController extends HttpServlet {
     	} else if(url_Command.equals("/KnowHowBoardRead.Board")) { //공략게시판 글 상세보기
     		action = new KnowHowBoardReadService();
     		forward = action.execute(request, response);
-    	
+
     	} else if(url_Command.equals("/KnowHowBoardEdit.Board")) { //공략게시판 글 수정 UI
     		action = new KnowHowBoardEditService();
     		forward = action.execute(request, response);

@@ -131,7 +131,8 @@
 				html += element.replycont;
 				html += "</div><div id='reply_date'><h6>";
 				html += element.replydate;
-				html += "</h6></div><hr class='dot'>"
+				html += "</h6>"
+				html +=	"<form action=\"ReplyDelete?replynum=" + element.replynum +"\" method=\"post\" id=\"replynum\" name=\"replynum\"><input type=\"submit\" id=\"\" value=\"삭제\"> </form></div><hr class='dot'>"; //덕추가
 			});
 			
 			$('#replybox').append(html);
@@ -170,8 +171,9 @@
 							html += element.replycont;
 							html += "</div><div id='reply_date'><gb h6>";
 							html += element.replydate;
-							html += "</h6></div><hr class='dot'>"
-						});
+							html += "</h6>"
+							html +=	"<form action=\"ReplyDelete?replynum=" + element.replynum +"\" method=\"post\" id=\"replynum\" name=\"replynum\"><input type=\"submit\" id=\"\" value=\"삭제\"> </form></div><hr class='dot'>"; //덕추가
+							});
 						
 						$('#replybox').append(html);
 						$('#comment').val("");
@@ -179,6 +181,8 @@
 					}
 					
 			});
+			
+			
 		});
 	
 	
