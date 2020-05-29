@@ -65,6 +65,7 @@ public class boarddao {
 			pstmt.setInt(6, boardRef);
 
 			resultRow = pstmt.executeUpdate();
+			System.out.println("resut"+resultRow);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,7 +77,74 @@ public class boarddao {
 		
 		return resultRow;
 	}
+	//답글 쓰기
+	public int rewriteOk(BoardDto boarddata, int boardtype) {
+		
+		int resultRow = 0;
+		
+		try {
+			conn = ds.getConnection();
+			
+			int boardnum = boarddata.getBoardnum(); //추가
+			System.out.println("dao단의 boardnum: "+boardnum);
+			String id = boarddata.getId();
+			int type = boarddata.getBoardtype();
+			String Boardtitle = boarddata.getBoardtitle();
+			String Boardcontent = boarddata.getBoardcontent();
+			String Boardfile = boarddata.getBoardfile();
+			String Boardnotice = boarddata.getBoardnotice();
+
+			String refer_depth_step_sql="select boardref , boarddepth , boardstep from board where boardnum=?";
+			
+			String step_update_sql = "update board set boardstep=boardstep+1 where boardstep = ? and boardref=?";
+					
+			String rewrite_sql = "insert into board"
+					+ "(boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile, boardref, boardnotice,BOARDDEPTH,BOARDSTEP)"
+					+ "values(boardseq.nextval, ?, ?, ?, ?, sysdate, 0, ?, ?, ?,?,?)";
+			pstmt = conn.prepareStatement(refer_depth_step_sql);
+			pstmt.setInt(1, boardnum);
+			rs = pstmt.executeQuery();
 	
+			
+		if(rs.next()){
+			int boardstep = rs.getInt("boardstep");
+			int boardrefer = rs.getInt("boardref");
+			int boarddepth = rs.getInt("boarddepth");
+			System.out.println("rs구문 탓을떄.");
+				//step () 값 업데이트
+			
+			pstmt = conn.prepareStatement(step_update_sql);
+			pstmt.setInt(1, boardstep);
+			System.out.println("boardstep"+boardstep);
+			pstmt.setInt(2, boardrefer);
+			pstmt.executeUpdate();
+				
+			pstmt = conn.prepareStatement(rewrite_sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, 1);//게시판 바꿀꺼면 이 숫자를 바꾸면 돼요.
+			pstmt.setString(3, Boardtitle);
+			pstmt.setString(4, Boardcontent);
+			pstmt.setString(5, Boardfile);
+			pstmt.setString(7, Boardnotice);
+			
+			pstmt.setInt(8, boarddepth+1);
+			pstmt.setInt(9, boardstep+1);
+			
+			pstmt.setInt(6, boardrefer);
+
+			resultRow = pstmt.executeUpdate();
+		}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			if(pstmt != null) { try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); } }
+			if(conn != null) { try { conn.close(); } catch (SQLException e) { e.printStackTrace(); } }
+		}
+		
+		return resultRow;
+	}
 	//최대 boardRef 구하기
 	public int getMaxBoardRef(Connection conn) {
 
@@ -84,6 +152,7 @@ public class boarddao {
 		ResultSet rs = null;
 		
 		int maxBoardRef = 0;
+		
 
 		try {
 			String sql = "select nvl(max(boardref), 0) from board";
@@ -132,6 +201,7 @@ public class boarddao {
 			if(conn != null) { try {conn.close();} catch (SQLException e) {e.printStackTrace();} }
 		}
 		
+		
 		return totalcount;
 	}
 	
@@ -165,7 +235,7 @@ public class boarddao {
 			pstmt.setInt(1, type);
 			pstmt.setInt(2, start);
 			pstmt.setInt(3, end);
-			
+			System.out.println("시작긑"+start+end);
 			rs = pstmt.executeQuery();
 			
 			list = new ArrayList<BoardDto>();
@@ -300,7 +370,9 @@ public class boarddao {
 	public BoardDto getEditContent(int boardnum) {
 		return this.boardRead(boardnum);
 	}
-	
+	public BoardDto getRewriteContent(int boardnum) {
+		return this.boardRead(boardnum);
+	}
 	
 	//게시글 수정 OK
 	public int editOk(BoardDto boarddata) {

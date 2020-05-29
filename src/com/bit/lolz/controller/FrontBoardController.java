@@ -16,7 +16,8 @@ import com.bit.lolz.boardService.FreeBoardEditOkService;
 import com.bit.lolz.boardService.FreeBoardEditService;
 import com.bit.lolz.boardService.FreeBoardListService;
 import com.bit.lolz.boardService.FreeBoardReadService;
-import com.bit.lolz.boardService.FreeBoardReplyOkService;
+import com.bit.lolz.boardService.FreeBoardRewriteOkService;
+import com.bit.lolz.boardService.FreeBoardRewriteService;
 import com.bit.lolz.boardService.FreeBoardWriteOkService;
 import com.bit.lolz.boardService.KnowHowBoardDeleteService;
 import com.bit.lolz.boardService.KnowHowBoardEditOkService;
@@ -46,7 +47,6 @@ public class FrontBoardController extends HttpServlet {
         	forward = new ActionForward();
             forward.setRedirect(false);
             forward.setPath("/WEB-INF/views/board/BoardWrite.jsp");
-
     	} else if(url_Command.equals("/FreeBoardWriteOk.Board")) { //자유게시판 글쓰기 로직 처리
         	action = new FreeBoardWriteOkService();
         	forward = action.execute(request, response);
@@ -70,8 +70,18 @@ public class FrontBoardController extends HttpServlet {
     	} else if(url_Command.equals("/FreeBoardDelete.Board")) { //자유게시판 글 삭제
     		action = new FreeBoardDeleteService();
     		forward = action.execute(request, response);
-    	
 
+    		
+    	}else if(url_Command.equals("/FreeBoardRewrite.Board")) { //자유게시판 답글달기
+    		action = new FreeBoardRewriteService();
+    		forward = action.execute(request, response);
+    	} else if(url_Command.equals("/FreeBoardRewriteOk.Board")) { //자유게시판 답글달기 로직 처리
+    		action = new FreeBoardRewriteOkService();
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     	} else if(url_Command.equals("/KnowHowBoardList.Board")) { //공략게시판 목록 보기
     		action = new KnowHowBoardListService();
     		forward = action.execute(request, response);
@@ -80,7 +90,7 @@ public class FrontBoardController extends HttpServlet {
     		forward = new ActionForward();
             forward.setRedirect(false);
             forward.setPath("/WEB-INF/views/board/KnowHowBoardWrite.jsp");
-    	
+
     	} else if(url_Command.equals("/KnowHowBoardWriteOk.Board")) { //공략게시판 글쓰기 로직 처리
     		action = new KnowHowBoardWriteOkService();
         	forward = action.execute(request, response);
@@ -102,6 +112,7 @@ public class FrontBoardController extends HttpServlet {
     		forward = action.execute(request, response);
     	}
     	
+
     	
     	
     	if(forward != null) {

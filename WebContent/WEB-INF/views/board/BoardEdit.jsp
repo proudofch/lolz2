@@ -5,8 +5,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+
 	<title>자유게시판 글 수정하기</title>
-	
+
 	<style type="text/css">
 		h2 {
 			margin-top: 100px;
@@ -91,6 +92,7 @@
 				<input type="hidden" id="id" name="id" value="${boarddata.id}">
 				<input type="hidden" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				
+				<input type="text" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				제목<br> 
 				<input type="text" name="boardtitle" id="boardtitle" placeholder="제목을 입력하세요" value="${boarddata.boardtitle}">
 				<c:if test="${sessionScope.id == 'admin'}">
