@@ -344,7 +344,7 @@
 					        			console.log("onout", d, i);
 					        		   }
 					        		  },
-					        		  gauge: {label:{show:false}},
+					        		  gauge: {},
 					        		  color: {
 					        		    pattern: [
 					        		      "#FF0000",
@@ -398,7 +398,7 @@
 					        			console.log("onout", d, i);
 					        		   }
 					        		  },
-					        		  gauge: {label:{show:false}},
+					        		  gauge: {},
 					        		  color: {
 					        		    pattern: [
 					        		      "#FF0000",
