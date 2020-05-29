@@ -35,20 +35,15 @@
 			<ul>
 				<li><a href="index.jsp">HOME</a></li>
 				<li><a href="Search.Search">소환사검색</a></li>
-				
-				
-				
-				
-			
-				<li>
+
+<li>
 					<a href="#">게시판</a>
 					<ul>
 						<li><a href="FreeBoardList.Board">자유게시판</a></li>
 						<li><a href="KnowHowBoardList.Board">공략게시판</a></li>
 					</ul>
 				</li>
-				
-            	
+
 				<c:choose>
 	            	<c:when test="${sessionScope.id == null }">
 			            <li><a href="Login.Lolz">로그인</a></li>
