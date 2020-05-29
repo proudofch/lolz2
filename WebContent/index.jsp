@@ -66,11 +66,11 @@
 							<li><a href="#" class="button">서치페이지로</a></li>
 						</ul>
 					</div>
-					<a href="#three" class="goto-next scrolly">Next</a>
+					<a href="#banner" class="goto-next scrolly">Next</a>
 				</section>
 
 			<!-- Three -->
-				<section id="three" class="spotlight style3 left">
+			<!--	<section id="three" class="spotlight style3 left">
 					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
 					<div class="content">
 						<header>
@@ -82,10 +82,10 @@
 							<li><a href="#" class="button">게시판페이지로</a></li>
 						</ul>
 					</div>
-					<a href="#four" class="goto-next scrolly">Next</a>
+					<a href="#banner" class="goto-next scrolly">Next</a>
 					
 				</section>
-
+ -->
 			<!-- Four -->
 			<!-- 날림 -->	
 
