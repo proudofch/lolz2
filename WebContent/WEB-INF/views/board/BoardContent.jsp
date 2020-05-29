@@ -110,9 +110,9 @@
 				
 				<ul>
 					<li><a href="#">top</a></li>
-					<li><a href="#">답글</a></li>
 				</ul>
-			</div>
+ <input type="button" class="button primary small" value="답글" onclick="location.href='FreeBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
+ 			</div>
 			
 		</div>
 	</div>

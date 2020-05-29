@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>자유게시판 글쓰기</title>
+	<title>자유게시판 답글쓰기</title>
     
 	<style type="text/css">
 		h2 {
@@ -51,14 +51,16 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major">
-				<h2>Write</h2>
-				<p>notice blahblahblah</p>
+				<h2>Rewrite</h2>
+				<p>답글 작성</p>
 			</header>
-			<form name="board_write" id="board_write" action="FreeBoardWriteOk.Board" method="post" enctype="multipart/form-data">
+			<form name="board_write" id="board_write" action="FreeBoardRewriteOk.Board" method="post" enctype="multipart/form-data">
+			<%-- <c:set var="boarddata" value="${requestScope.boarddata}"></c:set> --%>
 				<input type="hidden" id="id" name="id" value="${sessionScope.id}">
-				
+				<input type="hidden" id="boardnum" name="boardnum" value="${boardnum}">
+				<input type="text" name="t" id="t" value="${boardnum}">
 				제목<br> 
-				<input type="text" name="title" id="title" placeholder="제목을 입력하세요">
+				<input type="text" name="title" id="title" value="[Re]">
 				<c:if test="${sessionScope.id == 'admin'}">
 					<input type="checkbox" id="notice" name="notice" value="Y">
 					<label for="notice">공지사항</label>

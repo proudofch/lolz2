@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>글 수정하기</title>
+	<title>글 수정하기boardnum=${dto.boardnum}</title>
 	
 	<style type="text/css">
 		h2 {
@@ -65,6 +65,7 @@
 				<input type="hidden" id="id" name="id" value="${boarddata.id}">
 				<input type="hidden" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				
+				<input type="text" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				제목<br> 
 				<input type="text" name="boardtitle" id="boardtitle" placeholder="제목을 입력하세요" value="${boarddata.boardtitle}">
 				<br>
