@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>자유게시판 글쓰기</title>
+	<title>공략게시판 글쓰기</title>
     
 	<style type="text/css">
 		/* h2 {
@@ -55,9 +55,9 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major">
-				<h2>자유게시판 글쓰기</h2>
+				<h2>공략게시판 글쓰기</h2>
 			</header>
-			<form name="board_write" id="board_write" action="FreeBoardWriteOk.Board" method="post" enctype="multipart/form-data">
+			<form name="board_write" id="board_write" action="KnowHowBoardWriteOk.Board" method="post" enctype="multipart/form-data">
 				<input type="hidden" id="id" name="id" value="${sessionScope.id}">
 				
 				제목<br> 
@@ -92,7 +92,7 @@
 	console.log($('#summernote'));
 
 	$('#summernote').summernote({
-		placeholder: '내용을 입력하세요',
+		placeholder: 'Hello stand alone ui',
 		tabsize: 2,
 		height: 500,
 		/* focus: true, */

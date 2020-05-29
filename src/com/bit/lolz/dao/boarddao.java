@@ -177,14 +177,15 @@ public class boarddao {
 	//최대 boardStep 구하기
 	
 	//게시물 총 건수
-	public int totalBoardCount() {
+	public int totalBoardCount(int boardtype) {
 		
 		int totalcount = 0;
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select count(*) cnt from board";
+			String sql = "select count(*) cnt from board where boardtype = ?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardtype);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

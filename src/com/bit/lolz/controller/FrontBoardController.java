@@ -19,6 +19,12 @@ import com.bit.lolz.boardService.FreeBoardReadService;
 import com.bit.lolz.boardService.FreeBoardRewriteOkService;
 import com.bit.lolz.boardService.FreeBoardRewriteService;
 import com.bit.lolz.boardService.FreeBoardWriteOkService;
+import com.bit.lolz.boardService.KnowHowBoardDeleteService;
+import com.bit.lolz.boardService.KnowHowBoardEditOkService;
+import com.bit.lolz.boardService.KnowHowBoardEditService;
+import com.bit.lolz.boardService.KnowHowBoardListService;
+import com.bit.lolz.boardService.KnowHowBoardReadService;
+import com.bit.lolz.boardService.KnowHowBoardWriteOkService;
 
 @WebServlet("*.Board")
 public class FrontBoardController extends HttpServlet {
@@ -64,6 +70,7 @@ public class FrontBoardController extends HttpServlet {
     	} else if(url_Command.equals("/FreeBoardDelete.Board")) { //자유게시판 글 삭제
     		action = new FreeBoardDeleteService();
     		forward = action.execute(request, response);
+
     		
     	}else if(url_Command.equals("/FreeBoardRewrite.Board")) { //자유게시판 답글달기
     		action = new FreeBoardRewriteService();
@@ -75,8 +82,35 @@ public class FrontBoardController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+    	} else if(url_Command.equals("/KnowHowBoardList.Board")) { //공략게시판 목록 보기
+    		action = new KnowHowBoardListService();
+    		forward = action.execute(request, response);
+    		
+    	} else if(url_Command.equals("/KnowHowBoardWrite.Board")) { //공략게시판 글쓰기 UI 
+    		forward = new ActionForward();
+            forward.setRedirect(false);
+            forward.setPath("/WEB-INF/views/board/KnowHowBoardWrite.jsp");
+
+    	} else if(url_Command.equals("/KnowHowBoardWriteOk.Board")) { //공략게시판 글쓰기 로직 처리
+    		action = new KnowHowBoardWriteOkService();
+        	forward = action.execute(request, response);
     	
+    	} else if(url_Command.equals("/KnowHowBoardRead.Board")) { //공략게시판 글 상세보기
+    		action = new KnowHowBoardReadService();
+    		forward = action.execute(request, response);
+
+    	} else if(url_Command.equals("/KnowHowBoardEdit.Board")) { //공략게시판 글 수정 UI
+    		action = new KnowHowBoardEditService();
+    		forward = action.execute(request, response);
+    	
+    	} else if(url_Command.equals("/KnowHowBoardEditOk.Board")) { //공략게시판 글 수정 로직 처리
+    		action = new KnowHowBoardEditOkService();
+    		forward = action.execute(request, response);
+    	
+    	} else if(url_Command.equals("/KnowHowBoardDelete.Board")) { //공략게시판 글 삭제
+    		action = new KnowHowBoardDeleteService();
+    		forward = action.execute(request, response);
+    	}
     	
 
     	

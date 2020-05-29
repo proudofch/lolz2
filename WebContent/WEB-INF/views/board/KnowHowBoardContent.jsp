@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>글 상세보기</title>
+	<title>공략게시판 글 상세보기</title>
 	
 	<style type="text/css">
 
@@ -95,41 +95,19 @@
 					<div id="btns_wrapper">
 						<div id="btns">
 							<c:if test="${sessionScope.id == dto.id}">
-								<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
-								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
+								<input type="button" class="button primary small" value="수정" onclick="location.href='KnowHowBoardEdit.Board?boardnum=${dto.boardnum}'">
+								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='KnowHowBoardDelete.Board?boardnum=${dto.boardnum}'">
 							</c:if>
 								
 							<input type="button" class="button small" value="답글" onclick="location.href='#'">
-							</c:if>
-						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+				</c:if>
+						<input type="button" class="button small" value="목록으로" onclick="location.href='KnowHowBoardList.Board'">
 							<!-- 목록으로에 파라미터 주기 !!! -->
 						<input type="button" class="button small" value="TOP" onclick="location.href='#'">
 					</div>
 				</div>
-
 				
-				
-				<!-- 댓글 끝 -->
-				
-		
-				<hr>
-
-				<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
-				<input type="button" class="button primary small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
-				<!-- 목록으로에 파라미터 주기 !!! -->
-				<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
-			
-				
-				
-				<ul>
-					<li><a href="#">top</a></li>
-				</ul>
- <input type="button" class="button primary small" value="답글" onclick="location.href='FreeBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
- 			</div>
-			
-
 			</div>
-
 		</div>
 	</div>
 </body>
@@ -153,8 +131,7 @@
 				html += element.replycont;
 				html += "</div><div id='reply_date'><h6>";
 				html += element.replydate;
-				html += "</h6>"
-				html +=	"<form action=\"ReplyDelete?replynum=" + element.replynum +"\" method=\"post\" id=\"replynum\" name=\"replynum\"><input type=\"submit\" id=\"\" value=\"삭제\"> </form></div><hr class='dot'>"; //덕추가
+				html += "</h6></div><hr class='dot'>"
 			});
 			
 			$('#replybox').append(html);
@@ -193,9 +170,8 @@
 							html += element.replycont;
 							html += "</div><div id='reply_date'><gb h6>";
 							html += element.replydate;
-							html += "</h6>"
-							html +=	"<form action=\"ReplyDelete?replynum=" + element.replynum +"\" method=\"post\" id=\"replynum\" name=\"replynum\"><input type=\"submit\" id=\"\" value=\"삭제\"> </form></div><hr class='dot'>"; //덕추가
-							});
+							html += "</h6></div><hr class='dot'>"
+						});
 						
 						$('#replybox').append(html);
 						$('#comment').val("");
@@ -203,8 +179,6 @@
 					}
 					
 			});
-			
-			
 		});
 	
 	

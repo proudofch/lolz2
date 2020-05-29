@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-
-	<title>자유게시판 글 수정하기</title>
-
+	<title>공략게시판 글 수정하기</title>
 	<style type="text/css">
 		h2 {
 			margin-top: 100px;
@@ -85,14 +83,13 @@
 			
 			<!-- request 객체에 boarddata 넘어온 상태 -->
 			
-			<form name="board_edit" id="board_write" action="FreeBoardEditOk.Board" method="post" enctype="multipart/form-data">
+			<form name="board_edit" id="board_write" action="KnowHowBoardEditOk.Board" method="post" enctype="multipart/form-data">
 			
 				<c:set var="boarddata" value="${requestScope.boarddata}"></c:set>
 				
 				<input type="hidden" id="id" name="id" value="${boarddata.id}">
 				<input type="hidden" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				
-				<input type="text" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				제목<br> 
 				<input type="text" name="boardtitle" id="boardtitle" placeholder="제목을 입력하세요" value="${boarddata.boardtitle}">
 				<c:if test="${sessionScope.id == 'admin'}">

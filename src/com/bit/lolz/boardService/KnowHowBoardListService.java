@@ -10,13 +10,14 @@ import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.dao.boarddao;
 import com.bit.lolz.dto.BoardDto;
 
-public class FreeBoardListService implements Action {
+public class KnowHowBoardListService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		
 		boarddao dao = new boarddao();
-		int totalBoardCount = dao.totalBoardCount(1); //전체 게시물 건수 얻기
+		int totalBoardCount = dao.totalBoardCount(2); //전체 게시물 건수 얻기
 		
 		String psStr = request.getParameter("ps"); //pagesize
 		String cpStr = request.getParameter("cp"); //currentpage
@@ -40,7 +41,7 @@ public class FreeBoardListService implements Action {
 			pageCount = (totalBoardCount / pageSize) + 1; //딱 떨어지지 않는다 = 게시물이 남는다 -> 페이지 하나 추가
 		}
 		
-		List<BoardDto> list = dao.list(currentPage, pageSize, 1);
+		List<BoardDto> list = dao.list(currentPage, pageSize, 2);
 
 		request.setAttribute("currentpage", currentPage);
 		request.setAttribute("pagesize", pageSize);
@@ -50,8 +51,9 @@ public class FreeBoardListService implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("/WEB-INF/views/board/FreeBoardList.jsp");
+		forward.setPath("/WEB-INF/views/board/KnowHowBoardList.jsp");
 		
+		System.out.println("knowhowboardlistservice 실행");
 		return forward;
 	}
 
