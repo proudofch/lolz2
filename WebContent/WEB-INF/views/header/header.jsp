@@ -53,12 +53,6 @@
 				<li><a href="index.jsp">HOME</a></li>
 				<li><a href="Search.Search">소환사검색</a></li>
 				
-				<!-- 토글 고치면 아래 두 개 삭제 -->
-				<li><a href="FreeBoardList.Board">자유게시판</a></li>
-				<li><a href="KnowHowBoardList.Board">공략게시판</a></li>
-				
-				
-				<!-- 
 				<li>
 					<a href="#">게시판</a>
 					<ul>
@@ -66,7 +60,6 @@
 						<li><a href="KnowHowBoardList.Board">공략게시판</a></li>
 					</ul>
 				</li>
-				 -->
             	
 				<c:choose>
 	            	<c:when test="${sessionScope.id == null }">
