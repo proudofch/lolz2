@@ -42,10 +42,14 @@
 									</header>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>롤은롤 </p>
+									<p align="center"><br><br>전 세계에서 지금<br>
+									롤에 접속한 사람은<br>
+									1000만명 입니다. </p>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>롤은롤2</p>
+									<p align="center"><br><br>케릭터를 선택하고<br>
+									강해져서<br>
+									팀에 승리를 안겨주세요. </p>
 								</div>
 							</div>
 						</div>
@@ -58,12 +62,12 @@
 					<span class="image fit main bottom"><img src="images/rank02.jpg" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>랭크소개</h2>
-							<p>랭크소개2</p>
+							<h2>나는 롤을 얼마나 잘할까?</h2><br><br>
+							<p align="center">롤에는 순위를 나타내주는 <br>랭크 시스템이 존재합니다. </p>
 						</header>
-						<p>랭크소개3</p>
+						<p align="center">당신의 소환사 아이디로 검색해보세요</p>
 						<ul class="actions">
-							<li><a href="#" class="button">서치페이지로</a></li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Search.Search" class="button">서치페이지로</a></li>
 						</ul>
 					</div>
 					<a href="#banner" class="goto-next scrolly">Next</a>
