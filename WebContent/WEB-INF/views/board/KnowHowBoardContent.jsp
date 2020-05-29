@@ -99,7 +99,7 @@
 								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='KnowHowBoardDelete.Board?boardnum=${dto.boardnum}'">
 							</c:if>
 								
-							<input type="button" class="button small" value="답글" onclick="location.href='#'">
+							<input type="button" class="button small" value="답글" onclick="location.href='KnowHowBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
 				</c:if>
 						<input type="button" class="button small" value="목록으로" onclick="location.href='KnowHowBoardList.Board'">
 							<!-- 목록으로에 파라미터 주기 !!! -->

@@ -24,6 +24,8 @@ import com.bit.lolz.boardService.KnowHowBoardEditOkService;
 import com.bit.lolz.boardService.KnowHowBoardEditService;
 import com.bit.lolz.boardService.KnowHowBoardListService;
 import com.bit.lolz.boardService.KnowHowBoardReadService;
+import com.bit.lolz.boardService.KnowHowBoardRewriteOkService;
+import com.bit.lolz.boardService.KnowHowBoardRewriteService;
 import com.bit.lolz.boardService.KnowHowBoardWriteOkService;
 
 @WebServlet("*.Board")
@@ -110,9 +112,20 @@ public class FrontBoardController extends HttpServlet {
     	} else if(url_Command.equals("/KnowHowBoardDelete.Board")) { //공략게시판 글 삭제
     		action = new KnowHowBoardDeleteService();
     		forward = action.execute(request, response);
-    	}
-    	
-
+    		
+    	} else if(url_Command.equals("/KnowHowBoardRewrite.Board")) { //공략게시판 답글달기
+			action = new KnowHowBoardRewriteService();
+			forward = action.execute(request, response);
+		
+		} else if(url_Command.equals("/KnowHowBoardRewriteOk.Board")) { //공략게시판 답글달기 로직 처리
+			action = new KnowHowBoardRewriteOkService();
+	
+			try {
+			forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
     	
     	
     	if(forward != null) {

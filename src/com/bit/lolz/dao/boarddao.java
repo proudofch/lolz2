@@ -95,9 +95,9 @@ public class boarddao {
 			String Boardnotice = boarddata.getBoardnotice();
 
 			String refer_depth_step_sql="select boardref , boarddepth , boardstep from board where boardnum=?";
-			
-			String step_update_sql = "update board set boardstep=boardstep+1 where boardstep = ? and boardref=?";
-					
+	
+
+		String step_update_sql = "update board set boardstep =boardstep+1 where boardstep > ? and boardref=?";		
 			String rewrite_sql = "insert into board"
 					+ "(boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile, boardref, boardnotice,BOARDDEPTH,BOARDSTEP)"
 					+ "values(boardseq.nextval, ?, ?, ?, ?, sysdate, 0, ?, ?, ?,?,?)";
@@ -114,14 +114,13 @@ public class boarddao {
 				//step () 값 업데이트
 			
 			pstmt = conn.prepareStatement(step_update_sql);
-			pstmt.setInt(1, boardstep);
-			System.out.println("boardstep"+boardstep);
+		    pstmt.setInt(1, boardstep);
 			pstmt.setInt(2, boardrefer);
 			pstmt.executeUpdate();
 				
 			pstmt = conn.prepareStatement(rewrite_sql);
 			pstmt.setString(1, id);
-			pstmt.setInt(2, 1);//게시판 바꿀꺼면 이 숫자를 바꾸면 돼요.
+			pstmt.setInt(2, boardtype);//게시판 바꿀꺼면 이 숫자를 바꾸면 돼요.
 			pstmt.setString(3, Boardtitle);
 			pstmt.setString(4, Boardcontent);
 			pstmt.setString(5, Boardfile);
@@ -129,7 +128,7 @@ public class boarddao {
 			
 			pstmt.setInt(8, boarddepth+1);
 			pstmt.setInt(9, boardstep+1);
-			
+		
 			pstmt.setInt(6, boardrefer);
 
 			resultRow = pstmt.executeUpdate();

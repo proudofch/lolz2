@@ -114,6 +114,12 @@
 									
 									<c:otherwise>
 										<a href="KnowHowBoardRead.Board?boardnum=${list.boardnum}&cp=${requestScope.currentpage}&ps=${requestScope.pagesize}">
+										 <c:forEach var="i" begin="1" end="${list.boarddepth}" step="1">
+                    &nbsp;&nbsp;&nbsp;
+                   </c:forEach>  
+                   <c:if test="${list.boarddepth>0}">
+				<img src='images/re.png' />
+					</c:if>  
 										<c:choose>
 											<c:when test="${list.boardtitle != null && fn:length(list.boardtitle) > 30}">
 			                            		${fn:substring(list.boardtitle, 0, 30)}...
