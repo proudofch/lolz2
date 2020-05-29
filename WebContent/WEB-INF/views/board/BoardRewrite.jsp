@@ -55,10 +55,10 @@
 				<p>답글 작성</p>
 			</header>
 			<form name="board_write" id="board_write" action="FreeBoardRewriteOk.Board" method="post" enctype="multipart/form-data">
-			<%-- <c:set var="boarddata" value="${requestScope.boarddata}"></c:set> --%>
+			
 				<input type="hidden" id="id" name="id" value="${sessionScope.id}">
 				<input type="hidden" id="boardnum" name="boardnum" value="${boardnum}">
-				<input type="text" name="t" id="t" value="${boardnum}">
+				
 				제목<br> 
 				<input type="text" name="title" id="title" value="[Re]">
 				<c:if test="${sessionScope.id == 'admin'}">

@@ -99,7 +99,7 @@
 								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
 							</c:if>
 								
-							<input type="button" class="button small" value="답글" onclick="location.href='#'">
+							<input type="button" class="button small" value="답글" onclick="location.href='FreeBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
 							</c:if>
 						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
 							<!-- 목록으로에 파라미터 주기 !!! -->
@@ -111,21 +111,8 @@
 				
 				<!-- 댓글 끝 -->
 				
-		
-				<hr>
-
-				<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
-				<input type="button" class="button primary small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
-				<!-- 목록으로에 파라미터 주기 !!! -->
-				<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
-			
-				
-				
-				<ul>
-					<li><a href="#">top</a></li>
-				</ul>
- <input type="button" class="button primary small" value="답글" onclick="location.href='FreeBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
- 			</div>
+	
+			</div>
 			
 
 			</div>
