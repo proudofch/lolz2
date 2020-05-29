@@ -216,7 +216,7 @@ public class MemberDao {
 		
 	}
 	*/
-	public ArrayList<MemberDto> findDuo(int summonerscore) throws SQLException{
+	public ArrayList<MemberDto> findDuo(int summonerscore) throws SQLException{//점수비교로 듀오찾아주기
 		Connection conn = ConnectionHelper.getConnection("oracle");
 		PreparedStatement pstmt = null;
 		String sql = "select summonerId from member where summonerscore between ? and ?";

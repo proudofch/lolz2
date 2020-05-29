@@ -8,8 +8,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script type="text/javascript">
-var jsonData;
+
+
 var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+
+
+
 var testlist = new Array();
 var datalist = new Object();
 var win = 0;
@@ -22,7 +26,6 @@ var mostoneimg;
 var mosttwoimg;
 var mostthreeimg;
 
-
 </script>
 <style type="text/css">
 .images{
@@ -31,7 +34,11 @@ var mostthreeimg;
 
 </style>
 </head>
+
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
+
+
+
 <body>
 <div id="main" class="wrapper style1">
 	<div class="container">
@@ -40,6 +47,7 @@ var mostthreeimg;
 	<input type="text" id="sname">
 	<input type="button" class="button primary small" value="search" onclick="checkSummoner()">
 	<div id="display"></div>
+
 	</div>
 	</div>
 	<div class="container">
@@ -51,20 +59,29 @@ var mostthreeimg;
 		<div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
 	</div>
 	<div class="col-12 col-12-medium">
+
+	
+
 	<table>
 	<tr>
 	<td>
 	<ul style="list-style: none">
+
 	<li>검색</li>
 	<li> 해보자</li>
+
+	
+
 	</ul>
 	</td>
 	</tr>
 	</table>
+
 	</div>
 	
 	</div>
 	</div>
+
 	
 </body>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
@@ -108,7 +125,7 @@ function get() {
 	var tmostchamp;
 	var champimg;
 	var score = [0,0];
-	
+
 	$.getJSON(sohwan, function(data, textStatus, req) {
 		let summonerid = data.id;
 		let table = "<table>"
@@ -142,6 +159,7 @@ function get() {
 							win = data[0].wins;
 				            lose = data[0].losses;
 				            winrate = ((data[0].wins/(data[0].wins+data[0].losses))*100).toFixed(1)+"%";
+
 				            
 				            if(data[1]==null){
 				            	var win1 =null;
@@ -155,6 +173,11 @@ function get() {
 				            
 							
 							//테이블 그리기
+
+							console.log(mostoneimg, mosttwoimg, mostthreeimg);
+							
+							
+
 							
 							$.each(data, function(index, obj){
 									//console.log(index); each는 index 0부터 시작!
@@ -180,6 +203,7 @@ function get() {
 									table += obj.losses;
 									table += "</td><td>";
 									table += (((obj.wins/(obj.wins+obj.losses))*100).toFixed(1)+"%");
+
 									table += "</td><td>";
 									champimg = mostoneimg;
 									var imgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
@@ -191,6 +215,7 @@ function get() {
 									var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
 									table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+timgsource+"' style='width:50px'></div>";
 									table += "</td><td>";	
+
 							});
 							table += "</table>";//테이블 그리기끝
 							
