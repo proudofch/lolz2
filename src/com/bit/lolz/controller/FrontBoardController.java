@@ -78,7 +78,7 @@ public class FrontBoardController extends HttpServlet {
 	}
     	
     	
-    	
+
     	
     	
     	if(forward != null) {

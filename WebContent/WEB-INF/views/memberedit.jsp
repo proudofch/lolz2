@@ -1,20 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="assets/css/main.css" />
-<title>Member Edit</title>
-
-
- <script type="text/javascript">
- var apiKey = "RGAPI-06ee38fb-bc53-4bf8-b8f0-2cd46295269a";
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<title>내 정보 수정</title>
+	<script type="text/javascript">
+ var apiKey = "RGAPI-ae90f648-5797-4f10-9476-b493a22796b0";
  var score = [0,0];
  function checkSummoner(){
 	 if($('#summonerId').val() == ""){
@@ -200,66 +196,103 @@
    */
   
  
-  </script>
-
-
-
+	</script>
+	<style type="text/css">
+	
+		#memberedit {
+			text-align: center;
+			margin: 0 300px;
+		}
+		
+		label, h6 {
+			text-align: left;
+			margin-bottom: 0;
+		}
+		
+		.form-group {
+			margin: 10px 0;
+		}
+		
+		#btns {
+			clear: both;
+			display: inline-block;
+			margin-top: 90px;
+		}
+		
+		#summonerId {
+			width: 480px;
+		}
+		
+		#summonerId, #btn {
+			float: left;
+		}
+		
+		#btn {
+			margin-left: 11px;
+			margin-top: 4px;
+		}
+		
+		#btn_wrapper {
+			text-align: center;
+		}
+	
+	</style>
 </head>
+
 <jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
+
 <body>
 	<div id="main" class="wrapper style1">
 		<div class="container">
-      	  <header class="major">
+			<header class="major">
 				<h2>내 정보 수정</h2>		
-		  </header>
+			</header>
    
-        <c:set var="member" value="${requestScope.memberdata}"></c:set>
-	
-		<form name="memberedit" action="MemberEditOk.Lolz" method="post" onsubmit="return validate();"> 
-			
-         <div class="form-group">
-            <label for="id">아이디</label>
-            <input type="text" class="form-control" id="id" name="id"
-             maxlength="20" value="${member.id}" readonly>
-            <h6>아이디는 수정할 수 없습니다.</h6>
-         </div>
-         <div class="form-group">
-            <label for="pwd">패스워드</label>
-            <input type="password" maxlength="20" value="${member.pwd}" class="form-control" id="pwd" name="pwd">
-         </div>
-         <div class="form-group">
-            <label for="pwdCheck">패스워드 확인</label>
-            <input type="password" maxlength="20" value="${member.pwd}"class="form-control" id="pwdCheck" name="pwdCheck">
-         </div>
-
-         <div class="form-group">
-            <label for="email">이메일</label>
-            <input type="text" class="form-control" id="email" name="email" value="${member.email}">
-         </div>
-         <div class="form-group">
-            <label for="bd">생일</label>
-             <input type="text" class="form-control" id="bd" name="bd" value="${member.bd}" readonly>          
-            <h6>생일은 수정할 수 없습니다.</h6>
-         </div>
-
-   			<label for="summonerId">소환사 아이디</label>
-		<div class="row gtr-50 gtr-uniform" id="textform">
-  			  <div class="col-2 col-12-xsmall">
-          		  <input type="text" class="form-control" id="summonerId" name="summonerId" value="${member.summonerId}">
-              </div>
-              <div class="col-8 col-12-xsmall">
-      			  <input type="button" class="button primary small" value="유무 확인" onclick="checkSummoner()">
-      			   <input type="hidden" class="form-control" id="summonerScore" name="summonerScore">   
-        	  </div>
-		</div>
-
-
-         <input type="submit" class="button primary small" value="수정완료" >
-         
-      	 <button type="button" onclick="myFunction()" class="button small">회원탈퇴</button>
-   	
-      </form>
+	        <c:set var="member" value="${requestScope.memberdata}"></c:set>
 		
+			<form name="memberedit" id="memberedit" action="MemberEditOk.Lolz" method="post" onsubmit="return validate();"> 
+				<div class="form-group">
+					<label for="id">ID</label>
+					<input type="text" class="form-control" id="id" name="id" maxlength="20" value="${member.id}" readonly>
+					<h6>ID는 수정할 수 없습니다.</h6>
+				</div>
+				
+				<div class="form-group">
+					<label for="pwd">비밀번호</label>
+					<input type="password" maxlength="20" value="${member.pwd}" class="form-control" id="pwd" name="pwd">
+				</div>
+				
+				<div class="form-group">
+					<label for="pwdCheck">비밀번호 확인</label>
+					<input type="password" maxlength="20" value="${member.pwd}"class="form-control" id="pwdCheck" name="pwdCheck">
+				</div>
+		        
+				<div class="form-group">
+					<label for="email">이메일</label>
+					<input type="text" class="form-control" id="email" name="email" value="${member.email}">
+				</div>
+				
+				<div class="form-group">
+					<label for="bd">생일</label>
+					<input type="text" class="form-control" id="bd" name="bd" value="${member.bd}" readonly>          
+					<h6>생일은 수정할 수 없습니다.</h6>
+				</div>
+				
+					<div class="form-group_spc">
+						<label for="summonerId">소환사 ID</label>
+						<input type="text" class="form-control" id="summonerId" name="summonerId" value="${member.summonerId}">
+						<input type="button" class="button primary small" id="btn" value="유무 확인" onclick="checkSummoner()">
+					</div>
+				
+				<input type="hidden" class="form-control" id="summonerScore" name="summonerScore">
+						
+				<div id="btn_wrapper">
+					<div id="btns">
+						<input type="submit" class="button primary small" value="수정 완료">
+						<button type="button" onclick="myFunction()" class="button small">회원 탈퇴</button>
+		   			</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </body>

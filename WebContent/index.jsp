@@ -5,7 +5,7 @@
 <html>
 
 	<head>
-		<title>놀고싶다.. </title>
+		<title>롤린이놀이터</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -42,10 +42,14 @@
 									</header>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>롤은롤 </p>
+									<p align="center"><br><br>전 세계에서 지금<br>
+									롤에 접속한 사람은<br>
+									1000만명 입니다. </p>
 								</div>
 								<div class="col-4 col-12-medium">
-									<p>롤은롤2</p>
+									<p align="center"><br><br>케릭터를 선택하고<br>
+									강해져서<br>
+									팀에 승리를 안겨주세요. </p>
 								</div>
 							</div>
 						</div>
@@ -58,19 +62,19 @@
 					<span class="image fit main bottom"><img src="images/rank02.jpg" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>랭크소개</h2>
-							<p>랭크소개2</p>
+							<h2>나는 롤을 얼마나 잘할까?</h2><br><br>
+							<p align="center">롤에는 순위를 나타내주는 <br>랭크 시스템이 존재합니다. </p>
 						</header>
-						<p>랭크소개3</p>
+						<p align="center">당신의 소환사 아이디로 검색해보세요</p>
 						<ul class="actions">
-							<li><a href="#" class="button">서치페이지로</a></li>
+							<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Search.Search" class="button">서치페이지로</a></li>
 						</ul>
 					</div>
-					<a href="#three" class="goto-next scrolly">Next</a>
+					<a href="#banner" class="goto-next scrolly">Next</a>
 				</section>
 
 			<!-- Three -->
-				<section id="three" class="spotlight style3 left">
+			<!--	<section id="three" class="spotlight style3 left">
 					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
 					<div class="content">
 						<header>
@@ -82,74 +86,12 @@
 							<li><a href="#" class="button">게시판페이지로</a></li>
 						</ul>
 					</div>
-					<a href="#four" class="goto-next scrolly">Next</a>
+					<a href="#banner" class="goto-next scrolly">Next</a>
 					
 				</section>
-
+ -->
 			<!-- Four -->
-				<section id="four" class="wrapper style1 special fade-up">
-					<div class="container">
-						<header class="major">
-							<h2>Accumsan sed tempus adipiscing blandit</h2>
-							<p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
-						</header>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-chart-area"></span>
-									<h3>Ipsum sed commodo</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-comment"></span>
-									<h3>Eleifend lorem ornare</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-flask"></span>
-									<h3>Cubilia cep lobortis</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-paper-plane"></span>
-									<h3>Non semper interdum</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-file"></span>
-									<h3>Odio laoreet accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-lock"></span>
-									<h3>Massa arcu accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-							</div>
-						</div>
-						<footer class="major">
-							<ul class="actions special">
-								<li><a href="#" class="button">Magna sed feugiat</a></li>
-							</ul>
-						</footer>
-					</div>
-				</section>
-
-			<!-- Five -->
-				<section id="five" class="wrapper style2 special fade">
-					<div class="container">
-						<header>
-							<h2>Magna faucibus lorem diam</h2>
-							<p>Ante metus praesent faucibus ante integer id accumsan eleifend</p>
-						</header>
-						<form method="post" action="#" class="cta">
-							<div class="row gtr-uniform gtr-50">
-								<div class="col-8 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
-								<div class="col-4 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
-							</div>
-						</form>
-					</div>
-				</section>
+			<!-- 날림 -->	
 
 			<!-- Footer -->
 				<footer id="footer">

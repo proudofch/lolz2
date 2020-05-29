@@ -8,14 +8,18 @@
 	<title>자유게시판 글쓰기</title>
     
 	<style type="text/css">
-		h2 {
+		/* h2 {
 			margin-top: 100px;
 			padding-top: 100px;
-		}
+		} */
 		
 		#summernote_wrapper {
 			background-color: white;
 			opacity: 0.95;
+		}
+		
+		#checkbox {
+			margin-top: 10px;
 		}
 	</style>
 	
@@ -51,8 +55,7 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major">
-				<h2>Write</h2>
-				<p>notice blahblahblah</p>
+				<h2>글쓰기</h2>
 			</header>
 			<form name="board_write" id="board_write" action="FreeBoardWriteOk.Board" method="post" enctype="multipart/form-data">
 				<input type="hidden" id="id" name="id" value="${sessionScope.id}">
@@ -60,12 +63,13 @@
 				제목<br> 
 				<input type="text" name="title" id="title" placeholder="제목을 입력하세요">
 				<c:if test="${sessionScope.id == 'admin'}">
-					<input type="checkbox" id="notice" name="notice" value="Y">
-					<label for="notice">공지사항</label>
+					<div id="checkbox">
+						<input type="checkbox" id="notice" name="notice" value="Y">
+						<label for="notice">공지사항</label>
+					</div>
 				</c:if>
 				<br>
 				내용<br>
-				<!-- <textarea name="content" id="content"  rows="6"></textarea> -->
 				<div id="summernote_wrapper">
 					<textarea rows="10" cols="60" name="content" id="summernote" placeholder="내용을 입력하세요"></textarea>
 				</div>
