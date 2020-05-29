@@ -61,6 +61,10 @@
 			text-align: center;
 		}
 		
+		#donutdiv, #donutdiv2 {
+			background-color: white;
+		}
+		
 		table {
 			padding: 0;
 		}
@@ -68,8 +72,6 @@
 		html {
 			margin-bottom: 120px;
 		}
-		
-		
 	
 	</style>
 </head>
@@ -91,11 +93,11 @@
 			</div> <!-- searchbox_wrapper end -->
 			<div id="display"></div>
 			
-			<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
-			<div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
+				<div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
+				<div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
+			</div>
 			<div class="col-6 col-6-medium"  id="gaugeChart" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
 			<div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
-		</div>
 	</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>	
@@ -323,12 +325,7 @@
 					        		colors: ["#30a1ec", "#76bdee", "#387bb4", "#c4dafe"], //그래프 color를 지정해줍니다.
 					        		formatter: function (y) { return y}  //y값 뒤에 %를 추가해줍니다.
 					        		}));
-					        	
-					        	$('#donutdiv').css("background-color", "#FFFFFF");
-					        	$('#donutdiv2').css("background-color", "#FFFFFF");
-					        	
-					        	
-					        	
+					        	///
 					        	$('#gaugeChart').empty();
 								$('#gaugeChart2').empty();
 					        	var chart = bb.generate({
@@ -378,9 +375,7 @@
 					        			score[0]=0;
 					        			console.log("gaugeChart score[0] 초기화 후: "+score[0]);
 					        		}, 1000);
-					        		
-					        	$('#gaugeChart').css("background-color", "#FFFFFF");
-					        	$('#gaugeChart2').css("background-color", "#FFFFFF");
+					        	
 	
 	
 					        	////

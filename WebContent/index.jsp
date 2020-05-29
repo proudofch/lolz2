@@ -12,7 +12,7 @@
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 	</head>
 	<jsp:include page="/WEB-INF/views/header/header.jsp"></jsp:include>
-	<body class="is-preload landing" style="margin-top: 0;">
+	<body class="is-preload landing">
 		<div id="page-wrapper">
 				<section id="banner">
 					<div class="content">
