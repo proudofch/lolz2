@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>글 상세보기</title>
+	<title>공략게시판 글 상세보기</title>
 	
 	<style type="text/css">
 
@@ -95,13 +95,13 @@
 					<div id="btns_wrapper">
 						<div id="btns">
 							<c:if test="${sessionScope.id == dto.id}">
-								<input type="button" class="button primary small" value="수정" onclick="location.href='FreeBoardEdit.Board?boardnum=${dto.boardnum}'">
-								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='FreeBoardDelete.Board?boardnum=${dto.boardnum}'">
+								<input type="button" class="button primary small" value="수정" onclick="location.href='KnowHowBoardEdit.Board?boardnum=${dto.boardnum}'">
+								<input type="button" class="button primary small" value="삭제" id="delete" onclick="location.href='KnowHowBoardDelete.Board?boardnum=${dto.boardnum}'">
 							</c:if>
 								
 							<input type="button" class="button small" value="답글" onclick="location.href='#'">
 				</c:if>
-						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+						<input type="button" class="button small" value="목록으로" onclick="location.href='KnowHowBoardList.Board'">
 							<!-- 목록으로에 파라미터 주기 !!! -->
 						<input type="button" class="button small" value="TOP" onclick="location.href='#'">
 					</div>
