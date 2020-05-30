@@ -26,7 +26,7 @@ DROP SEQUENCE REPLYSEQ;
 
 ----------------------------------------------------------------------------
 
---계정 생성
+--계정 생성 (cmd로)
 
 CREATE USER "LOL" IDENTIFIED BY "1004"  
 DEFAULT TABLESPACE "USERS"
