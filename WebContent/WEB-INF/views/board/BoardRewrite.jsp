@@ -17,6 +17,15 @@
 			background-color: white;
 			opacity: 0.95;
 		}
+		
+		#btns {
+			display: inline-block;
+		}
+		
+		#btns_wrapper {
+			text-align: center;
+		}
+		
 	</style>
 	
 	
@@ -51,8 +60,7 @@
 	<div id="main" class="wrapper style1">
 		<div class="container">
 			<header class="major">
-				<h2>Rewrite</h2>
-				<p>답글 작성</p>
+				<h2>답글 쓰기</h2>
 			</header>
 			<form name="board_write" id="board_write" action="FreeBoardRewriteOk.Board" method="post" enctype="multipart/form-data">
 			
@@ -71,12 +79,18 @@
 				<div id="summernote_wrapper">
 					<textarea rows="10" cols="60" name="content" id="summernote" placeholder="내용을 입력하세요"></textarea>
 				</div>
+				<br>
 				파일<br>
 				<input type="file" id="file" name="file">
 				<br>
-				<input type="button" class="button primary small" value="글쓰기" onclick="check();">
-				<input type="reset" class="button primary small" value="다시 쓰기">
-				목록으로 돌아가기
+				
+				<div id="btns_wrapper">
+					<div id="btns">
+					<input type="button" class="button primary small" value="글쓰기" onclick="check();">
+					<input type="reset" class="button primary small" value="다시 쓰기">
+					<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+					</div>
+				</div>
 				
 			</form>
 		</div> <!-- container end -->

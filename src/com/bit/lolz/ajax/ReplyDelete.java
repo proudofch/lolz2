@@ -1,6 +1,8 @@
 package com.bit.lolz.ajax;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bit.lolz.action.ActionForward;
 import com.bit.lolz.dao.boarddao;
+import com.bit.lolz.dto.ReplyDto;
+
+import net.sf.json.JSONArray;
 
 @WebServlet("/ReplyDelete")
 public class ReplyDelete extends HttpServlet {
@@ -25,27 +30,13 @@ public class ReplyDelete extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		int replynum = Integer.parseInt(request.getParameter("replynum"));
+		String replynum = request.getParameter("replynum");
+		int replynum_int = Integer.parseInt(replynum);
 		
 		//댓글 삭제
 		boarddao boarddao = new boarddao();
-		boarddao.replyDeleteOk(replynum);
+		boarddao.replyDeleteOk(replynum_int);
 		System.out.println("replyDeleteOk 실행");
-		
-		
-		//다시뿌려보자
-    	ActionForward forward = new ActionForward();
-        forward.setRedirect(false);
-        forward.setPath("/WEB-INF/views/board/FreeBoardList.jsp");
-        System.out.println("replyDeleteOk 실행");
-        
-		if(forward != null) { 
-		RequestDispatcher dis =
-		request.getRequestDispatcher(forward.getPath());
-		dis.forward(request,response);
-		System.out.println("replyDeleteOk 실행");
-		}
-		 
 		
         
 	}

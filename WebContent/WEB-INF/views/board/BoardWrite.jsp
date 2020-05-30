@@ -12,7 +12,6 @@
 		#summernote_wrapper {
 			background-color: white;
 			opacity: 0.95;
-			/* margin-bottom: 10px; */
 		}
 		
 		#checkbox {

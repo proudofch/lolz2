@@ -493,32 +493,34 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 		
 		return resultRow;
 	}
-//리플지우기	
-public int replyDeleteOk(int replynum) {
-		
-		int resultRow = 0;
-		
-		try {
+	
+	
+	//댓글 지우기
+	public int replyDeleteOk(int replynum) {
 			
-			conn = ds.getConnection();
+			int resultRow = 0;
 			
-			String sql = "delete from reply where replynum = ?";
+			try {
+				
+				conn = ds.getConnection();
+				
+				String sql = "delete from reply where replynum = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, replynum);
+				
+				resultRow = pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("replyDeleteok 문제 발생!");
+				
+			} finally {
+				if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+				if(conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
 			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, replynum);
-			
-			resultRow = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("replyDeleteok 문제 발생!");
-			
-		} finally {
-			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-			if(conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-		}
-		
-		return resultRow;
+			return resultRow;
 	}
 	
 	//댓글 목록 가져오기

@@ -40,15 +40,6 @@ public class ReplyInsert extends HttpServlet {
 		boarddao dao = new boarddao();
 		dao.replyOk(boardnum_fk, id, comment);
 		
-		//등록된 댓글 가져오기
-		boarddao boarddao = new boarddao();
-		List<ReplyDto> replylist = boarddao.getReplyList(boardnum_fk);
-		JSONArray obj = JSONArray.fromObject(replylist);
-		
-		PrintWriter out = response.getWriter();
-		out.print(obj);
-		out.close();
-		
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
