@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Page</title>
+<title>마이페이지</title>
 <script src="https://d3js.org/d3.v5.min.js"></script>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.12.10/billboard.css">
  <script src="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.12.10/billboard.js"></script>
@@ -31,6 +31,10 @@
  div .container{
  text-align:center;
  }
+ 
+ #btn_wrapper {
+ 	margin-bottom: 100px;
+ }
 
 </style>
 
@@ -40,41 +44,37 @@
 <c:set var="member" value="${requestScope.memberdata}"></c:set>
 <div id="all">
 <div id="main" class="wrapper style1">
-   <div class="container">
-        <header class="major">
-            <h2>마이 페이지</h2>      
-      </header>
+	<div class="container">
+		<header class="major">
+        	<h2>마이페이지</h2>
+        	<p>[${sessionScope.id}] 님의 소환사 [${sessionScope.summonerId}]의 정보입니다.</p>      
+		</header>
       
-      <h5>${sessionScope.id}님의
-      소환사 ${sessionScope.summonerId} 의 정보입니다.</h5>
     <c:if test="${sessionScope.summonerId==null }">
     <img src="images/icon.png" width="250" height="250">
     <h3>소환사 아이디가 없으시군요!</h3>
     </c:if>
+
+<div id="btn_wrapper">    
 <button type="button" onclick='location.href="prvMemberEdit.Lolz?id=${sessionScope.id}"' class="button small">내 정보 수정</button>
 <button type="button" onclick='location.href="MemberBoardList.Lolz?id=${sessionScope.id}"'class="button small">내가 쓴 글/댓글</button> 
+</div>
  <!--<button type="button" class="button small" onclick="get()">내 티어확인</button>  -->
     <br>
     
           
     <div id="display">   </div>
-   <div class="container">
       <div class="col-6 col-6-medium" id="donutdiv" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
       <div class="col-6 col-6-medium" id="donutdiv2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
-   </div>
-   <div class="container">
       <div class="col-6 col-6-medium"  id="gaugeChart" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
       <div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
-   </div>
 
    
    
        
-   </div>
-</div>
-</div>
+  
 <c:set var="memberduolist" value="${requestScope.Memberduolist}"></c:set>
-      <table >
+      <table>
          <thead>
             <tr>
                <th align="center">듀오 할만한 소환사 목록</th>
@@ -90,6 +90,9 @@
             </c:forEach>
          </tbody>
       </table>
+       </div>
+</div>
+</div>
 </body>
 
 
@@ -189,7 +192,6 @@
                               champimg = mostthreeimg;
                               var timgsource = "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/"+champimg+"."+"png";
                               table += "<div class = 'images' style=\"width:52px; height:52px; border:1px solid green; float:left;\"><img src ='"+timgsource+"' style='width:50px'></div>";
-                              table += "</td><td>";   
                         });
                         table += "</table>";//테이블 그리기끝
                         
@@ -239,6 +241,7 @@
                         
                            $('#display').empty();
                            $('#display').append(table);
+                           $('th').css("text-align", "center");
                           
                         
                         //도넛그리기
@@ -321,7 +324,10 @@
                                 console.log("gaugeChart score[0] 초기화 후: "+score[0]);
                              }, 1000);
                           
-
+						$('#donutdiv').css("background-color", "#FFFFFF");
+						$('#donutdiv2').css("background-color", "#FFFFFF");
+						$('#gaugeChart').css("background-color", "#FFFFFF");
+						$('#gaugeChart2').css("background-color", "#FFFFFF");
 
                           ////
                           ///
