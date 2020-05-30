@@ -106,8 +106,9 @@
 				</div>
 				<br>
 				첨부된 파일&nbsp;&nbsp;[${boarddata.boardfile}] <br>
+				<input type="hidden" id="prvboardfile" name="prvboardfile" value="${boarddata.boardfile}">
 				새 첨부 파일<br>
-				<input type="file" id="boardfile" name="boardfile">
+				<input type="file" id="file" name="file">
 				
 				
 				<div id="btns">

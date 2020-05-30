@@ -36,6 +36,15 @@ public class FreeBoardEditOkService implements Action {
 			Enumeration fileNames = multi.getFileNames();
 			String file = (String)fileNames.nextElement();
 			String dbFileName = multi.getFilesystemName(file);
+			String prvboardfile = multi.getParameter("prvboardfile");
+			
+			if(dbFileName == null) {
+				dbFileName = prvboardfile;
+			}
+			
+			System.out.println("dbFileName: "+dbFileName);
+			System.out.println("prvboardfile: "+prvboardfile);
+			
 			String originalName = multi.getOriginalFileName(file);
 			
 			BoardDto boarddata = new BoardDto();

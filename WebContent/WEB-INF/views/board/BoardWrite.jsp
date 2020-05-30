@@ -8,19 +8,25 @@
 	<title>자유게시판 글쓰기</title>
     
 	<style type="text/css">
-		/* h2 {
-			margin-top: 100px;
-			padding-top: 100px;
-		} */
 		
 		#summernote_wrapper {
 			background-color: white;
 			opacity: 0.95;
+			/* margin-bottom: 10px; */
 		}
 		
 		#checkbox {
 			margin-top: 10px;
 		}
+		
+		#btns {
+			display: inline-block;
+		}
+		
+		#btns_wrapper {
+			text-align: center;
+		}
+		
 	</style>
 	
 	
@@ -73,13 +79,18 @@
 				<div id="summernote_wrapper">
 					<textarea rows="10" cols="60" name="content" id="summernote" placeholder="내용을 입력하세요"></textarea>
 				</div>
+				<br>
 				파일<br>
 				<input type="file" id="file" name="file">
 				<br>
-				<input type="button" class="button primary small" value="글쓰기" onclick="check();">
-				<input type="reset" class="button primary small" value="다시 쓰기">
-				목록으로 돌아가기
 				
+				<div id="btns_wrapper">
+					<div id="btns">
+					<input type="button" class="button primary small" value="글쓰기" onclick="check();">
+					<input type="reset" class="button primary small" value="다시 쓰기">
+					<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+					</div>
+				</div>
 			</form>
 		</div> <!-- container end -->
 	</div> <!-- wrapper end -->
