@@ -96,8 +96,9 @@ public class boarddao {
 
 			String refer_depth_step_sql="select boardref , boarddepth , boardstep from board where boardnum=?";
 	
+String step_update_sql = "select nvl(min(boardstep), 0) step from board where boardref=? and boardstep > ? and boardref <= ?";
 
-		String step_update_sql = "update board set boardstep =boardstep+1 where boardstep > ? and boardref=?";		
+//String step_update_sql = "update board set boardstep =boardstep+1 where boardstep > ? and boardref=?";		
 			String rewrite_sql = "insert into board"
 					+ "(boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile, boardref, boardnotice,BOARDDEPTH,BOARDSTEP)"
 					+ "values(boardseq.nextval, ?, ?, ?, ?, sysdate, 0, ?, ?, ?,?,?)";
@@ -105,18 +106,39 @@ public class boarddao {
 			pstmt.setInt(1, boardnum);
 			rs = pstmt.executeQuery();
 	
+
 			
+			//내꺼
 		if(rs.next()){
 			int boardstep = rs.getInt("boardstep");
 			int boardrefer = rs.getInt("boardref");
 			int boarddepth = rs.getInt("boarddepth");
-			System.out.println("rs구문 탓을떄.");
-				//step () 값 업데이트
 			
 			pstmt = conn.prepareStatement(step_update_sql);
 		    pstmt.setInt(1, boardstep);
 			pstmt.setInt(2, boardrefer);
-			pstmt.executeUpdate();
+			pstmt.setInt(3, boarddepth);
+			/* rs=pstmt.executeUpdate(); */
+			rs=pstmt.executeQuery();
+			  if(rs.next()) {
+	               boardstep = rs.getInt("step");
+	               if(boardstep == 0) {
+	                  String maxStep = "select max(boardstep)+1 maxStep from board where boardref=?";
+	                  pstmt = conn.prepareStatement(maxStep);
+	                  pstmt.setInt(1, boardrefer); //원본글 ref
+	                  rs = pstmt.executeQuery();
+	                  if(rs.next()) {
+	                	  boardstep = rs.getInt("maxStep");
+	                  }
+	               } else {
+	                  String update_step = "update board set boardstep=boardstep+1 where boardref=? and boardstep >= ? ";
+	                  pstmt = conn.prepareStatement(update_step);
+	                  pstmt.setInt(1, boardrefer); //원본글 ref
+	                  pstmt.setInt(2, boardstep);
+	                  pstmt.executeUpdate();
+	               }
+	            }
+	            
 				
 			pstmt = conn.prepareStatement(rewrite_sql);
 			pstmt.setString(1, id);

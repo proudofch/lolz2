@@ -102,7 +102,6 @@
 							<input type="button" class="button small" value="답글" onclick="location.href='FreeBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
 							</c:if>
 						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
-							<!-- 목록으로에 파라미터 주기 !!! -->
 						<input type="button" class="button small" value="TOP" onclick="location.href='#'">
 					</div>
 				</div>
@@ -124,7 +123,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
-
+	//댓글내용불러오기view?
 	$.ajax({
 		url:"GetReplyList",
 		datatype: "json",
@@ -145,6 +144,7 @@
 			});
 			
 			$('#replybox').append(html);
+			
 		}
 	});
 
@@ -169,8 +169,6 @@
 						comment: $('#comment').val()
 					  },
 				success: function(data) {
-						console.log(data);
-						
 						$('#replybox').empty();
 						var html = "";
 						$.each(JSON.parse(data), function(index, element) {
@@ -181,7 +179,7 @@
 							html += "</div><div id='reply_date'><gb h6>";
 							html += element.replydate;
 							html += "</h6>"
-							html +=	"<form action=\"ReplyDelete?replynum=" + element.replynum +"\" method=\"post\" id=\"replynum\" name=\"replynum\"><input type=\"submit\" id=\"\" value=\"삭제\"> </form></div><hr class='dot'>"; //덕추가
+							html +=	"<form action=\"ReplyDelete?replynum=" + element.replynum +"\" method=\"post\" id=\"replynum\" name=\"replynum\"><input type=\"submit\" id=\"\" value=\"삭제\"></form> </div><hr class='dot'>"; //덕추가
 							});
 						
 						$('#replybox').append(html);
