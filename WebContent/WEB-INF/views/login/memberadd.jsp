@@ -29,16 +29,33 @@
 		
 		label {
 			text-align: left;
+			margin-top: 10px;
 		}
 		
 		#btn_wrapper {
 			text-align: center;
 		}
 		
+		body {
+			margin-top: 80px;
+		}
+		
+		#id, #summonerId {
+			width: 486px;
+			position: absolute;
+		}
+		
+		#message, #check {
+			position: relative;
+			left: 248px;
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
+			
 		
    	</style>
 	<script type="text/javascript">
-	var apiKey = "RGAPI-ae90f648-5797-4f10-9476-b493a22796b0";
+    var apiKey = "RGAPI-c613eb27-f399-403e-844b-e2e752e5869d";
 	var score = [0,0];
 	function checkSummoner(){
 		 if($('#summonerId').val() == ""){
@@ -220,12 +237,12 @@
 				<div class="form-group">
 		            <label for="summonerId">소환사ID</label>
 		            <input type="text" class="form-control" id="summonerId" name="summonerId">
-			       	<input type="button" class="button primary small" value="유무 확인" onclick="checkSummoner()">  
+			       	<input type="button" class="button primary small" value="유무 확인" id="check" onclick="checkSummoner()">  
 				</div>
 				<div id="btn_wrapper">		 
 					<div id="btnbox">
-				        <input type="reset" class="button small" value="입력취소">
-				        <input type="submit" class="button primary small" value="가입완료" >
+				        <input type="submit" class="button primary small" value="가입 완료" >
+				        <input type="reset" class="button small" value="입력 취소">
 			        </div> 
 		        </div>
 			</form>
