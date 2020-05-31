@@ -27,12 +27,19 @@
 		#gotolist {
 			position: absolute;
 			right: 93px;
-			/* top: 0; */
 		}
 		
 		#top {
 			position: absolute;
 			right: 0;
+		}
+		
+		label {
+			margin-top: 10px;
+		}
+		
+		#checkbox {
+			margin-top: 10px;
 		}
 		
 	</style>
@@ -59,17 +66,6 @@
 			document.board_edit.submit();
 			
 		}
-		
-		/* $(function() {
-			
-			var flag = ${ boarddata.boardnotice };
-			
-			if( flag == "Y" ) {
-				$("input:checkbox[id='notice']").prop("checked", true);
-			};
-
-			
-		}); */
 	
 	</script>
 </head>
@@ -88,14 +84,16 @@
 			<form name="board_edit" id="board_write" action="FreeBoardEditOk.Board" method="post" enctype="multipart/form-data">
 			
 				<c:set var="boarddata" value="${requestScope.boarddata}"></c:set>
+				<c:set var="notice" value="${boarddata.boardnotice}" />
 				
+				<br>
 				<input type="hidden" id="id" name="id" value="${boarddata.id}">
 				<input type="hidden" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				
-				<input type="text" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
 				제목<br> 
 				<input type="text" name="boardtitle" id="boardtitle" placeholder="제목을 입력하세요" value="${boarddata.boardtitle}">
 				<c:if test="${sessionScope.id == 'admin'}">
+					<input type="hidden" id="prvnotice" name="prvnotice" value="${notice}">
 					<input type="checkbox" id="notice" name="notice" value="Y">
 					<label for="notice">공지사항</label>
 				</c:if>
@@ -126,7 +124,6 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
-	console.log($('#summernote'));
 
 	$('#summernote').summernote({
 		placeholder: 'Hello stand alone ui',
@@ -143,5 +140,14 @@
 					['view', ['fullscreen', 'codeview', 'help']]
 				]
 	});
+	
+	$(function() {
+		
+		var flag = '${notice}';
+		if(flag == "Y") {
+			$("input:checkbox[id='notice']").prop("checked", true);			
+		}
+	
+	})
 </script>
 </html>

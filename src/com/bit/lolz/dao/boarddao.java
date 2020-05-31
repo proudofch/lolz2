@@ -303,7 +303,7 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 		
 		try {
 			conn = ds.getConnection();
-			String sql = "SELECT BOARDNUM, ID, BOARDTYPE, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDHIT, NVL(BOARDFILE, 'NONE') BOARDFILE, BOARDREF, BOARDSTEP, BOARDDEPTH"
+			String sql = "SELECT BOARDNUM, ID, BOARDTYPE, BOARDTITLE, BOARDCONTENT, BOARDDATE, BOARDHIT, NVL(BOARDFILE, 'NONE') BOARDFILE, BOARDREF, BOARDSTEP, BOARDDEPTH, BOARDNOTICE"
 					   + " FROM BOARD WHERE BOARDNUM = ?"; //FROM 앞에 띄어쓰기 없으면 오류 발생 (***QUERY 작성 시 띄어쓰기 주의***)
 			
 			pstmt = conn.prepareStatement(sql);
@@ -323,9 +323,10 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 				int boardref = rs.getInt("BOARDREF");
 				int boardstep = rs.getInt("BOARDSTEP");
 				int boarddepth = rs.getInt("BOARDDEPTH");
+				String boardnotice = rs.getString("BOARDNOTICE");
 				
 				dto = new BoardDto(bnum, id, boardtype, boardtitle, boardcontent,
-						boarddate, boardhit, boardfile, boardref, boardstep, boarddepth);
+						boarddate, boardhit, boardfile, boardref, boardstep, boarddepth, boardnotice);
 			}
 			
 		} catch (Exception e) {
@@ -398,7 +399,7 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 			conn = ds.getConnection();
 			
 			String select_sql = "SELECT BOARDNUM FROM BOARD WHERE BOARDNUM = ?";
-			String update_sql = "UPDATE BOARD SET BOARDTITLE = ?, BOARDCONTENT = ?, BOARDFILE = ? WHERE BOARDNUM = ?";
+			String update_sql = "UPDATE BOARD SET BOARDTITLE = ?, BOARDCONTENT = ?, BOARDFILE = ?, BOARDNOTICE = ? WHERE BOARDNUM = ?";
 			
 			int boardnum = boarddata.getBoardnum();
 			
@@ -412,7 +413,8 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 				pstmt.setString(1, boarddata.getBoardtitle());
 				pstmt.setString(2, boarddata.getBoardcontent());
 				pstmt.setString(3, boarddata.getBoardfile());
-				pstmt.setInt(4, boardnum);
+				pstmt.setString(4, boarddata.getBoardnotice());
+				pstmt.setInt(5, boardnum);
 				
 				resultRow = pstmt.executeUpdate();
 			}
