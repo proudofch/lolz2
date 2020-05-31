@@ -118,7 +118,8 @@
                     &nbsp;&nbsp;&nbsp;
                    </c:forEach>  
                    <c:if test="${list.boarddepth>0}">
-				<img src='images/re.png' />
+				<!-- <img src='images/re.png' /> -->
+				 <i class="fas fa-caret-right"></i>
 					</c:if>  
 										<c:choose>
 											<c:when test="${list.boardtitle != null && fn:length(list.boardtitle) > 30}">

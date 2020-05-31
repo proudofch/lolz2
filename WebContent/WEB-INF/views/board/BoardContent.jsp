@@ -142,8 +142,10 @@
 			success: function(data) {
 				
 				var html = "";
+				console.log("data: "+data);
 				
 				$.each(JSON.parse(data), function(index, element) {
+					
 					
 					html += "<form action='ReplyDelete' method='POST'>";
 					html += "<div id='reply_id'><b>";
@@ -157,7 +159,7 @@
 					html += "</h6></div>";
 					html += "<input type='hidden' name='replynum' id='replynum' value='";
 					html += element.replynum;
-					html += "'> <input type='submit' value='삭제' onclick='deleteReply(this.form)'>";
+					html += "'> <input type='submit' value='삭제' class='button small' onclick='deleteReply(this.form)'>";
 					html += "</form>";
 					
 				});
@@ -169,26 +171,6 @@
 		
 	}
 
-	
-	//댓글 삭제
-	
-	function deleteReply(form) {
-		$(form).on("submit", function() {
-			
-			var data = $(this).serialize();
-			
-			$.ajax({
-				url: "ReplyDelete",
-				data: data,
-				success: function(data) {
-					console.log('>'+data+'<'); 
-					getReplyList();
-				}
-			});
-			return false;
-		});
-	}
-	
 	
 	//댓글 쓰기
 	function insertReply() {
@@ -209,6 +191,7 @@
 						comment: $('#comment').val()
 					  },
 				success: function(data) {
+						$('#replybox').empty();
 						getReplyList();
 						$('#comment').val("");
 						
@@ -220,8 +203,28 @@
 			
 		});
 	}
-
-		
+	
+	
+	//댓글 삭제
+	
+	function deleteReply(form) {
+		$(form).on("submit", function() {
+			
+			var data = $(this).serialize();
+			
+			$.ajax({
+				url: "ReplyDelete",
+				data: data,
+				success: function(data) {
+					$('#replybox').empty();
+					getReplyList();
+				}
+			});
+			return false;
+		});
+	}
+	
+	
 </script>	
 
 </html>

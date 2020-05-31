@@ -44,7 +44,7 @@
 								<div class="col-4 col-12-medium">
 									<p align="center"><br><br>전 세계에서 지금<br>
 									롤에 접속한 사람은<br>
-									1000만명 입니다. </p>
+									1,000만 명입니다. </p>
 								</div>
 								<div class="col-4 col-12-medium">
 									<p align="center"><br><br>케릭터를 선택하고<br>
@@ -73,38 +73,12 @@
 					<a href="#banner" class="goto-next scrolly">Next</a>
 				</section>
 
-			<!-- Three -->
-			<!--	<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
-					<div class="content">
-						<header>
-							<h2>게시판</h2>
-							<p>게시판2</p>
-						</header>
-						<p>게시판3</p>
-						<ul class="actions">
-							<li><a href="#" class="button">게시판페이지로</a></li>
-						</ul>
-					</div>
-					<a href="#banner" class="goto-next scrolly">Next</a>
-					
-				</section>
- -->
-			<!-- Four -->
-			<!-- 날림 -->	
-
 			<!-- Footer -->
 				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
 					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>CREATED BY GROUP 5 OF BIT155</li>
+						<li>&copy; Untitled. All rights reserved.</li>
+						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</footer>
 

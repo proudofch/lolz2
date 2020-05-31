@@ -116,42 +116,67 @@
 <script type="text/javascript">
 
 
-	$.ajax({
-		url:"GetReplyList",
-		datatype: "json",
-		data: { boardnum:'${dto.boardnum}'},
-		success: function(data) {
-			
-			var html = "";
-			
-			$.each(JSON.parse(data), function(index, element) {
-				html += "<div id='reply_id'><b>";
-				html += element.id;
-				html += "</b></div><div id='reply_comment'>";
-				html += element.replycont;
-				html += "</div><div id='reply_date'><h6>";
-				html += element.replydate;
-				html += "</h6></div><hr class='dot'>"
-			});
-			
-			$('#replybox').append(html);
-		}
-	});
-
-
-
-	
-		$('#writecom').click(function(){
+	//모든 요소 load 후 댓글 목록과 댓글 쓰기 폼 불러오기
+	$(function() {
 		
+		getReplyList();
+		insertReply();
+		
+	});
+	
+	
+	//댓글 목록 가져오기
+	function getReplyList() {
+		
+		$.ajax({
+			url:"GetReplyList",
+			datatype: "json",
+			data: { boardnum:'${dto.boardnum}'},
+			success: function(data) {
+				
+				var html = "";
+				console.log("data: "+data);
+				
+				$.each(JSON.parse(data), function(index, element) {
+					
+					
+					html += "<form action='ReplyDelete' method='POST'>";
+					html += "<div id='reply_id'><b>";
+					html += element.id;
+					html += "</b></div>";
+					html += "<div id='reply_comment'>";
+					html += element.replycont;
+					html += "</div>";
+					html += "<div id='reply_date'><h6>";
+					html += element.replydate;
+					html += "</h6></div>";
+					html += "<input type='hidden' name='replynum' id='replynum' value='";
+					html += element.replynum;
+					html += "'> <input type='submit' value='삭제' class='button small' onclick='deleteReply(this.form)'>";
+					html += "</form>";
+					
+				});
+				
+				$('#replybox').append(html);
+				
+			}
+		});
+		
+	}
+	
+	
+	//댓글 쓰기
+	function insertReply() {
+		$('#writecom').click(function(){
+			
 			if(!reply.comment.value) {
 				swal('댓글 내용을 입력하세요!');
 				reply.comment.focus();
 				return false;
 			}
 			
-			
-			//댓글 쓰기
 			$.ajax ({
+				
 				url:"ReplyInsert",
 				datatype:"json",
 				data: { boardnum:'${dto.boardnum}',
@@ -159,27 +184,38 @@
 						comment: $('#comment').val()
 					  },
 				success: function(data) {
-						console.log(data);
-						
 						$('#replybox').empty();
-						var html = "";
-						$.each(JSON.parse(data), function(index, element) {
-							html += "<div id='reply_id'><b>";
-							html += element.id;
-							html += "</b></div><div id='reply_comment'>";
-							html += element.replycont;
-							html += "</div><div id='reply_date'><gb h6>";
-							html += element.replydate;
-							html += "</h6></div><hr class='dot'>"
-						});
-						
-						$('#replybox').append(html);
+						getReplyList();
 						$('#comment').val("");
 						
 					}
 					
 			});
+			
+			return false;
+			
 		});
+	}
+	
+	
+	//댓글 삭제
+	
+	function deleteReply(form) {
+		$(form).on("submit", function() {
+			
+			var data = $(this).serialize();
+			
+			$.ajax({
+				url: "ReplyDelete",
+				data: data,
+				success: function(data) {
+					$('#replybox').empty();
+					getReplyList();
+				}
+			});
+			return false;
+		});
+	}
 	
 	
 </script>	
