@@ -55,7 +55,7 @@
 		
    	</style>
 	<script type="text/javascript">
-    var apiKey = "RGAPI-ee45696f-b798-454c-a44a-f085dcfb0791";
+    var apiKey = "RGAPI-4a47a2e7-02df-4fbb-a4f2-ee95a7d5db19";
 	var score = [0,0];
 	function checkSummoner(){
 		 if($('#summonerId').val() == ""){

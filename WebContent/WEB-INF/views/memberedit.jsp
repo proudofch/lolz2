@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<title>내 정보 수정</title>
 	<script type="text/javascript">
- var apiKey = "RGAPI-c613eb27-f399-403e-844b-e2e752e5869d";
+ var apiKey = "RGAPI-4a47a2e7-02df-4fbb-a4f2-ee95a7d5db19";
  var score = [0,0];
  function checkSummoner(){
 	 if($('#summonerId').val() == ""){
