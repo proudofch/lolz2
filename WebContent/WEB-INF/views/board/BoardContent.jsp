@@ -100,7 +100,7 @@
 								
 							<input type="button" class="button small" value="답글" onclick="location.href='FreeBoardRewrite.Board?boardnum=${dto.boardnum}&cp=${requestScope.cp}&ps=${requestScope.ps}'">
 							</c:if>
-						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board'">
+						<input type="button" class="button small" value="목록으로" onclick="location.href='FreeBoardList.Board?cp=${requestScope.cp}&ps=${requestScope.ps}'">
 						<input type="button" class="button small" value="TOP" onclick="location.href='#'">
 					</div>
 				</div>

@@ -51,6 +51,18 @@ public class FreeBoardEditOkService implements Action {
 			boarddata.setId(multi.getParameter("id"));
 			boarddata.setBoardnum(Integer.parseInt(multi.getParameter("boardnum")));
 			
+			String notice = multi.getParameter("notice");
+			String prvnotice = multi.getParameter("prvnotice");
+			
+			System.out.println("notice: "+notice);
+			System.out.println("prvnotice: "+prvnotice);
+			
+			if(notice == null) {
+				notice = prvnotice;
+			}
+			
+			boarddata.setBoardnotice(notice);
+			
 			boarddao dao = new boarddao();
 			int result = dao.editOk(boarddata);
 			

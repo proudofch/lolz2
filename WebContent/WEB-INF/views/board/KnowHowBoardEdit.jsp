@@ -33,6 +33,10 @@
 			right: 0;
 		}
 		
+		#checkbox {
+			margin-top: 10px;
+		}
+		
 	</style>
 	
 	
@@ -57,17 +61,6 @@
 			document.board_edit.submit();
 			
 		}
-		
-		/* $(function() {
-			
-			var flag = ${ boarddata.boardnotice };
-			
-			if( flag == "Y" ) {
-				$("input:checkbox[id='notice']").prop("checked", true);
-			};
-
-			
-		}); */
 	
 	</script>
 </head>
@@ -86,6 +79,7 @@
 			<form name="board_edit" id="board_write" action="KnowHowBoardEditOk.Board" method="post" enctype="multipart/form-data">
 			
 				<c:set var="boarddata" value="${requestScope.boarddata}"></c:set>
+				<c:set var="notice" value="${boarddata.boardnotice}" />
 				
 				<input type="hidden" id="id" name="id" value="${boarddata.id}">
 				<input type="hidden" id="boardnum" name="boardnum" value="${boarddata.boardnum}">
@@ -139,5 +133,15 @@
 					['view', ['fullscreen', 'codeview', 'help']]
 				]
 	});
+	
+	
+	$(function() {
+		
+		var flag = '${notice}';
+		if(flag == "Y") {
+			$("input:checkbox[id='notice']").prop("checked", true);			
+		}
+	
+	})
 </script>
 </html>
