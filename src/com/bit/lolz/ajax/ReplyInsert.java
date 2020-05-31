@@ -36,7 +36,6 @@ public class ReplyInsert extends HttpServlet {
     	String id = (String)session.getAttribute("id");
 		String comment = request.getParameter("comment");
 		
-		//댓글 달기
 		boarddao dao = new boarddao();
 		dao.replyOk(boardnum_fk, id, comment);
 		

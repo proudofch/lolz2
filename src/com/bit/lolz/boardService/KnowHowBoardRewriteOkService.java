@@ -80,7 +80,6 @@ public class KnowHowBoardRewriteOkService implements Action{
 		forward.setPath("/WEB-INF/views/redirect.jsp");
 		
 	} catch (Exception e) {
-		System.out.println("공략게시판 글쓰기ok에 문제 발생");
 		e.printStackTrace();
 	}
 	

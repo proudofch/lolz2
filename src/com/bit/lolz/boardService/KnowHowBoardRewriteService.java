@@ -17,7 +17,7 @@ public class KnowHowBoardRewriteService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 
 
-		String strboardnum = request.getParameter("boardnum");//그저 이게 필요할뿐
+		String strboardnum = request.getParameter("boardnum");
 		if(strboardnum == null || strboardnum.trim().equals("")) {
 			try {
 				response.sendRedirect("KnowHowBoardList.Board");

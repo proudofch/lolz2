@@ -23,14 +23,7 @@ public class MemberDao {
 	         ResultSet rs = null;
 	         MemberDto member = null;
 	         String sql="select id, pwd,summonerId from member where id = ?";
-	         	/*
-	        	 if(id.equals("admin")) {
-	        		 sql = "select adminid, adminpwd from admin where adminid = ?";  
-	        		 System.out.println("admin");
-	        	 }else {	        	 
-	        		 sql = "select id, pwd,summonerId from member where id = ?";         
-	        	 }
-	        	 */
+	         	
 	        	 try {
 	            pstmt = conn.prepareStatement(sql);
 	            pstmt.setString(1, id);
@@ -40,12 +33,7 @@ public class MemberDao {
 	               
 	            	member = new MemberDto();
 	               
-	            	/*
-	                if(id.equals("admin")) {
-		            	member.setId(rs.getString("adminid"));
-		            	member.setPwd(rs.getString("adminpwd"));
-	                } else
-	                */
+	            	
 	                
 		            member.setId(rs.getString("id"));
 		            member.setPwd(rs.getString("pwd"));
@@ -185,47 +173,7 @@ public class MemberDao {
 		
 	}
 	
-	/*
-	public List<MemberDto> getMemberListByDeptno(String deptno) { //
-		DecimalFormat formatter = new DecimalFormat("###,###");
-		Connection conn = ConnectionHelper.getConnection("oracle");		
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "select Memberno, ename, job, mgr, hiredate, sal, comm, deptno, img from Member where deptno = ?";
-		ArrayList<MemberDto> Memberlist = null;
-​
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, deptno);
-			rs = pstmt.executeQuery();
-			Memberlist = new ArrayList<>();
-			
-			while(rs.next()) {
-				
-				MemberDto e = new MemberDto();
-				
-				e.setMemberNo(rs.getInt("MemberNo"));
-				e.setEname(rs.getString("ename"));
-				e.setJob(rs.getString("job"));
-				e.setMgr(rs.getInt("mgr"));
-				e.setHireDate(rs.getString("hiredate"));
-				//e.setSal(formatter.format(rs.getInt("sal")));
-				e.setSal(rs.getInt("sal"));
-				e.setComm(rs.getInt("comm"));
-				e.setDeptNo(rs.getInt("deptno"));
-				e.setImg(rs.getString("img"));
-				Memberlist.add(e);
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return Memberlist;
-		
-	}
-	*/
+	
 	public ArrayList<MemberDto> getMemberList() throws SQLException { //전체 회원 목록
 		Connection conn = ConnectionHelper.getConnection("oracle"); 
 		PreparedStatement pstmt = null;
@@ -352,81 +300,6 @@ public class MemberDao {
 		}
 		return isMemberNo;
 	}
-	/*
-	차트 추후 수정계획
-	public List<Chart> selectAvgSalByJob() { //직종별 평균 급여
-		Connection conn =null;//추가
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		List<Chart> avgSalList = null;
-		
-		try {
-			System.out.println("왜안들어와?");
-			conn= ConnectionHelper.getConnection("oracle");
-			String sql = "select round(avg(sal),0) avgsal, job from Member group by job";
-			pstmt = conn.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
- 			avgSalList = new ArrayList<Chart>();
-			while(rs.next()) {
-				Chart chart = new Chart();
-				chart.setJob(rs.getString("job"));
-				chart.setAvgSal(rs.getInt("avgsal"));
-				avgSalList.add(chart);
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				pstmt.close();
-				rs.close();
-				conn.close(); //반환
-			} catch (Exception e2) {
-				System.out.println(e2.getMessage());
-			}
-		}
-		System.out.println("avgSalList:" + avgSalList);
-		return avgSalList;
-	}
-	
-	public List<String> getJobList() { //직종 목록 출력하기
-		
-		Connection conn = null;
-		ResultSet rs = null;
-		PreparedStatement pstmt = null;
-		List<String> joblist = null;
-		String sql = "select job from Member group by job";
-		
-		try {
-			conn = ConnectionHelper.getConnection("oracle");
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			joblist = new ArrayList<>();
-			
-			while(rs.next()) {
-				joblist.add(rs.getString("job"));
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		} finally {
-			try {
-				rs.close();
-				pstmt.close();
-				conn.close();
-				
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}	
-		
-		return joblist;
-		
-	}*/
-	
 	
 	
 }

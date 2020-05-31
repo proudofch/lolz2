@@ -67,7 +67,6 @@ public class KnowHowBoardEditOkService implements Action {
 			forward.setPath("/WEB-INF/views/redirect.jsp");
 			
 		} catch (Exception e) {
-			System.out.println("공략게시판 글 수정하기에 문제 발생");
 			e.printStackTrace();
 		}
 		

@@ -29,10 +29,10 @@ public class MemberEditService implements Action{
 		 	String msg="";
 		 	String url="";
 		    if(result > 0){
-		    	msg ="회원정보가 수정되었습니다.";
+		    	msg ="회원 정보가 수정되었습니다.";
 		    	url ="Index.Lolz";
 		    }else{
-		    	msg="수정을 실패했습니다.";
+		    	msg="수정 실패";
 		    	url="prvMemberEdit.Lolz?id="+id;
 		    }
 		    

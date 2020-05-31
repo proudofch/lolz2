@@ -16,8 +16,8 @@ public class FreeBoardRewriteService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 
-//	
-		String strboardnum = request.getParameter("boardnum");//그저 이게 필요할뿐
+		String strboardnum = request.getParameter("boardnum");
+		
 		if(strboardnum == null || strboardnum.trim().equals("")) {
 			try {
 				response.sendRedirect("FreeBoardList.Board");
@@ -25,9 +25,6 @@ public class FreeBoardRewriteService implements Action {
 				e.printStackTrace();
 			}
 		}
-		
-//		boarddao dao = new boarddao();
-//		BoardDto boarddata=dao.boarddata;
 		
 		System.out.println(strboardnum);
 		ActionForward forward = new ActionForward();

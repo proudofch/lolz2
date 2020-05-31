@@ -33,11 +33,8 @@ public class ReplyDelete extends HttpServlet {
 		String replynum = request.getParameter("replynum");
 		int replynum_int = Integer.parseInt(replynum);
 		
-		//댓글 삭제
 		boarddao boarddao = new boarddao();
 		boarddao.replyDeleteOk(replynum_int);
-		System.out.println("replyDeleteOk 실행");
-		
         
 	}
     

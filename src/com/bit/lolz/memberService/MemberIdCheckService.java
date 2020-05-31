@@ -21,18 +21,10 @@ public class MemberIdCheckService  implements Action {
 			String id = request.getParameter("id");
 	       	MemberDao dao = new MemberDao();
 	       	memberIdCheck = dao.isCheckByMemberId(id);
-//	    	request.setAttribute("empmessage", empNoCheck);
 	    	
 	    	PrintWriter out = response.getWriter();
 	    	out.print(memberIdCheck);
 	    	out.close();
-//	    	forward = new ActionForward();
-//	    	forward.setRedirect(false);
-//	    	forward.setPath("/WEB-INF/views/uservalid.jsp");
-	    	
-//	    	forward = new ActionForward();
-//	    	forward.setRedirect(false);
-//	    	forward.setPath("/WEB-INF/views/uservalid.jsp");
 //	    	
 		}catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -42,9 +42,6 @@ public class FreeBoardEditOkService implements Action {
 				dbFileName = prvboardfile;
 			}
 			
-			System.out.println("dbFileName: "+dbFileName);
-			System.out.println("prvboardfile: "+prvboardfile);
-			
 			String originalName = multi.getOriginalFileName(file);
 			
 			BoardDto boarddata = new BoardDto();
@@ -62,10 +59,10 @@ public class FreeBoardEditOkService implements Action {
 			
 			if(result > 0) {
 				msg = "수정 성공!";
-				url = "FreeBoardList.Board"; //이것도 상세보기로 가야겟지...욤...
+				url = "FreeBoardList.Board";
 			} else {
 				msg = "수정 실패";
-				url = "FreeBoardWrite.Board"; //목록?? 글쓰기 상태로 다시?? 
+				url = "FreeBoardWrite.Board"; 
 			}
 			
 			request.setAttribute("board_msg", msg);

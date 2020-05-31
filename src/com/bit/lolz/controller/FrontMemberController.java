@@ -98,35 +98,7 @@ public class FrontMemberController extends HttpServlet {
 		} else if(url_Command.equals("/MemberBoardList.Lolz")) {//내가 쓴 글 목록
 			action = new MemberBoardListService();
 			forward = action.execute(request,response);
-		}  /*
-			 * else if(url_Command.equals("/DeptAdd.Emp")) { //부서 추가(지금까진 부서 추가 UI 페이지 뿌리는
-			 * 상태 > 수정해야 할 듯) forward = new ActionForward(); forward.setRedirect(false);
-			 * forward.setPath("/WEB-INF/views/deptadd.jsp");
-			 * 
-			 * } else if(url_Command.equals("/DeptNoCheck.Emp")) { //부서 번호 중복 확인 action =
-			 * new DeptNoCheckService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/DeptAddOk.Emp")) { //부서 추가 정보 처리 action = new
-			 * DeptAddService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/Empsearch.Emp")) { //사원 검색 UI forward = new
-			 * ActionForward(); forward.setRedirect(false);
-			 * forward.setPath("/WEB-INF/views/empsearch.jsp");
-			 * 
-			 * //비동기 검색은 전체 사원 목록에 DataTable 붙이면서 그쪽에서 다 되고 있음
-			 * 
-			 * } else if(url_Command.equals("/EmpSearchByNo.Emp")) { //사번으로 검색 action = new
-			 * EmpSearchService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/EmpSearchByEname.Emp")) { //이름으로 검색 action =
-			 * new EmpSearchService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/EmpSearchByDeptno.Emp")) { //부서 번호로 검색 action
-			 * = new EmpSearchService(); forward = action.execute(request, response);
-			 * 
-			 * } else if(url_Command.equals("/Chart.Emp")) { //차트 action = new
-			 * ChartAction(); forward = action.execute(request, response); }
-			 */
+		}  
     	
     	if(forward != null) {
     		RequestDispatcher dis  = request.getRequestDispatcher(forward.getPath());

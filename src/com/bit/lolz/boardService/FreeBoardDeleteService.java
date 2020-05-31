@@ -28,7 +28,7 @@ public class FreeBoardDeleteService implements Action {
 			url = "FreeBoardList.Board";
 		} else {
 			msg = "삭제 실패";
-			url = "FreeBoardList.Board"; //목록?? 상세보기로 다시?? 
+			url = "FreeBoardList.Board";
 		}
 		
 		request.setAttribute("board_msg", msg);

@@ -1,0 +1,141 @@
+	
+	
+	DB 설정
+	
+	
+	----------------------------------------------------------------------------
+	
+	--기존 테이블 및 시퀀스 모두 삭제하기
+	
+	--DROP TABLE ADMIN CASCADE CONSTRAINTS;
+	DROP TABLE BOARD CASCADE CONSTRAINTS;
+	DROP TABLE BOARDTYPE CASCADE CONSTRAINTS;
+	DROP TABLE MEMBER CASCADE CONSTRAINTS;
+	DROP TABLE REPLY CASCADE CONSTRAINTS;
+	DROP TABLE SUMMONERID CASCADE CONSTRAINTS;
+	DROP TABLE TIER CASCADE CONSTRAINTS;
+	
+	DROP SEQUENCE BOARDSEQ;
+	DROP SEQUENCE REPLYSEQ;
+	
+	----------------------------------------------------------------------------
+	
+	--계정 생성
+	
+	CREATE USER "LOL" IDENTIFIED BY "1004"  
+	DEFAULT TABLESPACE "USERS"
+	TEMPORARY TABLESPACE "TEMP";
+	
+	GRANT "CONNECT" TO "LOL" WITH ADMIN OPTION;
+	GRANT "RESOURCE" TO "LOL" WITH ADMIN OPTION;
+	ALTER USER "LOL" DEFAULT ROLE "CONNECT","RESOURCE";
+	
+	--게시판 테이블
+	CREATE TABLE BOARD (
+	   BOARDNUM NUMBER, /* 글번호 */
+	   ID VARCHAR2(20) NOT NULL, /* 아이디 */
+	   BOARDTYPE NUMBER NOT NULL, /* 게시판코드 */
+	   BOARDTITLE VARCHAR2(100) NOT NULL, /* 제목 */
+	   BOARDContent VARCHAR2(4000), /* 내용 */
+	   BOARDDATE DATE NOT NULL, /* 날짜 */
+	   BOARDHIT NUMBER DEFAULT 0, /* 조회수 */
+	   BOARDFILE VARCHAR2(40), /* 파일 */
+	   BOARDREF NUMBER DEFAULT 0, /* REF */
+	   BOARDSTEP NUMBER DEFAULT 0, /* STEP */
+	   BOARDDEPTH NUMBER DEFAULT 0, /* DEPTH */
+	   BOARDNOTICE VARCHAR2(10) DEFAULT 'N' /* 공지유무 */
+	);
+	
+	--회원 테이블
+	CREATE TABLE MEMBER (
+	   ID VARCHAR2(20) NOT NULL, /* 아이디 */
+	   PWD VARCHAR2(20) NOT NULL, /* 비밀번호 */
+	   EMAIL VARCHAR2(50) NOT NULL, /* 이메일 */
+	   BD DATE NOT NULL, /* 생일 */
+	   SUMMONERID VARCHAR2(30), /* 소환사아이디 */
+	   SUMMONERSCORE NUMBER
+	);
+	
+	--게시판 종류 테이블
+	CREATE TABLE BOARDTYPE (
+	   BOARDTYPE NUMBER, /* 게시판코드 */
+	   BOARDNAME VARCHAR2(40) NOT NULL /* 게시판이름 */
+	);
+	
+	--댓글 테이블
+	CREATE TABLE REPLY (
+	   REPLYNUM NUMBER NOT NULL, /* 댓글식별번호 */
+	   ID VARCHAR2(20), /* 아이디 */
+	   BOARDNUM NUMBER, /* 글번호 */
+	   REPLYCONT VARCHAR2(4000), /* 내용 */
+	   REPLYDATE DATE /* 작성일자 */
+	);
+	
+	--관리자 테이블
+	--CREATE TABLE ADMIN (
+	  -- ADMINID VARCHAR2(20) NOT NULL, /* 아이디 */
+	  -- ADMINPWD VARCHAR2(20) NOT NULL /* 비밀번호 */
+	--);
+	
+	--소환사 아이디가 있는 회원 테이블
+	CREATE TABLE SUMMONERID (
+		ID VARCHAR2(20) NOT NULL, /* 아이디 */
+		TIER VARCHAR2(40), /* 티어 */
+		Rank NUMBER, /* 랭크 */
+		SUMMONERID VARCHAR2(20) NOT NULL /* 소환사아이디 */
+	);
+	
+	--소환사 아이디가 있는 회원 테이블에 제약 추가
+	ALTER TABLE SUMMONERID ADD CONSTRAINT PK_SUMMONERID PRIMARY KEY (ID);
+	
+	--티어
+	CREATE TABLE TIER (
+	   TIER VARCHAR2(40) NOT NULL, /* 티어 */
+	   TIERIMG VARCHAR2(40) NOT NULL, /* 티어이미지 */
+	   RATIO NUMBER NOT NULL /* 100분위 */
+	);
+	
+	--게시판 제약 설정
+	--ALTER TABLE ADMIN ADD CONSTRAINT pk_admin_adminid PRIMARY KEY(adminid);
+	ALTER TABLE MEMBER ADD CONSTRAINT pk_member_id PRIMARY KEY(id);
+	ALTER TABLE BOARDTYPE ADD CONSTRAINT pk_boardtype_boardtype PRIMARY KEY(boardtype);
+	ALTER TABLE BOARD ADD CONSTRAINT pk_board_boardnum PRIMARY KEY(boardnum);
+	ALTER TABLE BOARD ADD CONSTRAINT fk_board_id FOREIGN KEY(id) REFERENCES MEMBER(id);
+	ALTER TABLE BOARD ADD CONSTRAINT fk_board_boardtype FOREIGN KEY(boardtype) REFERENCES BOARDTYPE(boardtype);
+	ALTER TABLE REPLY ADD CONSTRAINT pk_reply_replynum PRIMARY KEY(replynum);
+	ALTER TABLE REPLY ADD CONSTRAINT fk_reply_id FOREIGN KEY(id) REFERENCES MEMBER(id);
+	ALTER TABLE REPLY ADD CONSTRAINT fk_reply_boardnum FOREIGN KEY(boardnum) REFERENCES BOARD(boardnum);
+	
+	--게시판 글번호 시퀀스
+	CREATE SEQUENCE BOARDSEQ
+	INCREMENT BY 1
+	START WITH 1
+	NOCYCLE
+	;
+	
+	--게시판 종류 추가
+	insert into boardtype(BOARDTYPE, BOARDname) values (1, '자유게시판');
+	insert into boardtype(BOARDTYPE, BOARDname) values (2, '공략게시판');
+	
+	--댓글 번호 시퀀스
+	CREATE SEQUENCE REPLYSEQ
+	INCREMENT BY 1
+	START WITH 1
+	NOCYCLE
+	;
+	
+	--관리자 추가
+	insert into member(id, pwd, email, bd, summonerid) values ('admin', '1004', 'admin@gmail.com', '1991-05-28', '만당');
+	
+	--회원 샘플
+	insert into member(id, pwd, email, bd, summonerid) values ('bit1004', 'bit1004', 'bit@gmail.com', sysdate, 'hide on bush');
+	insert into member(id, pwd, email, bd, summonerid) values ('kimdong55', 'kimdong55', 'kimdong55@naver.com', sysdate, '김동석');
+	insert into member(id, pwd, email, bd) values ('hellobit155', 'hellobit155', 'hello@naver.com', sysdate);
+	
+	--게시판 샘플
+	insert into board(boardnum, id, boardtype, boardtitle, boardcontent, boarddate)
+	values(boardseq.nextval, 'bit1004', 1, '안녕하세요', '반갑습니다', sysdate);
+	insert into board(boardnum, id, boardtype, boardtitle, boardcontent, boarddate)
+	values(boardseq.nextval, 'bit1004', 1, '안녕', '야옹야옹', sysdate);
+	
+	commit;

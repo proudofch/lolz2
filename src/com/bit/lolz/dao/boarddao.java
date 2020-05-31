@@ -77,6 +77,8 @@ public class boarddao {
 		
 		return resultRow;
 	}
+	
+	
 	//답글 쓰기
 	public int rewriteOk(BoardDto boarddata, int boardtype) {
 		
@@ -98,7 +100,6 @@ public class boarddao {
 	
 String step_update_sql = "select nvl(min(boardstep), 0) step from board where boardref=? and boardstep > ? and boardref <= ?";
 
-//String step_update_sql = "update board set boardstep =boardstep+1 where boardstep > ? and boardref=?";		
 			String rewrite_sql = "insert into board"
 					+ "(boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile, boardref, boardnotice,BOARDDEPTH,BOARDSTEP)"
 					+ "values(boardseq.nextval, ?, ?, ?, ?, sysdate, 0, ?, ?, ?,?,?)";
@@ -118,7 +119,6 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 		    pstmt.setInt(1, boardstep);
 			pstmt.setInt(2, boardrefer);
 			pstmt.setInt(3, boarddepth);
-			/* rs=pstmt.executeUpdate(); */
 			rs=pstmt.executeQuery();
 			  if(rs.next()) {
 	               boardstep = rs.getInt("step");
@@ -195,7 +195,6 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 		return maxBoardRef;
 	}
 	
-	//최대 boardStep 구하기
 	
 	//게시물 총 건수
 	public int totalBoardCount(int boardtype) {
@@ -226,12 +225,6 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 		return totalcount;
 	}
 	
-
-	//답글 정렬에 참고하세요(네이버처럼 정렬하기)
-		//select * from multiboard order by ref desc, step desc
-		//update multiboard set step=step+1 where refer=? and step >= ?
-		//원래 update 칠 때 step+1 해주고 정렬하는 게 뭔가 문제가 있나봄(생각해봅시다)
-		
 	
 	//게시물 목록 //정렬 손보기(지금은 답글 중 최신 글이 위로 붙는 상태)
 	public List<BoardDto> list(int cp, int ps, int type) {
@@ -419,7 +412,7 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 				pstmt.setString(1, boarddata.getBoardtitle());
 				pstmt.setString(2, boarddata.getBoardcontent());
 				pstmt.setString(3, boarddata.getBoardfile());
-				pstmt.setInt(4, boardnum); //이중으로 할 필요 없을 거 같은데...
+				pstmt.setInt(4, boardnum);
 				
 				resultRow = pstmt.executeUpdate();
 			}
@@ -579,12 +572,6 @@ String step_update_sql = "select nvl(min(boardstep), 0) step from board where bo
 		try {
 			conn = ds.getConnection();
 
-//			String sql = "SELECT * FROM"
-//					   + "( SELECT ROWNUM rn, boardnum, id, boardtype, boardtitle, boardcontent, boarddate, boardhit, boardfile,"
-//					   + " boardref, boardstep, boarddepth"
-//					   + " FROM ( SELECT * FROM board where boardtype = ? ORDER BY boardref DESC, boardstep ASC )"
-//					   + ") WHERE rn BETWEEN ? AND ?";
-//			
 			String sql = "SELECT * FROM ( SELECT * FROM board ORDER BY boardref DESC, boardstep ASC ) WHERE ID=?";
 			//자유게시판인지,공략게시판인지는 상관없이 출력
 			

@@ -36,9 +36,7 @@ public class KnowHowBoardWriteOkService implements Action {
 			Enumeration fileNames = multi.getFileNames();
 			String file = (String)fileNames.nextElement();
 			String dbFileName = multi.getFilesystemName(file); //클라이언트가 올린 파일이 중복일 경우 숫자 붙는 파일명
-				System.out.println("dbFileName: "+dbFileName);
 			String originalName = multi.getOriginalFileName(file); //클라이언트가 올리려 한 실제 파일명
-				System.out.println("originalName: "+originalName);
 			
 			BoardDto boarddata = new BoardDto();
 			boarddata.setBoardtitle((multi.getParameter("title")));
@@ -78,7 +76,6 @@ public class KnowHowBoardWriteOkService implements Action {
 			forward.setPath("/WEB-INF/views/redirect.jsp");
 			
 		} catch (Exception e) {
-			System.out.println("공략게시판 글쓰기ok에 문제 발생");
 			e.printStackTrace();
 		}
 		

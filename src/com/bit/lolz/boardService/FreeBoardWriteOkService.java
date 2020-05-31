@@ -36,9 +36,7 @@ public class FreeBoardWriteOkService implements Action {
 			Enumeration fileNames = multi.getFileNames();
 			String file = (String)fileNames.nextElement();
 			String dbFileName = multi.getFilesystemName(file); //클라이언트가 올린 파일이 중복일 경우 숫자 붙는 파일명
-				System.out.println("dbFileName: "+dbFileName);
 			String originalName = multi.getOriginalFileName(file); //클라이언트가 올리려 한 실제 파일명
-				System.out.println("originalName: "+originalName);
 			
 			BoardDto boarddata = new BoardDto();
 			boarddata.setBoardtitle((multi.getParameter("title")));
@@ -64,10 +62,10 @@ public class FreeBoardWriteOkService implements Action {
 			
 			if(result > 0) {
 				msg = "글쓰기 성공!";
-				url = "FreeBoardList.Board"; //보통 성공하면 쓴 글 상세보기로 감... 나중에 고치기
+				url = "FreeBoardList.Board";
 			} else {
 				msg = "글쓰기 실패";
-				url = "FreeBoardWrite.Board"; //실패하면 목록으로 가고? 아님 글 쓰던 상태로 가던가? 훔 ... 이것도 나중에 수정
+				url = "FreeBoardWrite.Board";
 			}
 			
 			request.setAttribute("board_msg", msg);
@@ -78,7 +76,6 @@ public class FreeBoardWriteOkService implements Action {
 			forward.setPath("/WEB-INF/views/redirect.jsp");
 			
 		} catch (Exception e) {
-			System.out.println("자유게시판 글쓰기ok에 문제 발생");
 			e.printStackTrace();
 		}
 		

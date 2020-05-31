@@ -22,7 +22,6 @@ public class FreeBoardReadService implements Action {
 				response.sendRedirect("FreeBoardList.Board");
 			} catch (IOException e) {
 				e.printStackTrace();
-				System.out.println("boardnum 없어서 sendredirect 했는데 문제 발생");
 			}
 		}
 		
@@ -45,7 +44,6 @@ public class FreeBoardReadService implements Action {
 
 		//조회수 증가
 		boolean flag = dao.getBoardHit(boardnum);
-		if(flag) { System.out.println("조회수 증가"); } //작동하면 나중에 없앨 코드
 		
 		BoardDto dto = dao.boardRead(boardnum);
 		
@@ -55,7 +53,6 @@ public class FreeBoardReadService implements Action {
 				response.sendRedirect("FreeBoardList.Board");
 			} catch (IOException e) {
 				e.printStackTrace();
-				System.out.println("존재하지 않는 글번호 때문에 redirect하는데 오류 발생");
 			}
 		}
 		
@@ -64,7 +61,7 @@ public class FreeBoardReadService implements Action {
 		request.setAttribute("boardnum", boardnum);
 		request.setAttribute("cp", cpstr);
 		request.setAttribute("ps", psstr);
-		request.setAttribute("dao", dao); //얘는 왜?
+		request.setAttribute("dao", dao);
 		
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/views/board/BoardContent.jsp");

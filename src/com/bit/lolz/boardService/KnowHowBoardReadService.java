@@ -22,7 +22,6 @@ public class KnowHowBoardReadService implements Action {
 				response.sendRedirect("KnowHowBoardList.Board");
 			} catch (IOException e) {
 				e.printStackTrace();
-				System.out.println("boardnum 없어서 sendredirect 했는데 문제 발생");
 			}
 		}
 		
@@ -54,7 +53,6 @@ public class KnowHowBoardReadService implements Action {
 				response.sendRedirect("KnowHowBoardList.Board");
 			} catch (IOException e) {
 				e.printStackTrace();
-				System.out.println("존재하지 않는 글번호 때문에 redirect하는데 오류 발생");
 			}
 		}
 		

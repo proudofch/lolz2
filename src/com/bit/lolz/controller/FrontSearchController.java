@@ -41,10 +41,7 @@ public class FrontSearchController extends HttpServlet {
 
     	} 
     		
-//    	else if(url_Command.equals("/FreeBoardWriteOk.Board")) { //게시판 글쓰기 로직 처리
-//        	action = new FreeBoardWriteOk();
-//        	forward = action.execute(request, response);} 
-//    	 	
+	 	
     	
     	if(forward != null) {
     		RequestDispatcher dis  = request.getRequestDispatcher(forward.getPath());
