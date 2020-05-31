@@ -34,8 +34,8 @@ public class MemberAddService implements Action {
 			msg = "회원가입이 완료되었습니다.";
 			url = "Login.Lolz";
 		} else {
-			msg = "등록 실패";
-			url = "/MemberAdd.Lolz";
+			msg = "회원가입에 실패했습니다.";
+			url = "/lolz/MemberAdd.Lolz";
 		}
 		
 		request.setAttribute("board_msg", msg);

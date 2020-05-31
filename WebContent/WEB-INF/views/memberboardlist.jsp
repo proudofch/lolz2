@@ -34,7 +34,6 @@
 					<tbody>
 						<c:set var="boardlist" value="${requestScope.boardlist}" />
 						
-						<!-- 게시물이 한 건도 없을 경우의 처리 (추가) -->
 						
 						 <c:forEach var="list" items="${boardlist}">
 						<tr>
@@ -58,31 +57,7 @@
 						</tr>
 						</c:forEach> 
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="5">
-					<%-- 			<c:if test="${currentpage > 1}">
-									<a href="FreeBoardList.Board?cp=${currentpage-1}&ps=${pagesize}">이전</a>
-								</c:if> --%>
-<%-- 
-								<c:forEach var="i" begin="1" end="${pagecount}" step="1">
-									<c:choose>
-										<c:when test="${currentpage == i}">
-											<font color="tomato">[${i}]</font>
-										</c:when>
-										<c:otherwise>
-											<a href="FreeBoardList.Board?cp=${i}&ps=${pagesize}">[${i}]</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-
-								<c:if test="${currentpage < pagecount}">
-									<a href="FreeBoardList.Board?cp=${currentpage+1}&ps=${pagesize}">다음</a>
-								</c:if> --%>
-								
-							</td>
-						</tr>
-					</tfoot>
+			
 				</table>
 			</div> <!-- table-wrapper end -->
 		</div> <!-- container end -->

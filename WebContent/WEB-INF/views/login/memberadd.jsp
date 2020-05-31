@@ -40,11 +40,11 @@
 	<script type="text/javascript">
 	var apiKey = "RGAPI-c613eb27-f399-403e-844b-e2e752e5869d";
 	var score = [0,0];
+	var valid1 = 0; 
+	var valid2 = 0; 
 	function checkSummoner(){
-		 if($('#summonerId').val() == ""){
-	         alert("소환사 아이디를 입력하세요");
-	         $('#summonerId').focus();
-	      }else{
+		
+	    	   valid2 =1;
 				var id = document.getElementById("summonerId").value;
 				var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
 					+id+"?api_key=" + apiKey;
@@ -64,7 +64,6 @@
 			          }
 			        })
 			        
-	      }
 							};
  function myFunction(){
 		 location.href="SummonerIdCheck.Lolz";
@@ -76,39 +75,60 @@
       var pw = document.getElementById("pwd");
       var email = document.getElementById("email");
       var checkpw = document.getElementById("pwdCheck");
+      var bd = document.getElementById("bd");
+     
       
       if(!check(re,id,"아이디는 4~12자의 영문 대소문자와 숫자로만 입력")) {
           return false;
       }
-      if(!check(re,pw,"패스워드는 4~12자의 영문 대소문자와 숫자로만 입력")) {
+      else if(!check(re,pw,"패스워드는 4~12자의 영문 대소문자와 숫자로만 입력")) {
           return false;
       }
 
-      if(memberadd.pw.value != checkpw.value) {
+      else if(pw.value != checkpw.value) {
           alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
           checkpw.value = "";
           checkpw.focus();
           return false;
       }
-      if(memberadd.id.value=="") {
-          alert("아이디를 입력해 주세요");
-          memberadd.id.focus();
-          return false;
-      }
-      if(memberadd.email.value=="") {
-          alert("이메일을 입력해 주세요");
-          memberadd.email.focus();
-          return false;
-      }
-      if(memberadd.bd.value=="") {
-          alert("생년월일을 입력해 주세요");
-          memberadd.bd.focus();
-          return false;
-      }
-      if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
-          return false;
-      }
       
+      else if(id.value=="") {
+          alert("아이디를 입력해 주세요");
+          id.focus();
+          return false;
+      }
+      else if(valid1==0){
+    	  alert("아이디 중복확인을 해주세요");
+    	  return false;
+      }
+      else if(pw.value=="") {
+          alert("비밀번호를 입력해 주세요");
+          pw.focus();
+          return false;
+      }
+      else if(checkpw.value=="") {
+          alert("비밀번호 확인을 입력해 주세요");
+          checkpw.focus();
+          return false;
+      }
+      else  if(email.value=="") {
+          alert("이메일을 입력해 주세요");
+          email.focus();
+          return false;
+      }
+      else if(bd.value=="") {
+          alert("생년월일을 입력해 주세요");
+          bd.focus();
+          return false;
+      }
+      else if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+          return false;
+      }
+      else if(valid2==0){
+    	  alert("소환사 아이디 유무확인을 해주세요")
+    	  return false;
+      }
+     
    
      
        alert("회원가입이 완료되었습니다.");
@@ -136,10 +156,12 @@
                    data:{id:$('#id').val()},
                    dataType:"html",
                    success:function(responsedata){
+                	   valid1 =1;
                       console.log(">" + responsedata + "<");
                       if(responsedata == "true"){
                          alert("사용 가능한 아이디 입니다.");
                          $('#pwd').focus();
+                         
                       }else{
                          alert("이미 존재하는 아이디 입니다.");
                          $('#id').val("");

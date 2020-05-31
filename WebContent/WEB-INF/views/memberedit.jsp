@@ -12,11 +12,10 @@
 	<script type="text/javascript">
  var apiKey = "RGAPI-c613eb27-f399-403e-844b-e2e752e5869d";
  var score = [0,0];
+ var valid2 = 0;
  function checkSummoner(){
-	 if($('#summonerId').val() == ""){
-         alert("소환사 아이디를 입력하세요");
-         $('#summonerId').focus();
-      }else{
+	{
+			valid2 = 1;
 			var id = document.getElementById("summonerId").value;
 			
 			var sohwan = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
@@ -163,21 +162,24 @@
           return false;
       }
 
-      if(memberadd.pw.value != checkpw.value) {
+      if(pw.value != checkpw.value) {
           alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
           checkpw.value = "";
           checkpw.focus();
           return false;
       }
-      if(memberadd.email.value=="") {
+      if(email.value=="") {
           alert("이메일을 입력해 주세요");
-          memberadd.email.focus();
+          email.focus();
           return false;
       }
       if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
           return false;
       }
-  
+      else if(valid2==0){
+    	  alert("소환사 아이디 유무확인을 해주세요")
+    	  return false;
+      }
        alert("회원가입이 완료되었습니다.");
   }
   function check(re, what, text) {
