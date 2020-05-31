@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 	
 		var jsonData;
-        var apiKey = "RGAPI-c613eb27-f399-403e-844b-e2e752e5869d";
+        var apiKey = "RGAPI-ee45696f-b798-454c-a44a-f085dcfb0791";
 		var testlist = new Array();
 		var datalist = new Object();
 		var win = 0;
