@@ -13,10 +13,8 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
  <script type="text/javascript">
- var jsonData;
+
  var apiKey = "RGAPI-4a47a2e7-02df-4fbb-a4f2-ee95a7d5db19";
- var testlist = new Array();
- var datalist = new Object();
  var win = 0;
  var lose = 0;
  var winrate = null;
@@ -69,27 +67,6 @@
       <div class="col-6 col-6-medium"  id="gaugeChart" style="height: 150px;width: 50%; margin: 0px;float: left;" ></div>
       <div class="col-6 col-6-medium" id="gaugeChart2" style="height: 150px;width: 50%; margin: 0px;yellow; float: left;"></div>
 
-   
-   
-       
-  
-<c:set var="memberduolist" value="${requestScope.Memberduolist}"></c:set>
-      <table>
-         <thead>
-            <tr>
-               <th align="center">듀오 할만한 소환사 목록</th>
-                
-             </tr>
-         </thead>
-         <tbody>
-            <c:forEach var="member" items="${memberduolist}">
-            <tr>
-               <td align="center">${member.summonerId}</td>
-               
-            </tr>            
-            </c:forEach>
-         </tbody>
-      </table>
        </div>
 </div>
 </div>
@@ -110,7 +87,7 @@
       var tmostchamp;
       var champimg;
       var score = [0,0];
-      
+
       $.getJSON(sohwan, function(data, textStatus, req) {
          let summonerid = data.id;
          let table = "<table>"
