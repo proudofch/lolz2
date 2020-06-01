@@ -41,13 +41,13 @@
       }
       
       #id, #summonerId {
-      	width: 486px;
+      	width: 650px;
       	position: absolute;
       }
       
       #message, #check {
       	position: relative;
-      	left: 248px;
+      	left: 330px;
       	margin-top: 5px;
       	margin-bottom: 10px;
       }

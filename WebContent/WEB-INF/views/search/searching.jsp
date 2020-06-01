@@ -49,7 +49,7 @@
 		}
 		
 		#sname {
-			width: 570px;
+			width: 560px;
 		}
 		
 		#searchbox_wrapper {
